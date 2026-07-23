@@ -2,65 +2,319 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Affordable and convenient coach trips from Stafford to theme parks, attractions and special events.">
 
     <title>Stafford Coach Trips</title>
 
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             margin: 0;
-            font-family: Arial, sans-serif;
-            background: #f5f5f5;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f2f7;
             color: #222;
+            line-height: 1.6;
         }
 
         header {
-            background: #51247a;
+            background: #35104f;
             color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .navigation {
+            max-width: 1100px;
+            margin: auto;
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .brand {
+            font-size: 22px;
+            font-weight: bold;
+            text-decoration: none;
+            color: white;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 18px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .hero {
+            min-height: 520px;
+            padding: 80px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-align: center;
-            padding: 50px 20px;
+            color: white;
+            background:
+                linear-gradient(
+                    rgba(42, 11, 65, 0.84),
+                    rgba(42, 11, 65, 0.84)
+                ),
+                url("images/coach.jpg") center/cover no-repeat;
         }
 
-        header h1 {
-            margin: 0 0 10px;
-            font-size: 42px;
+        .hero-content {
+            max-width: 850px;
         }
 
-        header p {
+        .hero h1 {
+            margin: 0 0 15px;
+            font-size: clamp(40px, 7vw, 72px);
+            line-height: 1.05;
+        }
+
+        .hero h2 {
+            margin: 0 0 15px;
+            font-size: clamp(24px, 4vw, 38px);
+        }
+
+        .hero p {
+            margin: 0 auto 28px;
+            max-width: 700px;
             font-size: 20px;
         }
 
         .button {
             display: inline-block;
-            margin-top: 15px;
-            padding: 14px 24px;
-            background: white;
-            color: #51247a;
+            padding: 15px 28px;
+            border-radius: 8px;
+            background: #ffffff;
+            color: #43135f;
             text-decoration: none;
             font-weight: bold;
-            border-radius: 6px;
+            font-size: 17px;
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        .button:hover {
+            background: #eee7f4;
+            transform: translateY(-2px);
+        }
+
+        .button-purple {
+            background: #561b75;
+            color: white;
+        }
+
+        .button-purple:hover {
+            background: #401257;
         }
 
         main {
-            max-width: 900px;
+            max-width: 1100px;
             margin: auto;
-            padding: 35px 20px;
+            padding: 55px 20px;
         }
 
-        .trip {
+        .section-heading {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .section-heading h2 {
+            margin-bottom: 8px;
+            font-size: 34px;
+            color: #3c1053;
+        }
+
+        .trip-card {
             background: white;
-            padding: 25px;
-            margin-top: 20px;
-            border-radius: 10px;
-            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.12);
+            border-radius: 16px;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.12);
+        }
+
+        .trip-image {
+            min-height: 380px;
+            background:
+                linear-gradient(
+                    rgba(0, 0, 0, 0.16),
+                    rgba(0, 0, 0, 0.16)
+                ),
+                url("images/alton-towers.jpg") center/cover no-repeat;
+        }
+
+        .trip-details {
+            padding: 38px;
+        }
+
+        .trip-details h3 {
+            margin-top: 0;
+            margin-bottom: 8px;
+            font-size: 34px;
+            color: #3c1053;
+        }
+
+        .date {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .price {
+            font-size: 30px;
+            font-weight: bold;
+            color: #561b75;
+            margin: 18px 0;
+        }
+
+        .features {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0 28px;
+        }
+
+        .features li {
+            margin-bottom: 10px;
+        }
+
+        .notice {
+            padding: 14px;
+            margin: 20px 0;
+            border-left: 5px solid #7a4592;
+            background: #f4edf8;
+        }
+
+        .why-us {
+            margin-top: 65px;
+        }
+
+        .benefits {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .benefit {
+            background: white;
+            text-align: center;
+            padding: 28px 18px;
+            border-radius: 12px;
+            box-shadow: 0 5px 16px rgba(0, 0, 0, 0.08);
+        }
+
+        .benefit span {
+            display: block;
+            margin-bottom: 12px;
+            font-size: 38px;
+        }
+
+        .benefit h3 {
+            color: #3c1053;
+            margin: 6px 0;
+        }
+
+        .coming-soon {
+            margin-top: 65px;
+            padding: 45px 25px;
+            text-align: center;
+            border-radius: 16px;
+            background: #3c1053;
+            color: white;
+        }
+
+        .coming-soon h2 {
+            margin-top: 0;
+            font-size: 34px;
+        }
+
+        .destination-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        .destination {
+            padding: 11px 16px;
+            background: rgba(255, 255, 255, 0.14);
+            border-radius: 30px;
         }
 
         footer {
-            background: #222;
+            background: #201b23;
             color: white;
             text-align: center;
-            padding: 20px;
-            margin-top: 40px;
+            padding: 32px 20px;
+        }
+
+        footer a {
+            color: white;
+        }
+
+        @media (max-width: 800px) {
+            .navigation {
+                flex-direction: column;
+            }
+
+            nav a {
+                margin: 0 8px;
+            }
+
+            .trip-card {
+                grid-template-columns: 1fr;
+            }
+
+            .trip-image {
+                min-height: 260px;
+            }
+
+            .benefits {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 520px) {
+            nav {
+                text-align: center;
+            }
+
+            nav a {
+                display: inline-block;
+                margin: 5px 7px;
+            }
+
+            .hero {
+                min-height: 470px;
+                padding: 60px 18px;
+            }
+
+            .trip-details {
+                padding: 25px;
+            }
+
+            .benefits {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -68,48 +322,172 @@
 <body>
 
 <header>
-    <h1>Stafford Coach Trips</h1>
-    <p>Sit back, relax — we'll do the driving.</p>
+    <div class="navigation">
 
-    <a class="button"
-       href="https://www.ticketsource.co.uk/staffordcoachtrips">
-       View Trips and Book
-    </a>
+        <a class="brand" href="#">
+            🚌 Stafford Coach Trips
+        </a>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#trips">Trips</a>
+            <a href="#why-us">Why Us?</a>
+            <a href="#contact">Contact</a>
+        </nav>
+
+    </div>
 </header>
 
-<main>
-    <h2>Welcome</h2>
+<section class="hero" id="home">
 
-    <p>
-        Stafford Coach Trips provides convenient and affordable coach
-        trips from Stafford to popular attractions and destinations.
-    </p>
+    <div class="hero-content">
 
-    <section class="trip">
-        <h2>Alton Towers</h2>
+        <h1>Stafford Coach Trips</h1>
 
-        <p><strong>Saturday 29 August 2026</strong></p>
-
-        <p>Return coach travel from Stafford: £15 per person.</p>
+        <h2>Sit Back. Relax. We'll Do the Driving.</h2>
 
         <p>
-            Pick-ups from Rising Brook and Stafford Railway Station.
-        </p>
-
-        <p>
-            Please note that this is coach travel only.
-            Admission to Alton Towers must be purchased separately.
+            Convenient and affordable coach trips from Stafford
+            to theme parks, attractions and special events.
         </p>
 
         <a class="button"
-           href="https://www.ticketsource.co.uk/staffordcoachtrips">
-           Book Coach Travel
+           href="https://www.ticketsource.co.uk/staffordcoachtrips"
+           target="_blank"
+           rel="noopener">
+            View Trips and Book
         </a>
+
+    </div>
+
+</section>
+
+<main>
+
+    <section id="trips">
+
+        <div class="section-heading">
+            <h2>Featured Trip</h2>
+            <p>Join us for a stress-free day out from Stafford.</p>
+        </div>
+
+        <article class="trip-card">
+
+            <div class="trip-image"
+                 role="img"
+                 aria-label="Alton Towers">
+            </div>
+
+            <div class="trip-details">
+
+                <h3>Alton Towers</h3>
+
+                <p class="date">
+                    Saturday 29 August 2026
+                </p>
+
+                <p class="price">
+                    £15 return per person
+                </p>
+
+                <ul class="features">
+                    <li>✅ Return coach travel from Stafford</li>
+                    <li>✅ Rising Brook pick-up at 8:30am</li>
+                    <li>✅ Stafford Railway Station pick-up at 8:45am</li>
+                    <li>✅ Return departure from Alton Towers at 6:30pm</li>
+                    <li>✅ No driving, parking or waiting for a taxi</li>
+                </ul>
+
+                <div class="notice">
+                    <strong>Please note:</strong>
+                    This booking is for coach travel only.
+                    Admission to Alton Towers must be purchased separately.
+                </div>
+
+                <a class="button button-purple"
+                   href="https://www.ticketsource.co.uk/staffordcoachtrips"
+                   target="_blank"
+                   rel="noopener">
+                    Book Coach Travel
+                </a>
+
+            </div>
+
+        </article>
+
     </section>
+
+    <section class="why-us" id="why-us">
+
+        <div class="section-heading">
+            <h2>Why Travel With Us?</h2>
+        </div>
+
+        <div class="benefits">
+
+            <div class="benefit">
+                <span>🚌</span>
+                <h3>Comfortable Travel</h3>
+                <p>Relax and enjoy the journey while the driver takes care of the road.</p>
+            </div>
+
+            <div class="benefit">
+                <span>💷</span>
+                <h3>Affordable Fares</h3>
+                <p>A convenient alternative to driving, parking or booking a taxi.</p>
+            </div>
+
+            <div class="benefit">
+                <span>📍</span>
+                <h3>Local Pick-ups</h3>
+                <p>Convenient departure points in Rising Brook and Stafford town centre.</p>
+            </div>
+
+            <div class="benefit">
+                <span>😊</span>
+                <h3>Friendly Service</h3>
+                <p>A locally organised service focused on enjoyable family days out.</p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="coming-soon">
+
+        <h2>More Destinations Coming Soon</h2>
+
+        <p>
+            Follow Stafford Coach Trips for announcements about future
+            journeys and family days out.
+        </p>
+
+        <div class="destination-list">
+            <span class="destination">🎄 Christmas Markets</span>
+            <span class="destination">🎡 Drayton Manor</span>
+            <span class="destination">🏖️ Blackpool</span>
+            <span class="destination">🦁 Chester Zoo</span>
+            <span class="destination">🎢 Theme Parks</span>
+        </div>
+
+    </section>
+
 </main>
 
-<footer>
+<footer id="contact">
+
+    <p><strong>Stafford Coach Trips</strong></p>
+
+    <p>
+        <a href="https://www.ticketsource.co.uk/staffordcoachtrips"
+           target="_blank"
+           rel="noopener">
+            Book through TicketSource
+        </a>
+    </p>
+
     <p>© 2026 Stafford Coach Trips</p>
+
 </footer>
 
 </body>
