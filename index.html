@@ -40,10 +40,6 @@
             line-height: 1.6;
         }
 
-        img {
-            max-width: 100%;
-        }
-
         a {
             color: inherit;
         }
@@ -109,7 +105,7 @@
             transform: translateY(-1px);
         }
 
-        /* Hero */
+        /* Hero banner */
 
         .hero {
             position: relative;
@@ -279,7 +275,7 @@
             font-size: 18px;
         }
 
-        /* Trip card */
+        /* Featured trip */
 
         .trip-card {
             overflow: hidden;
@@ -291,33 +287,40 @@
         }
 
         .trip-image {
+            position: relative;
             min-height: 450px;
             display: flex;
-            align-items: center;
+            align-items: flex-end;
             justify-content: center;
             padding: 30px;
             color: white;
             text-align: center;
 
-            background:
+            background-image:
                 linear-gradient(
-                    rgba(44, 11, 62, 0.4),
-                    rgba(44, 11, 62, 0.72)
+                    rgba(25, 10, 31, 0.08),
+                    rgba(35, 10, 46, 0.78)
                 ),
-                url("images/Coach.webp") center/cover no-repeat;
+                url("images/pexels-sarahbonddesign-13436602.jpg");
+
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
         }
 
         .trip-image-content {
-            padding: 25px;
+            width: min(430px, 100%);
+            padding: 22px;
             border-radius: 14px;
-            background: rgba(38, 8, 54, 0.62);
+            background: rgba(38, 8, 54, 0.68);
             backdrop-filter: blur(4px);
+            box-shadow: 0 6px 22px rgba(0, 0, 0, 0.3);
         }
 
         .trip-image-icon {
             display: block;
-            font-size: 62px;
-            margin-bottom: 5px;
+            font-size: 51px;
+            margin-bottom: 4px;
         }
 
         .trip-image h3 {
@@ -405,7 +408,7 @@
             color: var(--purple-dark);
         }
 
-        /* Pickup points */
+        /* Pick-up points */
 
         .pickup-section {
             margin-top: 70px;
@@ -501,6 +504,7 @@
             overflow: hidden;
             position: relative;
             border-radius: 19px;
+
             background:
                 radial-gradient(
                     circle at top right,
@@ -512,6 +516,7 @@
                     var(--purple-dark),
                     #5d2478
                 );
+
             color: white;
             text-align: center;
             box-shadow: var(--shadow);
@@ -596,7 +601,7 @@
             font-size: 14px;
         }
 
-        /* Responsive */
+        /* Responsive layout */
 
         @media (max-width: 900px) {
             .benefits {
@@ -608,7 +613,7 @@
             }
 
             .trip-image {
-                min-height: 330px;
+                min-height: 390px;
             }
         }
 
@@ -675,15 +680,16 @@
             }
 
             .trip-image {
-                min-height: 275px;
-            }
-
-            .trip-image-content {
+                min-height: 320px;
                 padding: 18px;
             }
 
+            .trip-image-content {
+                padding: 17px;
+            }
+
             .trip-image-icon {
-                font-size: 49px;
+                font-size: 44px;
             }
 
             .coming-soon {
@@ -700,6 +706,7 @@
 <body>
 
     <header>
+
         <div class="navigation">
 
             <a class="brand" href="#home">
@@ -716,6 +723,7 @@
             </nav>
 
         </div>
+
     </header>
 
     <section class="hero" id="home">
@@ -779,7 +787,7 @@
 
                 <div class="trip-image"
                      role="img"
-                     aria-label="Executive coach representing the Stafford to Alton Towers trip">
+                     aria-label="Theme park roller coaster representing the Stafford to Alton Towers trip">
 
                     <div class="trip-image-content">
 
@@ -1068,6 +1076,10 @@
         <p class="footer-small">
             Coach travel and attraction admission are sold separately
             unless clearly stated otherwise.
+        </p>
+
+        <p class="footer-small">
+            Featured theme park photograph by Sarah Bond Design via Pexels.
         </p>
 
         <p class="footer-small">
