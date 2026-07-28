@@ -1,1 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Future Trips | Stafford Coach Trips</title>
 
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#f5f5f5;
+    color:#333;
+}
+
+header{
+    background:#4b1979;
+    color:white;
+    padding:20px;
+    box-shadow:0 2px 8px rgba(0,0,0,.2);
+}
+
+.container{
+    width:90%;
+    max-width:1200px;
+    margin:auto;
+}
+
+header h1{
+    margin-bottom:15px;
+}
+
+nav{
+    display:flex;
+    flex-wrap:wrap;
+    gap:15px;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+    transition:.3s;
+}
+
+nav a:hover{
+    color:#ffd966;
+}
+
+.hero{
+    background:linear-gradient(135deg,#4b1979,#7432ad);
+    color:white;
+    text-align:center;
+    padding:70px 20px;
+}
+
+.hero h2{
+    font-size:42px;
+    margin-bottom:20px;
+}
+
+.hero p{
+    font-size:20px;
+}
+
+.cards{
+
+    width:90%;
+    max-width:1200px;
+    margin:50px auto;
+
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+
+    gap:30px;
+
+}
+
+.card{
+
+    background:white;
+    border-radius:15px;
+    overflow:hidden;
+
+    box-shadow:0 5px 18px rgba(0,0,0,.15);
+
+    transition:.3s;
+
+}
+
+.card:hover{
+
+    transform:translateY(-8px);
+
+}
+
+.card img{
+
+    width:100%;
+    height:220px;
+
+    object-fit:cover;
+
+}
+
+.card-content{
+
+    padding:20px;
+
+}
+
+.badge{
+
+    display:inline-block;
+
+    background:#ff9800;
+
+    color:white;
+
+    padding:6px 12px;
+
+    border-radius:25px;
+
+    margin-bottom:15px;
+
+    font-size:14px;
+
+    font-weight:bold;
+
+}
+
+.card h3{
+
+    margin-bottom:10px;
+
+}
+
+.card p{
+
+    line-height:1.6;
+
+}
+
+.button{
+
+    display:inline-block;
+
+    margin-top:20px;
+
+    background:#4b1979;
+
+    color:white;
+
+    text-decoration:none;
+
+    padding:12px 20px;
+
+    border-radius:8px;
+
+    transition:.3s;
+
+}
+
+.button:hover{
+
+    background:#2f0d52;
+
+}
+
+footer{
+
+    margin-top:60px;
+
+    background:#222;
+
+    color:white;
+
+    text-align:center;
+
+    padding:30px;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="container">
+
+<h1>Stafford Coach Trips</h1>
+
+<nav>
+
+<a href="index.html">Home</a>
+
+<a href="future-trips.html">Future Trips</a>
+
+<a href="index.html#trips">Current Trips</a>
+
+<a href="index.html#pickups">Pick-up Points</a>
+
+<a href="index.html#why-us">Why Us?</a>
+
+<a href="index.html#contact">Contact</a>
+
+</nav>
+
+</div>
+
+</header>
+
+<section class="hero">
+
+<h2>Future Coach Trips</h2>
+
+<p>Discover where Stafford Coach Trips could be heading next.</p>
+
+</section>
+
+<section class="cards">
+  <div class="card">
+    <img src="images/blackpool.jpg" alt="Blackpool Illuminations">
+    <div class="card-content">
+        <span class="badge">Coming Soon</span>
+        <h3>🏖️ Blackpool Illuminations</h3>
+        <p>Experience the world-famous Blackpool Illuminations with plenty of free time to explore the promenade, attractions and seafront.</p>
+        <a href="blackpool.html" class="button">Find Out More</a>
+    </div>
+</div>
+
+<div class="card">
+    <img src="images/chester-zoo.jpg" alt="Chester Zoo">
+    <div class="card-content">
+        <span class="badge">Coming Soon</span>
+        <h3>🦁 Chester Zoo</h3>
+        <p>Spend the day at one of the UK's most popular zoos, home to thousands of amazing animals and beautiful gardens.</p>
+        <a href="chester-zoo.html" class="button">Find Out More</a>
+    </div>
+</div>
+
+<div class="card">
+    <img src="images/york.jpg" alt="York Christmas Market">
+    <div class="card-content">
+        <span class="badge">Coming Soon</span>
+        <h3>🎄 York Christmas Market</h3>
+        <p>Visit the historic city of York during the festive season with its famous Christmas Market and unique shops.</p>
+        <a href="york.html" class="button">Find Out More</a>
+    </div>
+</div>
+
+<div class="card">
+    <img src="images/skegness.jpg" alt="Skegness">
+    <div class="card-content">
+        <span class="badge">Coming Soon</span>
+        <h3>🌊 Skegness</h3>
+        <p>Enjoy a traditional British seaside day out with time to relax on the beach, visit the pier or enjoy local attractions.</p>
+        <a href="skegness.html" class="button">Find Out More</a>
+    </div>
+</div>
+
+<div class="card">
+    <img src="images/london.jpg" alt="London">
+    <div class="card-content">
+        <span class="badge">Coming Soon</span>
+        <h3>🎡 London</h3>
+        <p>Whether you're shopping on Oxford Street or sightseeing around Westminster, enjoy a full day in the capital.</p>
+        <a href="london.html" class="button">Find Out More</a>
+    </div>
+</div>
+
+<div class="card">
+    <img src="images/drayton-manor.jpg" alt="Drayton Manor">
+    <div class="card-content">
+        <span class="badge">Coming Soon</span>
+        <h3>🎢 Drayton Manor</h3>
+        <p>A fantastic family day out at Drayton Manor Resort with rides, Thomas Land and the zoo.</p>
+        <a href="drayton-manor.html" class="button">Find Out More</a>
+    </div>
+</div>
+
+<div class="card">
+    <img src="images/scarefest.jpg" alt="Alton Towers Scarefest">
+    <div class="card-content">
+        <span class="badge">Coming Soon</span>
+        <h3>🎃 Alton Towers Scarefest</h3>
+        <p>Prepare for late-night rides, scare mazes and Halloween entertainment at the UK's biggest theme park event.</p>
+        <a href="scarefest.html" class="button">Find Out More</a>
+    </div>
+</div>
+
+<div class="card">
+    <img src="images/lapland.jpg" alt="Lapland UK">
+    <div class="card-content">
+        <span class="badge">Coming Soon</span>
+        <h3>🎅 Lapland UK</h3>
+        <p>Step into a magical Christmas experience with Father Christmas, festive activities and unforgettable family memories.</p>
+        <a href="lapland.html" class="button">Find Out More</a>
+    </div>
+</div>
+</section>
+
+<footer>
+
+<div class="container">
+
+<h2>Stafford Coach Trips</h2>
+
+<p>
+We're always looking at exciting new destinations for future coach trips.
+As new trips become available, they'll be added here with full details and online booking.
+</p>
+
+<br>
+
+<p>
+Current destination:
+<strong>Alton Towers</strong>
+</p>
+
+<br>
+
+<p>
+&copy; 2026 Stafford Coach Trips. All Rights Reserved.
+</p>
+
+</div>
+
+</footer>
+
+</body>
+
+</html>
