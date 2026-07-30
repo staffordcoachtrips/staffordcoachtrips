@@ -249,3 +249,984 @@ section{
     padding:90px 0;
 
 }
+/*==================================================
+  DESTINATION CARDS
+==================================================*/
+
+.trip-grid{
+
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+    gap:35px;
+
+    margin-top:50px;
+
+}
+
+.trip-card{
+
+    background:white;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    box-shadow:var(--shadow);
+
+    transition:.35s;
+
+    position:relative;
+
+}
+
+.trip-card:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:0 20px 45px rgba(0,0,0,.15);
+
+}
+
+.trip-image{
+
+    height:250px;
+
+    overflow:hidden;
+
+    position:relative;
+
+}
+
+.trip-image img{
+
+    width:100%;
+    height:100%;
+    object-fit:cover;
+
+    transition:.5s;
+
+}
+
+.trip-card:hover img{
+
+    transform:scale(1.08);
+
+}
+
+/*==============================
+  COMING SOON RIBBON
+==============================*/
+
+.ribbon{
+
+    position:absolute;
+
+    top:18px;
+    left:-40px;
+
+    background:#e63946;
+
+    color:white;
+
+    padding:8px 50px;
+
+    transform:rotate(-35deg);
+
+    font-size:.8rem;
+
+    font-weight:700;
+
+    letter-spacing:.5px;
+
+    z-index:20;
+
+}
+
+/*==============================
+  CARD CONTENT
+==============================*/
+
+.trip-content{
+
+    padding:28px;
+
+}
+
+.trip-content h3{
+
+    margin-bottom:15px;
+
+    font-size:1.6rem;
+
+}
+
+.trip-content p{
+
+    color:#666;
+
+    margin-bottom:22px;
+
+}
+
+/*==============================
+  INFORMATION BADGES
+==============================*/
+
+.trip-info{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:10px;
+
+    margin-bottom:25px;
+
+}
+
+.trip-info span{
+
+    background:#f1f1f8;
+
+    color:var(--primary);
+
+    padding:8px 14px;
+
+    border-radius:30px;
+
+    font-size:.88rem;
+
+    font-weight:600;
+
+}
+
+/*==============================
+  REGISTER BUTTON
+==============================*/
+
+.interest-btn{
+
+    display:block;
+
+    text-align:center;
+
+    background:var(--primary);
+
+    color:white;
+
+    padding:14px;
+
+    border-radius:40px;
+
+    font-weight:700;
+
+}
+
+.interest-btn:hover{
+
+    background:var(--secondary);
+
+    color:var(--primary);
+
+}
+
+/*==============================
+  SUGGESTION CARD
+==============================*/
+
+.suggest-card{
+
+    border:3px dashed var(--secondary);
+
+}
+
+.suggest-card .trip-image{
+
+    background:linear-gradient(
+        135deg,
+        var(--primary),
+        #7654b8
+    );
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+.suggest-card .trip-image i{
+
+    color:white;
+
+    font-size:90px;
+
+}
+
+/*==============================
+  DESTINATION LABEL
+==============================*/
+
+.destination-type{
+
+    display:inline-block;
+
+    margin-bottom:15px;
+
+    padding:6px 14px;
+
+    background:rgba(75,45,131,.08);
+
+    color:var(--primary);
+
+    border-radius:30px;
+
+    font-size:.82rem;
+
+    font-weight:700;
+
+    text-transform:uppercase;
+
+    letter-spacing:.5px;
+
+}
+/*==================================================
+  HOW IT WORKS
+==================================================*/
+
+.how-it-works{
+
+    background:#ffffff;
+
+}
+
+.steps{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+
+    gap:35px;
+
+    margin-top:50px;
+
+}
+
+.step{
+
+    background:white;
+
+    border-radius:18px;
+
+    padding:35px;
+
+    text-align:center;
+
+    box-shadow:var(--shadow);
+
+    transition:.35s;
+
+}
+
+.step:hover{
+
+    transform:translateY(-8px);
+
+}
+
+.step-number{
+
+    width:70px;
+    height:70px;
+
+    margin:auto auto 25px;
+
+    border-radius:50%;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:var(--secondary);
+
+    color:var(--primary);
+
+    font-size:1.6rem;
+
+    font-weight:bold;
+
+}
+
+.step h3{
+
+    margin-bottom:15px;
+
+}
+
+.step p{
+
+    color:#666;
+
+}
+
+/*==================================================
+  CALL TO ACTION
+==================================================*/
+
+.cta{
+
+    background:linear-gradient(
+        135deg,
+        var(--primary),
+        #6d4bc0
+    );
+
+    color:white;
+
+    text-align:center;
+
+}
+
+.cta h2{
+
+    color:white;
+
+    font-size:2.8rem;
+
+    margin-bottom:20px;
+
+}
+
+.cta p{
+
+    max-width:700px;
+
+    margin:0 auto 35px;
+
+    font-size:1.1rem;
+
+}
+
+.cta .btn{
+
+    font-size:1.05rem;
+
+}
+
+/*==================================================
+  FOOTER
+==================================================*/
+
+footer{
+
+    background:var(--dark);
+
+    color:white;
+
+    padding:70px 0 25px;
+
+}
+
+.footer-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+
+    gap:40px;
+
+}
+
+.footer-column h3{
+
+    color:var(--secondary);
+
+    margin-bottom:20px;
+
+}
+
+.footer-column p{
+
+    color:#ddd;
+
+}
+
+.footer-column li{
+
+    margin-bottom:12px;
+
+}
+
+.footer-column a{
+
+    color:#ddd;
+
+}
+
+.footer-column a:hover{
+
+    color:var(--secondary);
+
+}
+
+.footer-social{
+
+    display:flex;
+
+    gap:15px;
+
+    margin-top:20px;
+
+}
+
+.footer-social a{
+
+    width:42px;
+
+    height:42px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.08);
+
+    color:white;
+
+    font-size:1.1rem;
+
+}
+
+.footer-social a:hover{
+
+    background:var(--secondary);
+
+    color:var(--primary);
+
+}
+
+.copyright{
+
+    margin-top:50px;
+
+    padding-top:25px;
+
+    border-top:1px solid rgba(255,255,255,.15);
+
+    text-align:center;
+
+    color:#ccc;
+
+}
+
+/*==================================================
+  ANIMATIONS
+==================================================*/
+
+.fade-up{
+
+    opacity:0;
+
+    transform:translateY(35px);
+
+    transition:.7s;
+
+}
+
+.fade-up.show{
+
+    opacity:1;
+
+    transform:translateY(0);
+
+}
+
+/*==================================================
+  MOBILE NAVIGATION
+==================================================*/
+
+.menu-toggle{
+
+    display:none;
+
+    font-size:1.8rem;
+
+    color:white;
+
+    cursor:pointer;
+
+}
+
+/*==================================================
+  TABLET
+==================================================*/
+
+@media(max-width:992px){
+
+.hero h1{
+
+    font-size:3rem;
+
+}
+
+nav ul{
+
+    gap:20px;
+
+}
+
+}
+
+/*==================================================
+  MOBILE
+==================================================*/
+
+@media(max-width:768px){
+
+.navbar{
+
+    height:auto;
+
+    padding:20px 0;
+
+    flex-wrap:wrap;
+
+}
+
+.menu-toggle{
+
+    display:block;
+
+}
+
+nav{
+
+    width:100%;
+
+    display:none;
+
+}
+
+nav.active{
+
+    display:block;
+
+}
+
+nav ul{
+
+    flex-direction:column;
+
+    gap:0;
+
+    margin-top:20px;
+
+}
+
+nav li{
+
+    border-top:1px solid rgba(255,255,255,.15);
+
+}
+
+nav a{
+
+    display:block;
+
+    padding:15px 0;
+
+}
+
+.hero{
+
+    min-height:60vh;
+
+    text-align:center;
+
+}
+
+.hero h1{
+
+    font-size:2.3rem;
+
+}
+
+.section-title{
+
+    font-size:2rem;
+
+}
+
+.trip-grid{
+
+    grid-template-columns:1fr;
+
+}
+
+.steps{
+
+    grid-template-columns:1fr;
+
+}
+
+.footer-grid{
+
+    grid-template-columns:1fr;
+
+}
+
+}
+
+/*==================================================
+  SMALL PHONES
+==================================================*/
+
+@media(max-width:480px){
+
+.hero h1{
+
+    font-size:2rem;
+
+}
+
+.hero p{
+
+    font-size:1rem;
+
+}
+
+.btn{
+
+    width:100%;
+
+    text-align:center;
+
+}
+
+.trip-image{
+
+    height:220px;
+
+}
+
+}
+/*==================================================
+  IMAGE OVERLAYS
+==================================================*/
+
+.trip-image{
+    position:relative;
+}
+
+.trip-image::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(
+        to top,
+        rgba(0,0,0,.45),
+        rgba(0,0,0,.05)
+    );
+}
+
+.trip-title-overlay{
+    position:absolute;
+    left:20px;
+    bottom:18px;
+    color:#fff;
+    z-index:5;
+}
+
+.trip-title-overlay h3{
+    color:#fff;
+    margin:0;
+    font-size:1.8rem;
+}
+
+.trip-title-overlay p{
+    color:#eee;
+    margin-top:5px;
+    font-size:.95rem;
+}
+
+/*==================================================
+  STATUS BADGES
+==================================================*/
+
+.badge{
+
+    display:inline-flex;
+    align-items:center;
+
+    padding:8px 16px;
+
+    border-radius:40px;
+
+    font-size:.82rem;
+
+    font-weight:700;
+
+    text-transform:uppercase;
+
+    letter-spacing:.5px;
+
+}
+
+.badge-coming{
+
+    background:#ffe7a1;
+    color:#7d5600;
+
+}
+
+.badge-limited{
+
+    background:#ffd5d8;
+    color:#b00020;
+
+}
+
+.badge-popular{
+
+    background:#d9f8de;
+    color:#0b7a32;
+
+}
+
+.badge-new{
+
+    background:#dde9ff;
+    color:#174ea6;
+
+}
+
+/*==================================================
+  GLASS PANELS
+==================================================*/
+
+.glass{
+
+    background:rgba(255,255,255,.18);
+
+    backdrop-filter:blur(12px);
+
+    border:1px solid rgba(255,255,255,.25);
+
+    border-radius:20px;
+
+}
+
+/*==================================================
+  ICON CIRCLES
+==================================================*/
+
+.icon-circle{
+
+    width:65px;
+    height:65px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    border-radius:50%;
+
+    background:var(--secondary);
+
+    color:var(--primary);
+
+    font-size:1.6rem;
+
+    margin-bottom:20px;
+
+}
+
+/*==================================================
+  BUTTON EFFECTS
+==================================================*/
+
+.btn,
+.interest-btn{
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.btn::before,
+.interest-btn::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:-120%;
+
+    width:120%;
+    height:100%;
+
+    background:rgba(255,255,255,.25);
+
+    transform:skewX(-25deg);
+
+    transition:.7s;
+
+}
+
+.btn:hover::before,
+.interest-btn:hover::before{
+
+    left:130%;
+
+}
+
+/*==================================================
+  LOADING ANIMATIONS
+==================================================*/
+
+@keyframes fadeIn{
+
+    from{
+
+        opacity:0;
+
+    }
+
+    to{
+
+        opacity:1;
+
+    }
+
+}
+
+@keyframes slideUp{
+
+    from{
+
+        transform:translateY(40px);
+
+        opacity:0;
+
+    }
+
+    to{
+
+        transform:translateY(0);
+
+        opacity:1;
+
+    }
+
+}
+
+.animate-fade{
+
+    animation:fadeIn .8s ease both;
+
+}
+
+.animate-up{
+
+    animation:slideUp .8s ease both;
+
+}
+
+/*==================================================
+  SCROLLBAR
+==================================================*/
+
+::-webkit-scrollbar{
+
+    width:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#ececf5;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:var(--primary);
+
+    border-radius:20px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:#6543a6;
+
+}
+
+/*==================================================
+  SELECTION
+==================================================*/
+
+::selection{
+
+    background:var(--secondary);
+
+    color:var(--primary);
+
+}
+
+/*==================================================
+  FOCUS
+==================================================*/
+
+a:focus,
+button:focus{
+
+    outline:3px solid var(--secondary);
+
+    outline-offset:3px;
+
+}
+
+/*==================================================
+  PRINT
+==================================================*/
+
+@media print{
+
+header,
+footer,
+.cta,
+.menu-toggle{
+
+    display:none !important;
+
+}
+
+body{
+
+    background:#fff;
+
+}
+
+.trip-card{
+
+    break-inside:avoid;
+
+    box-shadow:none;
+
+    border:1px solid #ddd;
+
+}
+
+}
+
+/*==================================================
+  END OF MAIN STYLESHEET
+==================================================*/
