@@ -26,8 +26,7 @@ button{width:100%;padding:14px;background:#5b2c83;color:#fff;border:0;border-rad
 <h2 id="pageTitle">Register your interest</h2>
 <p>Complete the form below and we'll contact you if this trip goes on sale.</p>
 <form id="interestForm"
-      action="https://formsubmit.co/staffordcoachtrips@gmail.com"
-      method="POST">
+      action="https://formsubmit.co/staffordcoachtrips@gmail.com" method="POST">
     <input type="hidden" name="_subject" value="New Future Trip Interest">
 
 <input type="hidden" name="_captcha" value="false">
@@ -39,7 +38,7 @@ button{width:100%;padding:14px;background:#5b2c83;color:#fff;border:0;border-rad
 <div class="form-group"><label>Pick-up</label><select id="pickup" name="Pickup"><option>Rising Brook</option><option>Stafford Railway Station</option><option>Other</option></select></div>
 <div class="form-group" id="otherPickupGroup"><label>Other pick-up</label><input id="otherPickup" name="Other Pickup" placeholder="Enter your preferred pick-up location"></div>
 <div class="form-group"><label>Comments</label><textarea id="comments" name="Comments"></textarea></div>
-<p><label><input type="checkbox" required> I understand this is not a booking.</label></p>
+<p><label><input type="checkbox" name="Agreement" value="Yes" required> I understand this is not a booking.</label></p>
 <button type="submit">Register Interest</button>
 </form></div></main>
 <footer>© 2026 Stafford Coach Trips</footer>
