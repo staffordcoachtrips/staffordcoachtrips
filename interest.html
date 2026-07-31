@@ -49,10 +49,25 @@ e.preventDefault();
 if(pickup.value==='Other'){
  const o=document.getElementById('otherPickup').value.trim();
  if(o){const c=document.getElementById('comments');c.value+=(c.value?'\n\n':'')+'Preferred pick-up: '+o;}
+const fd = new FormData(e.target);
+
+try {
+    const response = await fetch(
+        'https://docs.google.com/forms/d/e/1FAIpQLSdcbZDVEABn-YKMMn-DqB5HureluVURrwnCLg7scB1to6eE2Q/formResponse',
+        {
+            method: 'POST',
+            body: fd
+        }
+    );
+
+    console.log("Status:", response.status);
+    console.log("OK:", response.ok);
+
+    location.href = 'thankyou.html?trip=' + encodeURIComponent(trip);
+
+} catch (err) {
+    console.error("Submission failed:", err);
+    alert("Submission failed. Please check the browser console (F12).");
 }
-const fd=new FormData(e.target);
-await fetch('https://docs.google.com/forms/d/e/1FAIpQLSdcbZDVEABn-YKMMn-DqB5HureluVURrwnCLg7scB1to6eE2Q/formResponse',{method:'POST',mode:'no-cors',body:fd});
-location.href='thankyou.html?trip='+encodeURIComponent(trip);
-};
 </script>
 </body></html>
