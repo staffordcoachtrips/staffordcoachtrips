@@ -1,1 +1,546 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Find answers about booking, fares, pick-up points, journey times, accessibility and travelling with Stafford Coach Trips.">
+  <meta name="theme-color" content="#24102f">
+  <title>Frequently Asked Questions | Stafford Coach Trips</title>
+  <style>
+    :root {
+      --ink: #19151c;
+      --muted: #665f6a;
+      --plum-950: #24102f;
+      --plum-900: #321142;
+      --plum-700: #652a7d;
+      --plum-100: #f1e8f5;
+      --gold: #f4b942;
+      --green: #157347;
+      --paper: #fff;
+      --wash: #f7f5f8;
+      --line: #e6dfe9;
+      --shadow: 0 18px 50px rgba(36, 16, 47, .13);
+      --radius: 20px;
+      --max: 1180px;
+    }
 
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--wash);
+      font: 16px/1.65 Arial, Helvetica, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    button, input, a { -webkit-tap-highlight-color: transparent; }
+    :focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+    .container { width: min(var(--max), calc(100% - 40px)); margin-inline: auto; }
+    .skip-link {
+      position: fixed; left: 16px; top: -80px; z-index: 9999;
+      padding: 11px 16px; background: #fff; color: var(--plum-950);
+      border-radius: 8px; font-weight: 800;
+    }
+    .skip-link:focus { top: 16px; }
+
+    .topbar {
+      padding: 7px 20px; color: #fff; background: var(--plum-950);
+      text-align: center; font-size: 14px;
+    }
+    .site-header {
+      position: sticky; top: 0; z-index: 1000;
+      background: rgba(255,255,255,.96);
+      border-bottom: 1px solid rgba(50,17,66,.1);
+      backdrop-filter: blur(14px);
+    }
+    .nav-wrap {
+      min-height: 78px; display: flex; align-items: center;
+      justify-content: space-between; gap: 24px;
+    }
+    .brand {
+      display: flex; align-items: center; gap: 12px;
+      text-decoration: none; color: var(--plum-950);
+      font-weight: 900; font-size: 21px; letter-spacing: -.3px;
+    }
+    .brand-mark {
+      display: grid; place-items: center; width: 44px; height: 44px;
+      border-radius: 12px; color: #fff;
+      background: linear-gradient(135deg, var(--plum-700), var(--plum-950));
+      box-shadow: 0 7px 18px rgba(50,17,66,.24);
+    }
+    .nav-links { display: flex; align-items: center; gap: 4px; }
+    .nav-links a {
+      padding: 10px 11px; border-radius: 8px; color: #403745;
+      text-decoration: none; font-weight: 700;
+    }
+    .nav-links a:hover, .nav-links a[aria-current="page"] {
+      color: var(--plum-700); background: var(--plum-100);
+    }
+    .nav-links .nav-cta { margin-left: 7px; color: #fff; background: var(--plum-700); }
+    .nav-links .nav-cta:hover { color: #fff; background: var(--plum-900); }
+    .menu-button {
+      display: none; padding: 10px 12px; border: 1px solid var(--line);
+      border-radius: 9px; background: #fff; color: var(--plum-950);
+      font: inherit; font-weight: 800; cursor: pointer;
+    }
+
+    .page-hero {
+      position: relative; isolation: isolate; overflow: hidden;
+      padding: 104px 0 118px; color: #fff; text-align: center;
+      background:
+        radial-gradient(circle at 82% 20%, rgba(244,185,66,.22), transparent 27%),
+        linear-gradient(135deg, var(--plum-950), var(--plum-700));
+    }
+    .page-hero::after {
+      content: "?"; position: absolute; z-index: -1; right: 4%; top: -105px;
+      color: rgba(255,255,255,.055); font-size: 430px; font-weight: 900; line-height: 1;
+    }
+    .eyebrow {
+      margin: 0 0 12px; color: var(--plum-700); font-size: 13px;
+      font-weight: 900; letter-spacing: 1.6px; text-transform: uppercase;
+    }
+    .page-hero .eyebrow { color: #ffe3a7; }
+    .page-hero h1 {
+      margin: 0; font-size: clamp(45px, 7vw, 72px); line-height: 1.05;
+      letter-spacing: -2.5px;
+    }
+    .hero-lead {
+      max-width: 710px; margin: 18px auto 31px;
+      color: rgba(255,255,255,.88); font-size: clamp(18px, 2.1vw, 21px);
+    }
+    .search-box { position: relative; max-width: 680px; margin: 0 auto; }
+    .search-box label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+    .search-box span {
+      position: absolute; left: 20px; top: 50%; transform: translateY(-50%);
+      color: var(--plum-700); font-size: 20px; pointer-events: none;
+    }
+    .search-box input {
+      width: 100%; min-height: 58px; padding: 14px 20px 14px 54px;
+      border: 0; border-radius: 12px; color: var(--ink); background: #fff;
+      box-shadow: 0 13px 35px rgba(15,4,20,.23); font: inherit; font-size: 17px;
+    }
+
+    .category-nav {
+      position: relative; z-index: 3; margin-top: -34px; padding: 18px;
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 9px;
+      border: 1px solid var(--line); border-radius: 16px;
+      background: #fff; box-shadow: var(--shadow);
+    }
+    .category-nav a {
+      padding: 9px 15px; border-radius: 999px; color: var(--plum-950);
+      background: var(--plum-100); text-decoration: none; font-size: 14px; font-weight: 800;
+    }
+    .category-nav a:hover { color: #fff; background: var(--plum-700); }
+
+    main section { scroll-margin-top: 105px; }
+    .section { padding: 82px 0; }
+    .intro-grid {
+      display: grid; grid-template-columns: .8fr 1.2fr; gap: 70px; align-items: start;
+    }
+    .intro-copy { position: sticky; top: 115px; }
+    .intro-copy h2 {
+      margin: 0 0 13px; color: var(--plum-950);
+      font-size: clamp(33px, 4vw, 46px); line-height: 1.1; letter-spacing: -1.3px;
+    }
+    .intro-copy > p:last-of-type { color: var(--muted); font-size: 18px; }
+    .support-card {
+      margin-top: 28px; padding: 23px; border: 1px solid #ead7a7;
+      border-radius: 13px; background: #fffaf0;
+    }
+    .support-card strong { display: block; color: var(--plum-950); font-size: 18px; }
+    .support-card p { margin: 5px 0 14px; color: #665632; }
+    .support-card a { color: var(--plum-700); font-weight: 900; }
+
+    .faq-groups { display: grid; gap: 43px; }
+    .faq-group h2 {
+      display: flex; align-items: center; gap: 12px; margin: 0 0 16px;
+      color: var(--plum-950); font-size: 25px; line-height: 1.2;
+    }
+    .group-icon {
+      display: grid; place-items: center; flex: 0 0 42px; width: 42px; height: 42px;
+      border-radius: 11px; background: var(--plum-100); font-size: 21px;
+    }
+    .faq-list { display: grid; gap: 12px; }
+    details {
+      overflow: hidden; border: 1px solid var(--line);
+      border-radius: 12px; background: #fff;
+      box-shadow: 0 6px 20px rgba(36,16,47,.045);
+    }
+    details[open] { border-color: #ccb4d7; box-shadow: 0 10px 27px rgba(36,16,47,.08); }
+    summary {
+      position: relative; padding: 20px 58px 20px 22px;
+      color: var(--plum-950); font-weight: 900; cursor: pointer; list-style: none;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::after {
+      content: "+"; position: absolute; right: 20px; top: 50%;
+      transform: translateY(-50%); display: grid; place-items: center;
+      width: 27px; height: 27px; border-radius: 50%; color: var(--plum-700);
+      background: var(--plum-100); font-size: 20px; line-height: 1;
+    }
+    details[open] summary::after { content: "−"; color: #fff; background: var(--plum-700); }
+    .answer { padding: 0 22px 22px; color: var(--muted); }
+    .answer p { margin: 0; }
+    .answer p + p { margin-top: 10px; }
+    .answer a { color: var(--plum-700); font-weight: 800; }
+    .no-results {
+      display: none; padding: 35px; border: 1px dashed #cbbdd0;
+      border-radius: 14px; text-align: center; background: #fff;
+    }
+    .no-results h2 { margin: 0 0 5px; color: var(--plum-950); }
+    .no-results p { margin: 0; color: var(--muted); }
+
+    .cta-section { padding: 0 0 88px; }
+    .cta-panel {
+      display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 30px;
+      padding: clamp(34px, 6vw, 62px); border-radius: var(--radius); color: #fff;
+      background: linear-gradient(135deg, var(--plum-950), var(--plum-700));
+      box-shadow: var(--shadow);
+    }
+    .cta-panel h2 { margin: 0 0 10px; font-size: clamp(30px, 5vw, 43px); line-height: 1.1; }
+    .cta-panel p { max-width: 680px; margin: 0; color: rgba(255,255,255,.82); font-size: 18px; }
+    .button {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      min-height: 50px; padding: 13px 22px; border: 2px solid transparent;
+      border-radius: 10px; text-decoration: none; text-align: center;
+      font-weight: 900; line-height: 1.2; transition: .2s ease;
+    }
+    .button:hover { transform: translateY(-2px); }
+    .button-primary { color: var(--plum-950); background: var(--gold); }
+    .button-primary:hover { background: #ffd16e; }
+
+    footer { padding: 52px 0 25px; color: rgba(255,255,255,.76); background: #1a141d; }
+    .footer-grid {
+      display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 50px;
+      padding-bottom: 35px;
+    }
+    footer .brand { color: #fff; margin-bottom: 15px; }
+    footer h3 { margin: 0 0 12px; color: #fff; font-size: 16px; }
+    footer p { margin: 7px 0; }
+    footer ul { margin: 0; padding: 0; list-style: none; }
+    footer li { margin: 7px 0; }
+    footer a { color: inherit; }
+    .footer-bottom {
+      display: flex; justify-content: space-between; gap: 20px;
+      padding-top: 23px; border-top: 1px solid rgba(255,255,255,.12); font-size: 13px;
+    }
+
+    @media (max-width: 920px) {
+      .menu-button { display: inline-block; }
+      .nav-links {
+        display: none; position: absolute; left: 20px; right: 20px; top: 70px;
+        padding: 13px; flex-direction: column; align-items: stretch;
+        border: 1px solid var(--line); border-radius: 13px; background: #fff;
+        box-shadow: var(--shadow);
+      }
+      .nav-links.open { display: flex; }
+      .nav-links .nav-cta { margin-left: 0; text-align: center; }
+      .intro-grid { grid-template-columns: 1fr; gap: 42px; }
+      .intro-copy { position: static; text-align: center; }
+      .support-card { max-width: 620px; margin-inline: auto; }
+      .cta-panel { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .container { width: min(100% - 28px, var(--max)); }
+      .topbar { font-size: 12px; }
+      .brand { font-size: 18px; }
+      .page-hero { padding: 76px 0 93px; }
+      .page-hero h1 { letter-spacing: -1.5px; }
+      .category-nav { justify-content: flex-start; overflow-x: auto; flex-wrap: nowrap; }
+      .category-nav a { flex: 0 0 auto; }
+      .section { padding: 68px 0; }
+      .faq-groups { gap: 37px; }
+      .support-card { text-align: left; }
+      .cta-panel .button { width: 100%; }
+      .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+      .footer-bottom { flex-direction: column; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <div class="topbar">Affordable days out from Stafford — simple booking, local pick-ups and friendly support</div>
+
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html" aria-label="Stafford Coach Trips home">
+        <span class="brand-mark" aria-hidden="true">🚌</span>
+        <span>Stafford Coach Trips</span>
+      </a>
+      <button class="menu-button" type="button" aria-expanded="false" aria-controls="main-menu">Menu</button>
+      <nav class="nav-links" id="main-menu" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="current-trips.html">Current trip</a>
+        <a href="future-trips.html">Future trips</a>
+        <a href="pickup-points.html">Pick-up points</a>
+        <a href="FAQ.html" aria-current="page">FAQs</a>
+        <a href="contact.html">Contact</a>
+        <a class="nav-cta" href="https://www.ticketsource.co.uk/staffordcoachtrips" target="_blank" rel="noopener noreferrer">Book online</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-hero" aria-labelledby="page-title">
+    <div class="container">
+      <p class="eyebrow">Help and useful information</p>
+      <h1 id="page-title">Frequently asked questions</h1>
+      <p class="hero-lead">Everything you need to know before booking, on the day of travel and after your trip.</p>
+      <div class="search-box">
+        <label for="faq-search">Search the frequently asked questions</label>
+        <span aria-hidden="true">⌕</span>
+        <input id="faq-search" type="search" placeholder="Search for an answer…" autocomplete="off">
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <nav class="category-nav" aria-label="FAQ categories">
+      <a href="#booking">Booking and tickets</a>
+      <a href="#fares">Fares and refunds</a>
+      <a href="#travel">Your journey</a>
+      <a href="#pickups">Pick-up points</a>
+      <a href="#accessibility">Accessibility</a>
+    </nav>
+  </div>
+
+  <main id="main">
+    <section class="section">
+      <div class="container intro-grid">
+        <aside class="intro-copy">
+          <p class="eyebrow">Good to know</p>
+          <h2>Plan your trip with confidence</h2>
+          <p>Browse the sections or use the search box to find a quick answer. Trip-specific details are always shown on the booking page.</p>
+          <div class="support-card">
+            <strong>Still need some help?</strong>
+            <p>Send us an email and we aim to reply within 24 hours during our normal opening hours.</p>
+            <a href="mailto:staffordcoachtrips@gmail.com">staffordcoachtrips@gmail.com</a>
+          </div>
+        </aside>
+
+        <div>
+          <div class="faq-groups" id="faq-groups">
+            <section class="faq-group" id="booking">
+              <h2><span class="group-icon" aria-hidden="true">🎟️</span>Booking and tickets</h2>
+              <div class="faq-list">
+                <details data-search="book seats ticket online ticketsource passenger child confirmation email">
+                  <summary>How do I book a coach trip?</summary>
+                  <div class="answer"><p>Select the trip you would like to join and follow the link to our secure TicketSource booking page. Choose the number of seats required, select your pick-up point and complete your payment online.</p></div>
+                </details>
+                <details data-search="passenger child baby seat ticket every person">
+                  <summary>Does every passenger need a ticket?</summary>
+                  <div class="answer"><p>Yes. One coach ticket is required for every passenger who needs a seat, including children.</p></div>
+                </details>
+                <details data-search="confirmation email missing spam junk ticketsource booking">
+                  <summary>Where can I find my booking confirmation?</summary>
+                  <div class="answer"><p>TicketSource will email your booking confirmation to the address used when ordering. If it does not appear in your inbox, please check your junk or spam folder.</p></div>
+                </details>
+                <details data-search="cash pay driver on day reserve seat phone booking">
+                  <summary>Can I pay on the coach or reserve a seat without paying?</summary>
+                  <div class="answer"><p>No. Seats must be booked and paid for in advance through the official booking page. This confirms your place and helps us keep an accurate passenger list.</p></div>
+                </details>
+                <details data-search="group booking together seats sit together allocated seating">
+                  <summary>Can I book for a group?</summary>
+                  <div class="answer"><p>Yes, subject to availability. Select one ticket for each person travelling. Coach seats may not be individually allocated, so your group should arrive together and in good time.</p></div>
+                </details>
+              </div>
+            </section>
+
+            <section class="faq-group" id="fares">
+              <h2><span class="group-icon" aria-hidden="true">💷</span>Fares, admission and refunds</h2>
+              <div class="faq-list">
+                <details data-search="fare include admission entry ticket attraction alton towers coach only">
+                  <summary>Does the coach fare include attraction admission?</summary>
+                  <div class="answer"><p>Unless a trip is clearly advertised as a combined package, the fare covers return coach travel only. Attraction or event admission must be arranged separately.</p></div>
+                </details>
+                <details data-search="extra fees booking charge price ticket upfront">
+                  <summary>Are there any hidden charges?</summary>
+                  <div class="answer"><p>No. The coach fare is shown clearly before you book. Any attraction admission that is not included will also be stated clearly on the trip page.</p></div>
+                </details>
+                <details data-search="cancel refund seven 7 days before ticket cancellation policy">
+                  <summary>Can I cancel my booking and receive a refund?</summary>
+                  <div class="answer"><p>Refunds are available up to seven days before the trip. Bookings become non-refundable within seven days of departure. Please contact us as soon as possible if your plans change.</p></div>
+                </details>
+                <details data-search="trip cancelled organiser refund coach cancellation weather">
+                  <summary>What happens if Stafford Coach Trips cancels a trip?</summary>
+                  <div class="answer"><p>If we have to cancel a trip, affected passengers will be contacted using the details supplied when booking and will receive information about the refund arrangements.</p></div>
+                </details>
+              </div>
+            </section>
+
+            <section class="faq-group" id="travel">
+              <h2><span class="group-icon" aria-hidden="true">🚌</span>Your journey</h2>
+              <div class="faq-list">
+                <details data-search="arrive early departure time wait late passenger coach leave">
+                  <summary>How early should I arrive?</summary>
+                  <div class="answer"><p>Please arrive at your selected pick-up point at least 10–15 minutes before the advertised departure time. The coach cannot be held for late passengers.</p></div>
+                </details>
+                <details data-search="late miss coach departure wait contact">
+                  <summary>What happens if I miss the coach?</summary>
+                  <div class="answer"><p>You will need to make your own alternative travel arrangements. We cannot delay departure or provide a refund when a passenger misses the coach.</p></div>
+                </details>
+                <details data-search="return time leave attraction home traffic delayed timetable">
+                  <summary>Are the return and arrival times guaranteed?</summary>
+                  <div class="answer"><p>Departure times are planned carefully, but arrival times are approximate and may be affected by traffic, road closures or other circumstances outside our control.</p></div>
+                </details>
+                <details data-search="food drink coach alcohol smoking vape rubbish">
+                  <summary>Can I bring food and drink onto the coach?</summary>
+                  <div class="answer"><p>Small snacks and non-alcoholic drinks may usually be brought on board, provided you keep the coach clean and follow any instructions given by the driver or coach operator.</p></div>
+                </details>
+                <details data-search="luggage bags suitcase storage belongings lost property">
+                  <summary>Can I bring bags or luggage?</summary>
+                  <div class="answer"><p>Reasonable day-trip luggage can normally be carried, subject to available space. Please keep valuables with you and label any bags stored in the luggage compartment.</p></div>
+                </details>
+                <details data-search="child children adult supervision travel alone age">
+                  <summary>Can children travel without an adult?</summary>
+                  <div class="answer"><p>Children must travel with a responsible adult. The accompanying adult remains responsible for the child throughout the journey and day out.</p></div>
+                </details>
+              </div>
+            </section>
+
+            <section class="faq-group" id="pickups">
+              <h2><span class="group-icon" aria-hidden="true">📍</span>Pick-up points</h2>
+              <div class="faq-list">
+                <details data-search="choose pickup rising brook stafford railway station booking">
+                  <summary>How do I choose my pick-up point?</summary>
+                  <div class="answer"><p>Select your preferred Stafford pick-up point during the TicketSource booking process. The available stops and times are shown for each trip.</p></div>
+                </details>
+                <details data-search="change pickup point after booking email contact amend">
+                  <summary>Can I change my pick-up point after booking?</summary>
+                  <div class="answer"><p>Please email us as early as possible. We will confirm whether the passenger list can be updated before the trip.</p></div>
+                </details>
+                <details data-search="parking car pick up railway station rising brook leave vehicle">
+                  <summary>Is parking available at the pick-up points?</summary>
+                  <div class="answer"><p>Parking is not included with your coach ticket. Please check local parking restrictions, opening times and charges before travelling, and allow enough time to reach the stop.</p></div>
+                </details>
+                <details data-search="where exact location map stop pickup point directions">
+                  <summary>Where exactly will the coach stop?</summary>
+                  <div class="answer"><p>Full location information is available on our <a href="pickup-points.html">pick-up points page</a>. Your booking confirmation will identify the pick-up point you selected.</p></div>
+                </details>
+              </div>
+            </section>
+
+            <section class="faq-group" id="accessibility">
+              <h2><span class="group-icon" aria-hidden="true">♿</span>Accessibility and additional needs</h2>
+              <div class="faq-list">
+                <details data-search="wheelchair mobility scooter accessible coach storage disabled access">
+                  <summary>Can I travel with a wheelchair or mobility aid?</summary>
+                  <div class="answer"><p>Please contact us before booking with the type, folded size and weight of your mobility aid. Coach accessibility and storage capacity can vary, so we need to check arrangements with the operator first.</p></div>
+                </details>
+                <details data-search="assistance support additional needs disability carer companion seat">
+                  <summary>I need assistance when travelling. What should I do?</summary>
+                  <div class="answer"><p>Email us before booking to explain what help you may need. We will provide the available information and check any practical arrangements, but passengers who require personal assistance should travel with a companion able to support them.</p></div>
+                </details>
+                <details data-search="guide assistance dog animal pet coach">
+                  <summary>Can an assistance dog travel on the coach?</summary>
+                  <div class="answer"><p>Please contact us before booking so we can confirm the arrangements with the coach operator and ensure suitable space is available.</p></div>
+                </details>
+                <details data-search="toilet coach facilities onboard comfort stop">
+                  <summary>Will the coach have a toilet?</summary>
+                  <div class="answer"><p>Facilities depend on the vehicle supplied for the trip and cannot always be guaranteed. If this is important for your journey, please contact us before booking.</p></div>
+                </details>
+              </div>
+            </section>
+          </div>
+
+          <div class="no-results" id="no-results" role="status" aria-live="polite">
+            <h2>No matching answer found</h2>
+            <p>Try a different search term or email us at <a href="mailto:staffordcoachtrips@gmail.com">staffordcoachtrips@gmail.com</a>.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section">
+      <div class="container">
+        <div class="cta-panel">
+          <div>
+            <p class="eyebrow">Ready for your next day out?</p>
+            <h2>View our available coach trips</h2>
+            <p>See destinations, departure times, pick-up points and fares before booking your seats securely online.</p>
+          </div>
+          <a class="button button-primary" href="https://www.ticketsource.co.uk/staffordcoachtrips" target="_blank" rel="noopener noreferrer">View trips and book <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">🚌</span><span>Stafford Coach Trips</span></a>
+          <p>Affordable coach travel from Stafford to attractions, events and memorable days out.</p>
+        </div>
+        <div>
+          <h3>Explore</h3>
+          <ul>
+            <li><a href="current-trips.html">Current trip</a></li>
+            <li><a href="future-trips.html">Future trips</a></li>
+            <li><a href="pickup-points.html">Pick-up points</a></li>
+            <li><a href="FAQ.html">Frequently asked questions</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Booking and support</h3>
+          <ul>
+            <li><a href="https://www.ticketsource.co.uk/staffordcoachtrips" target="_blank" rel="noopener noreferrer">Book through TicketSource</a></li>
+            <li><a href="mailto:staffordcoachtrips@gmail.com">Email Stafford Coach Trips</a></li>
+            <li><a href="https://www.facebook.com/profile.php?id=61590883177842" target="_blank" rel="noopener noreferrer">Follow on Facebook</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="year">2026</span> Stafford Coach Trips. All rights reserved.</span>
+        <span>Coach travel and attraction admission are sold separately unless clearly stated.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const menuButton = document.querySelector(".menu-button");
+    const menu = document.querySelector(".nav-links");
+    menuButton.addEventListener("click", () => {
+      const open = menu.classList.toggle("open");
+      menuButton.setAttribute("aria-expanded", String(open));
+    });
+    menu.querySelectorAll("a").forEach(link => link.addEventListener("click", () => {
+      menu.classList.remove("open");
+      menuButton.setAttribute("aria-expanded", "false");
+    }));
+
+    const search = document.getElementById("faq-search");
+    const groups = [...document.querySelectorAll(".faq-group")];
+    const questions = [...document.querySelectorAll(".faq-list details")];
+    const noResults = document.getElementById("no-results");
+
+    search.addEventListener("input", () => {
+      const query = search.value.toLowerCase().trim();
+      let visibleCount = 0;
+
+      questions.forEach(item => {
+        const searchableText = `${item.textContent} ${item.dataset.search || ""}`.toLowerCase();
+        const matches = !query || searchableText.includes(query);
+        item.hidden = !matches;
+        if (matches) visibleCount += 1;
+      });
+
+      groups.forEach(group => {
+        group.hidden = !group.querySelector("details:not([hidden])");
+      });
+
+      noResults.style.display = visibleCount ? "none" : "block";
+    });
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
