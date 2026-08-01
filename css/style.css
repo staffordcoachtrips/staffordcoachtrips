@@ -1310,3 +1310,36 @@ body{
     margin-top:30px;
     flex-wrap:wrap;
 }
+/* ==========================================
+   FAQ CARDS
+========================================== */
+
+.faq-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+    margin-top:40px;
+}
+
+.faq-card{
+    background:#fff;
+    border-radius:18px;
+    padding:30px;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.faq-card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 20px 45px rgba(0,0,0,.15);
+}
+
+.faq-card h3{
+    color:#4B216E;
+    margin-bottom:15px;
+}
+
+.faq-card p{
+    color:#555;
+    line-height:1.7;
+}
