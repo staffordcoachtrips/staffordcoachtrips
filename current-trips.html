@@ -200,6 +200,32 @@
       border: 1px solid #ead7a7; border-left: 5px solid var(--gold);
       border-radius: 8px; background: #fffaf0; color: #574727;
     }
+    .countdown {
+      margin: 25px 0; padding: 20px;
+      border: 1px solid var(--line); border-radius: 12px;
+      background: var(--plum-100); text-align: center;
+    }
+    .countdown-title {
+      margin: 0 0 4px; color: var(--plum-950);
+      font-size: 16px; font-weight: 900;
+    }
+    .countdown-deadline { margin: 0 0 15px; color: var(--muted); font-size: 13px; }
+    .countdown-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+    .countdown-unit {
+      padding: 11px 5px; border-radius: 9px;
+      background: #fff; box-shadow: 0 5px 15px rgba(36,16,47,.07);
+    }
+    .countdown-number {
+      display: block; color: var(--plum-700);
+      font-size: clamp(24px, 4vw, 32px); font-weight: 900; line-height: 1.1;
+    }
+    .countdown-label {
+      display: block; margin-top: 3px; color: var(--muted);
+      font-size: 11px; font-weight: 800; letter-spacing: .5px; text-transform: uppercase;
+    }
+    .countdown-closed {
+      margin: 0; color: var(--plum-950); font-size: 18px; font-weight: 900;
+    }
     .microcopy { margin: 12px 0 0; color: var(--muted); font-size: 13px; }
 
     .steps, .benefits { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
@@ -389,6 +415,16 @@
               <li>A seat must be booked for every passenger</li>
             </ul>
             <div class="notice"><strong>Coach travel only.</strong> Admission to Alton Towers is not included. Please arrange attraction tickets separately.</div>
+            <div class="countdown" id="ticket-countdown" role="timer" aria-live="off" aria-label="Time remaining until ticket sales close">
+              <p class="countdown-title">Ticket sales close in</p>
+              <p class="countdown-deadline">7:00pm on Wednesday 12 August 2026</p>
+              <div class="countdown-grid">
+                <div class="countdown-unit"><span class="countdown-number" data-countdown="days">00</span><span class="countdown-label">Days</span></div>
+                <div class="countdown-unit"><span class="countdown-number" data-countdown="hours">00</span><span class="countdown-label">Hours</span></div>
+                <div class="countdown-unit"><span class="countdown-number" data-countdown="minutes">00</span><span class="countdown-label">Minutes</span></div>
+                <div class="countdown-unit"><span class="countdown-number" data-countdown="seconds">00</span><span class="countdown-label">Seconds</span></div>
+              </div>
+            </div>
             <a class="button button-plum" href="https://www.ticketsource.co.uk/staffordcoachtrips" target="_blank" rel="noopener noreferrer">Book this trip securely</a>
             <p class="microcopy">You will be taken to our TicketSource booking page to complete your order.</p>
           </div>
@@ -518,6 +554,34 @@
       menuButton.setAttribute("aria-expanded", "false");
     }));
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    const ticketCountdown = document.getElementById("ticket-countdown");
+    const ticketSalesClose = new Date("2026-08-12T19:00:00+01:00").getTime();
+
+    function updateTicketCountdown() {
+      const timeRemaining = ticketSalesClose - Date.now();
+
+      if (timeRemaining <= 0) {
+        ticketCountdown.innerHTML = '<p class="countdown-closed">Ticket sales are now closed.</p>';
+        ticketCountdown.setAttribute("aria-label", "Ticket sales are now closed");
+        clearInterval(countdownInterval);
+        return;
+      }
+
+      const days = Math.floor(timeRemaining / 86400000);
+      const hours = Math.floor((timeRemaining % 86400000) / 3600000);
+      const minutes = Math.floor((timeRemaining % 3600000) / 60000);
+      const seconds = Math.floor((timeRemaining % 60000) / 1000);
+
+      ticketCountdown.querySelector('[data-countdown="days"]').textContent = String(days).padStart(2, "0");
+      ticketCountdown.querySelector('[data-countdown="hours"]').textContent = String(hours).padStart(2, "0");
+      ticketCountdown.querySelector('[data-countdown="minutes"]').textContent = String(minutes).padStart(2, "0");
+      ticketCountdown.querySelector('[data-countdown="seconds"]').textContent = String(seconds).padStart(2, "0");
+    }
+
+    let countdownInterval;
+    updateTicketCountdown();
+    countdownInterval = setInterval(updateTicketCountdown, 1000);
   </script>
 </body>
 </html>
