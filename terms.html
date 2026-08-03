@@ -1,1 +1,523 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Read the booking terms and conditions for coach trips organised by Stafford Coach Trips.">
+  <meta name="theme-color" content="#24102f">
+  <title>Terms &amp; Conditions | Stafford Coach Trips</title>
+  <style>
+    :root {
+      --ink: #19151c;
+      --muted: #665f6a;
+      --plum-950: #24102f;
+      --plum-900: #321142;
+      --plum-700: #652a7d;
+      --plum-100: #f1e8f5;
+      --gold: #f4b942;
+      --paper: #fff;
+      --wash: #f7f5f8;
+      --line: #e6dfe9;
+      --shadow: 0 18px 50px rgba(36, 16, 47, .13);
+      --radius: 20px;
+      --max: 1180px;
+    }
 
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--wash);
+      font: 16px/1.65 Arial, Helvetica, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    :focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+    .container { width: min(var(--max), calc(100% - 40px)); margin-inline: auto; }
+    .skip-link {
+      position: fixed; left: 16px; top: -80px; z-index: 9999;
+      padding: 11px 16px; background: #fff; color: var(--plum-950);
+      border-radius: 8px; font-weight: 800;
+    }
+    .skip-link:focus { top: 16px; }
+
+    .topbar {
+      padding: 7px 20px;
+      color: #fff;
+      background: var(--plum-950);
+      text-align: center;
+      font-size: 14px;
+    }
+    .site-header {
+      position: sticky; top: 0; z-index: 1000;
+      background: rgba(255,255,255,.96);
+      border-bottom: 1px solid rgba(50,17,66,.1);
+      backdrop-filter: blur(14px);
+    }
+    .nav-wrap {
+      min-height: 78px;
+      display: flex; align-items: center; justify-content: space-between; gap: 24px;
+    }
+    .brand {
+      display: flex; align-items: center; gap: 12px;
+      text-decoration: none; color: var(--plum-950);
+      font-weight: 900; font-size: 21px; letter-spacing: -.3px;
+    }
+    .brand-mark {
+      display: grid; place-items: center; width: 44px; height: 44px;
+      border-radius: 12px; color: #fff;
+      background: linear-gradient(135deg, var(--plum-700), var(--plum-950));
+      box-shadow: 0 7px 18px rgba(50,17,66,.24);
+    }
+    .nav-links { display: flex; align-items: center; gap: 4px; }
+    .nav-links a {
+      padding: 10px 11px; border-radius: 8px;
+      color: #403745; text-decoration: none; font-weight: 700;
+    }
+    .nav-links a:hover, .nav-links a[aria-current="page"] {
+      color: var(--plum-700); background: var(--plum-100);
+    }
+    .nav-links .nav-cta { margin-left: 7px; color: #fff; background: var(--plum-700); }
+    .nav-links .nav-cta:hover { color: #fff; background: var(--plum-900); }
+    .menu-button {
+      display: none; padding: 10px 12px; border: 1px solid var(--line);
+      border-radius: 9px; background: #fff; color: var(--plum-950);
+      font: inherit; font-weight: 800; cursor: pointer;
+    }
+
+    .page-hero {
+      position: relative; isolation: isolate; overflow: hidden;
+      padding: 88px 0 82px; color: #fff;
+      background: linear-gradient(135deg, var(--plum-950), var(--plum-700));
+    }
+    .page-hero::after {
+      content: ""; position: absolute; z-index: -1; right: -90px; bottom: -190px;
+      width: 480px; height: 360px; border-radius: 50%;
+      background: rgba(244,185,66,.18); filter: blur(20px);
+    }
+    .eyebrow {
+      margin: 0 0 12px; color: #ffe3a7;
+      font-size: 13px; font-weight: 900; letter-spacing: 1.6px;
+      text-transform: uppercase;
+    }
+    .page-hero h1 {
+      max-width: 820px; margin: 0;
+      font-size: clamp(42px, 7vw, 68px); line-height: 1.05; letter-spacing: -2px;
+    }
+    .page-hero p:last-child {
+      max-width: 760px; margin: 18px 0 0;
+      color: rgba(255,255,255,.88); font-size: clamp(17px, 2vw, 20px);
+    }
+
+    .terms-layout {
+      display: grid; grid-template-columns: 270px minmax(0, 1fr); gap: 38px;
+      align-items: start; padding: 72px 0 92px;
+    }
+    .contents {
+      position: sticky; top: 105px;
+      padding: 24px; border: 1px solid var(--line);
+      border-radius: 15px; background: #fff; box-shadow: 0 10px 30px rgba(36,16,47,.07);
+    }
+    .contents h2 { margin: 0 0 12px; color: var(--plum-950); font-size: 20px; }
+    .contents ol { margin: 0; padding-left: 21px; }
+    .contents li { margin: 5px 0; color: var(--muted); }
+    .contents a { color: inherit; text-decoration: none; }
+    .contents a:hover { color: var(--plum-700); text-decoration: underline; }
+
+    .terms-card {
+      padding: clamp(25px, 5vw, 52px); border: 1px solid var(--line);
+      border-radius: var(--radius); background: #fff; box-shadow: var(--shadow);
+    }
+    .updated {
+      margin: 0 0 28px; padding: 15px 18px;
+      border-left: 5px solid var(--gold); border-radius: 8px;
+      background: #fffaf0; color: #574727;
+    }
+    .terms-section { scroll-margin-top: 110px; padding: 28px 0; border-top: 1px solid var(--line); }
+    .terms-section:first-of-type { border-top: 0; padding-top: 0; }
+    .terms-section h2 {
+      margin: 0 0 12px; color: var(--plum-950);
+      font-size: clamp(24px, 3vw, 31px); line-height: 1.2;
+    }
+    .terms-section h3 { margin: 22px 0 8px; color: var(--plum-900); font-size: 19px; }
+    .terms-section p { margin: 10px 0; color: var(--muted); }
+    .terms-section ul { margin: 11px 0; padding-left: 23px; color: var(--muted); }
+    .terms-section li { margin: 7px 0; }
+    .terms-section a { color: var(--plum-700); font-weight: 800; }
+    .important {
+      margin: 18px 0; padding: 18px;
+      border: 1px solid #dac9e2; border-radius: 10px; background: var(--plum-100);
+    }
+    .important p { margin: 0; color: var(--plum-950); }
+
+    .contact-card {
+      margin-top: 38px; padding: clamp(26px, 5vw, 42px);
+      border-radius: var(--radius); color: #fff;
+      background: linear-gradient(135deg, var(--plum-950), var(--plum-700));
+    }
+    .contact-card h2 { margin: 0 0 8px; font-size: 32px; }
+    .contact-card p { margin: 5px 0; color: rgba(255,255,255,.85); }
+    .contact-card a { color: #fff; font-weight: 800; }
+
+    footer { padding: 52px 0 25px; color: rgba(255,255,255,.76); background: #1a141d; }
+    .footer-grid {
+      display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 50px;
+      padding-bottom: 35px;
+    }
+    footer .brand { color: #fff; margin-bottom: 15px; }
+    footer h3 { margin: 0 0 12px; color: #fff; font-size: 16px; }
+    footer p { margin: 7px 0; }
+    footer ul { margin: 0; padding: 0; list-style: none; }
+    footer li { margin: 7px 0; }
+    footer a { color: inherit; }
+    .footer-bottom {
+      display: flex; justify-content: space-between; gap: 20px;
+      padding-top: 23px; border-top: 1px solid rgba(255,255,255,.12);
+      font-size: 13px;
+    }
+
+    @media (max-width: 1000px) {
+      .menu-button { display: inline-block; }
+      .nav-links {
+        display: none; position: absolute; left: 20px; right: 20px; top: 70px;
+        padding: 13px; flex-direction: column; align-items: stretch;
+        border: 1px solid var(--line); border-radius: 13px; background: #fff;
+        box-shadow: var(--shadow);
+      }
+      .nav-links.open { display: flex; }
+      .nav-links .nav-cta { margin-left: 0; text-align: center; }
+      .terms-layout { grid-template-columns: 1fr; }
+      .contents { position: static; }
+      .contents ol { columns: 2; column-gap: 36px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .container { width: min(100% - 28px, var(--max)); }
+      .topbar { font-size: 12px; }
+      .brand { font-size: 18px; }
+      .page-hero { padding: 66px 0 62px; }
+      .page-hero h1 { letter-spacing: -1.3px; }
+      .terms-layout { padding: 52px 0 70px; }
+      .contents ol { columns: 1; }
+      .terms-card { padding: 27px 21px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+      .footer-bottom { flex-direction: column; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <div class="topbar">Affordable, reliable and friendly coach travel from Stafford</div>
+
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html" aria-label="Stafford Coach Trips home">
+        <span class="brand-mark" aria-hidden="true">🚌</span>
+        <span>Stafford Coach Trips</span>
+      </a>
+      <button class="menu-button" type="button" aria-expanded="false" aria-controls="main-menu">Menu</button>
+      <nav class="nav-links" id="main-menu" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="current-trips.html">Current trips</a>
+        <a href="future-trips.html">Future trips</a>
+        <a href="pickup-points.html">Pick-up points</a>
+        <a href="FAQs.html">FAQs</a>
+        <a href="contact.html">Contact</a>
+        <a class="nav-cta" href="https://www.ticketsource.co.uk/staffordcoachtrips" target="_blank" rel="noopener noreferrer">Book online</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-hero" aria-labelledby="page-title">
+    <div class="container">
+      <p class="eyebrow">Booking information</p>
+      <h1 id="page-title">Terms &amp; Conditions</h1>
+      <p>Please read these terms before booking. They explain what you can expect from Stafford Coach Trips and what we ask of every passenger.</p>
+    </div>
+  </section>
+
+  <main id="main">
+    <div class="container terms-layout">
+      <aside class="contents" aria-labelledby="contents-title">
+        <h2 id="contents-title">On this page</h2>
+        <ol>
+          <li><a href="#definitions">Definitions</a></li>
+          <li><a href="#booking">Booking and payment</a></li>
+          <li><a href="#inclusions">What your booking includes</a></li>
+          <li><a href="#pickups">Pick-up points and times</a></li>
+          <li><a href="#responsibilities">Passenger responsibilities</a></li>
+          <li><a href="#children">Children travelling</a></li>
+          <li><a href="#accessibility">Accessibility</a></li>
+          <li><a href="#customer-cancellations">Customer cancellations</a></li>
+          <li><a href="#our-cancellations">Cancellations by us</a></li>
+          <li><a href="#refunds">Refund policy</a></li>
+          <li><a href="#changes">Changes to itineraries</a></li>
+          <li><a href="#delays">Delays beyond our control</a></li>
+          <li><a href="#lost-property">Lost property</a></li>
+          <li><a href="#behaviour">Passenger behaviour</a></li>
+          <li><a href="#photography">Photography and social media</a></li>
+          <li><a href="#data">Personal data</a></li>
+          <li><a href="#liability">Liability</a></li>
+          <li><a href="#packages">Breaks and package trips</a></li>
+          <li><a href="#accuracy">Website accuracy</a></li>
+          <li><a href="#law">Governing law</a></li>
+          <li><a href="#contact">Contact details</a></li>
+        </ol>
+      </aside>
+
+      <article class="terms-card">
+        <p class="updated"><strong>Last updated:</strong> 3 August 2026</p>
+
+        <section class="terms-section" id="introduction">
+          <h2>About these terms</h2>
+          <p>These Terms &amp; Conditions apply when you book a trip with Stafford Coach Trips. They form part of the contract between the person making the booking and Stafford Coach Trips, together with the trip description, price and any important information shown during booking.</p>
+          <p>Please make sure that you read these terms before paying and that every passenger included in your booking is aware of them. Nothing in these terms affects your legal rights as a consumer.</p>
+        </section>
+
+        <section class="terms-section" id="definitions">
+          <h2>1. Definitions</h2>
+          <ul>
+            <li><strong>“Stafford Coach Trips”, “we”, “us” or “our”</strong> means Stafford Coach Trips, based in Stafford, England, acting as the organiser of the trip.</li>
+            <li><strong>“Lead passenger”</strong> means the person who makes the booking and accepts these terms for everyone included in it.</li>
+            <li><strong>“Passenger” or “you”</strong> means any person travelling under a booking.</li>
+            <li><strong>“Trip”</strong> means the coach journey and any other service expressly included in the booking description.</li>
+            <li><strong>“Coach operator”</strong> means the licensed third-party operator engaged to provide the coach and driver.</li>
+            <li><strong>“Booking provider”</strong> means TicketSource or any future payment or booking service used by us, including a Stafford Coach Trips booking system using Stripe.</li>
+            <li><strong>“Package”</strong> means a booking that legally qualifies as a package under the Package Travel and Linked Travel Arrangements Regulations 2018, as amended.</li>
+          </ul>
+        </section>
+
+        <section class="terms-section" id="booking">
+          <h2>2. Booking and payment</h2>
+          <p>The lead passenger must be aged 18 or over, provide accurate contact details and have authority to book for every passenger named or included in the order. The lead passenger is responsible for passing all booking information, updates and these terms to the other passengers.</p>
+          <p>A booking is confirmed only when full payment, or any stated deposit, has been received and a booking confirmation has been issued. An acknowledgement, expression of interest or incomplete payment does not confirm a seat.</p>
+          <p>Bookings are currently processed through TicketSource. We may later accept bookings directly through our website or another secure provider, including payments processed by Stripe. The provider's technical and payment terms may also apply, but these Terms &amp; Conditions govern the trip itself.</p>
+          <p>Please check your confirmation as soon as you receive it and tell us promptly if anything is incorrect. We may correct an obvious pricing or description error before accepting a booking. We will not increase the agreed price after confirmation except where the law permits this for a Package and the booking terms clearly explain how.</p>
+        </section>
+
+        <section class="terms-section" id="inclusions">
+          <h2>3. Coach-only bookings and attraction tickets</h2>
+          <div class="important"><p><strong>Unless the trip description clearly states otherwise, your booking is for coach travel only. Attraction admission, event tickets, meals, accommodation, insurance and personal expenses are not included.</strong></p></div>
+          <p>You are responsible for obtaining any attraction or event ticket required for entry and for checking its date, entry time and conditions before booking coach travel. A coach booking does not guarantee admission to the destination.</p>
+          <p>If attraction admission, hotel accommodation, meals, ferry travel or another service is included, this will be clearly stated before you pay. Any relevant supplier conditions will also apply and will be made available where appropriate.</p>
+          <p>We are not responsible for a passenger being refused entry because they do not hold a valid admission ticket, arrive outside an attraction's entry conditions or do not meet the attraction's own requirements, unless this was caused by our breach of contract or negligence.</p>
+        </section>
+
+        <section class="terms-section" id="pickups">
+          <h2>4. Pick-up points and departure times</h2>
+          <p>Our current Stafford pick-up points are Rising Brook and Stafford Railway Station. The pick-up points and times that apply to your trip will be shown in the trip information and booking confirmation.</p>
+          <p>Please arrive at least 10 minutes before the stated departure time and make yourself visible to the driver or trip representative. The coach may be unable to wait for late passengers. If you miss the coach, you will be responsible for your own alternative travel and any resulting cost, and a refund will not normally be due.</p>
+          <p>You must travel from the pick-up point selected when booking unless we agree a change in advance. Passengers must return to the coach at the destination by the time announced by the driver or trip representative.</p>
+        </section>
+
+        <section class="terms-section" id="responsibilities">
+          <h2>5. Passenger responsibilities</h2>
+          <p>Passengers must:</p>
+          <ul>
+            <li>provide accurate booking, contact and passenger information;</li>
+            <li>follow reasonable safety instructions from the driver, coach operator and Stafford Coach Trips;</li>
+            <li>wear a seat belt where one is fitted and remain seated when instructed;</li>
+            <li>look after their own belongings, medication, money and travel documents;</li>
+            <li>ensure they have suitable clothing, footwear and any documents required for the trip;</li>
+            <li>return to the coach at every agreed time; and</li>
+            <li>comply with the reasonable rules of the coach operator, hotel, attraction, ferry company and any other supplier.</li>
+          </ul>
+          <p>For European trips, each passenger is responsible for holding a valid passport, visa, travel authorisation, insurance and any other document or health requirement applicable to them. We will provide general trip information, but passengers must check their own requirements before travel.</p>
+        </section>
+
+        <section class="terms-section" id="children">
+          <h2>6. Children travelling</h2>
+          <p>Anyone under 18 must travel with a responsible adult aged 18 or over unless we have expressly advertised and agreed a different supervised arrangement. The accompanying adult remains responsible for the child's safety, conduct and supervision throughout the trip, including at the destination and during any hotel stay.</p>
+          <p>Every child, including a baby or young child, must be included in the booking and have their own allocated coach seat unless the law and the coach operator expressly permit another arrangement. A suitable child restraint is the responsibility of the accompanying adult and must be discussed with us before booking because not every coach can accommodate every type of restraint.</p>
+          <p>We may set trip-specific minimum ages where a journey, attraction, event or accommodation provider requires this.</p>
+        </section>
+
+        <section class="terms-section" id="accessibility">
+          <h2>7. Accessibility and additional requirements</h2>
+          <p>Please contact us before booking if any passenger has mobility, accessibility, medical or other assistance requirements, or needs to carry a wheelchair, mobility aid or essential medical equipment. This allows us to check the facilities and storage available with the coach operator and other suppliers.</p>
+          <p>We will consider reasonable requests and make reasonable adjustments where required by law. However, facilities vary between vehicles, hotels and destinations, and a request is confirmed only when we accept it in writing. Passengers should not assume that a coach has step-free access, a wheelchair lift or space for an occupied wheelchair unless we have confirmed this.</p>
+          <p>Passengers must be able to travel safely. A companion may be required where a passenger needs personal care or assistance that the driver or trip representative cannot reasonably provide. Please keep essential medication with you rather than in the luggage hold.</p>
+        </section>
+
+        <section class="terms-section" id="customer-cancellations">
+          <h2>8. Cancellations by the customer</h2>
+          <p>Cancellation requests must be made by the lead passenger by emailing <a href="mailto:staffordcoachtrips@gmail.com">staffordcoachtrips@gmail.com</a>. The cancellation takes effect when we receive the request.</p>
+          <p>For a coach-only day trip, unless different cancellation terms were clearly shown before booking:</p>
+          <ul>
+            <li>if we receive the cancellation at least 7 full days before departure, we will refund the amount paid for the cancelled seat; and</li>
+            <li>if we receive it less than 7 full days before departure, the booking will normally be non-refundable because coach and supplier costs will already have been committed.</li>
+          </ul>
+          <p>Where we avoid or recover costs, or resell the cancelled seat, we will take those savings into account and refund any amount due, less any reasonable, evidenced costs. We may allow a name change at our discretion where suppliers permit it and any reasonable additional cost is paid.</p>
+          <p>Different cancellation charges may apply to attractions, events, hotels, ferries, international travel or Packages. These will be shown before booking and will reflect the timing of cancellation, supplier charges, costs saved and any ability to resell the booking.</p>
+          <p>Not attending, arriving late, missing the coach or choosing to leave a trip early is treated as a cancellation by the customer and does not normally create a right to a refund.</p>
+        </section>
+
+        <section class="terms-section" id="our-cancellations">
+          <h2>9. Cancellations by Stafford Coach Trips</h2>
+          <p>We may cancel a trip if it cannot reasonably operate, including where there are insufficient bookings, a coach or key supplier becomes unavailable, a destination closes, or unavoidable and extraordinary circumstances prevent performance.</p>
+          <p>If we cancel before departure, you may choose a transfer to a suitable alternative trip where offered or a refund of all money paid to us for the cancelled service. We will contact the lead passenger using the details provided at booking.</p>
+          <p>For a Package cancelled because the stated minimum number of travellers is not reached, we will give any notice required by law and by the trip-specific booking information. Your statutory Package rights will apply.</p>
+        </section>
+
+        <section class="terms-section" id="refunds">
+          <h2>10. Refund policy</h2>
+          <p>Approved refunds will be made to the original payment method wherever possible. If a booking was made through TicketSource or another booking provider, the refund may be processed through that provider and its processing times may affect when the funds appear in your account.</p>
+          <p>We aim to process refunds promptly. Where the law sets a deadline, including for a qualifying Package, we will meet that deadline. For a Package, refunds due following termination will be made without undue delay and no later than 14 days after termination.</p>
+          <p>Booking, card or administration charges will only be withheld where this was made clear before booking and it is lawful and fair to do so. This refund policy does not limit any right you may have to a refund, price reduction or other remedy where a service has not been provided with reasonable care and skill or does not match the information given.</p>
+        </section>
+
+        <section class="terms-section" id="changes">
+          <h2>11. Changes to itineraries</h2>
+          <p>We may make a reasonable change to a pick-up time, route, stopping point, coach, hotel or itinerary where operationally necessary. We will tell the lead passenger about a material change as soon as reasonably possible.</p>
+          <p>Minor changes that do not significantly affect the trip will not normally entitle a passenger to cancel without charge. If we make a significant change before departure, we will explain the available options, which may include accepting the change, transferring to an alternative trip or receiving an appropriate refund.</p>
+          <p>Where the booking is a Package, the statutory rules on alterations apply. If a significant change is proposed, you will be given clear information and the right to terminate without a cancellation fee where required by law.</p>
+        </section>
+
+        <section class="terms-section" id="delays">
+          <h2>12. Traffic, weather and circumstances beyond our control</h2>
+          <p>Journey and return times are estimates. Traffic congestion, collisions, road closures, severe weather, breakdowns, security incidents, industrial action, public health measures and other circumstances beyond our reasonable control may cause delay, diversion or a changed itinerary.</p>
+          <p>We and the coach operator will take reasonable steps to minimise disruption and keep passengers informed. We cannot guarantee arrival by a particular time and are not responsible for a missed separate booking or onward connection that was not part of our contract, except where the loss was caused by our negligence or breach of contract or where the law provides otherwise.</p>
+          <p>Passengers should allow sufficient time and avoid arranging tightly timed onward travel. Nothing in this section removes any statutory rights that apply to a Package or passenger transport service.</p>
+        </section>
+
+        <section class="terms-section" id="lost-property">
+          <h2>13. Lost property</h2>
+          <p>Please check your seat and the luggage area before leaving the coach. Lost items should be reported to us as soon as possible with the trip date and a clear description.</p>
+          <p>Items found on the coach may be held by the coach operator rather than Stafford Coach Trips. We will make reasonable enquiries but cannot guarantee that an item will be found. The owner is responsible for reasonable collection, postage or delivery costs. Unclaimed items may be disposed of after a reasonable period, subject to the coach operator's policy and applicable law.</p>
+        </section>
+
+        <section class="terms-section" id="behaviour">
+          <h2>14. Passenger behaviour</h2>
+          <p>Passengers must behave respectfully and must not endanger, threaten, abuse or seriously inconvenience the driver, staff, other passengers, suppliers or members of the public. Smoking and vaping are not permitted on the coach. Alcohol may only be carried or consumed where expressly permitted by the coach operator.</p>
+          <p>The driver, coach operator or Stafford Coach Trips may refuse boarding or require a passenger to leave where their conduct is unsafe, unlawful, abusive, excessively disruptive, affected by alcohol or drugs, or causes serious damage. No refund will normally be due in those circumstances, and the passenger will be responsible for their own onward travel and for loss or damage they cause, subject to applicable law.</p>
+        </section>
+
+        <section class="terms-section" id="photography">
+          <h2>15. Photography and social media</h2>
+          <p>We may take general photographs or short videos during a trip for Stafford Coach Trips' website and social media. We will seek consent where a person is the main identifiable subject, and we will obtain consent from a parent or guardian before intentionally featuring a child.</p>
+          <p>Please tell us or the trip representative if you do not wish to appear in photographs or video. We will respect that choice. Passengers taking their own images must respect other people's privacy and must not photograph or publish images of children without the permission of their parent or guardian.</p>
+        </section>
+
+        <section class="terms-section" id="data">
+          <h2>16. Personal data</h2>
+          <p>We use personal information to manage bookings, take payment, communicate trip information, meet accessibility or safety requirements and provide the booked service. Information may be shared where necessary with the coach operator, booking or payment provider, accommodation provider, attraction, emergency services or another relevant supplier.</p>
+          <p>Please read our <a href="privacy-policy.html">Privacy Policy</a> for more information about how we collect, use, retain and protect personal data and about your rights.</p>
+        </section>
+
+        <section class="terms-section" id="liability">
+          <h2>17. Liability</h2>
+          <p>We will provide our organising services with reasonable care and skill. Where transport or another service is supplied by a third party, that supplier is responsible for performing its service, but this does not remove any responsibility that the law places on Stafford Coach Trips.</p>
+          <p>We are not responsible for loss that:</p>
+          <ul>
+            <li>was not caused by our breach of contract or negligence;</li>
+            <li>was not reasonably foreseeable when the booking was made;</li>
+            <li>results from the passenger's own act, omission or failure to follow reasonable instructions; or</li>
+            <li>relates to a separate attraction ticket, hotel, journey or other arrangement not booked as part of our contract.</li>
+          </ul>
+          <p>We do not accept liability for business losses arising from a consumer booking. Passengers should arrange suitable travel insurance for overnight, international or higher-value trips and whenever cancellation, medical, baggage or disruption cover is important to them.</p>
+          <div class="important"><p><strong>Nothing in these terms excludes or limits liability for death or personal injury caused by negligence, fraud or fraudulent misrepresentation, breach of your statutory consumer rights, or any other liability that cannot lawfully be excluded or limited.</strong></p></div>
+        </section>
+
+        <section class="terms-section" id="packages">
+          <h2>18. Weekend breaks, accommodation and Package bookings</h2>
+          <p>These terms are intended to cover future weekend breaks, hotel stays and European coach trips. However, a trip that combines coach travel with accommodation or another travel service may be a Package and attract additional statutory protection.</p>
+          <p>Where a trip is a Package, we will provide the required pre-contract information, trip-specific conditions, organiser details, assistance arrangements and insolvency protection information before the booking is made. If these general terms conflict with a mandatory Package right or trip-specific Package term, the mandatory right and then the trip-specific term will take priority.</p>
+          <p>Passengers on international or overnight trips may also receive additional information about passports, visas, health requirements, travel insurance, luggage, accommodation, minimum numbers and cancellation charges.</p>
+        </section>
+
+        <section class="terms-section" id="accuracy">
+          <h2>19. Website accuracy</h2>
+          <p>We take reasonable care to keep our website, social media and booking information accurate. Images may be illustrative and journey times are estimates. Attractions, hotels and other suppliers may change their facilities, opening times or programmes without notice.</p>
+          <p>If website information conflicts with a confirmed booking, the booking confirmation and any trip-specific information sent to the lead passenger will normally take priority, except where there is an obvious error or the law requires otherwise. Please contact us if anything appears unclear before booking.</p>
+          <p>We may update these terms from time to time. The version accepted when a booking is confirmed will normally apply to that booking, unless a change is required by law or is more favourable to the passenger.</p>
+        </section>
+
+        <section class="terms-section" id="law">
+          <h2>20. Governing law</h2>
+          <p>These terms and your booking are governed by the law of England and Wales. The courts of England and Wales will have jurisdiction, although a consumer living elsewhere in the United Kingdom may also bring a claim in the courts of the part of the United Kingdom where they live where the law allows.</p>
+          <p>If any part of these terms is found to be invalid or unenforceable, the remaining terms will continue to apply.</p>
+        </section>
+
+        <section class="terms-section" id="contact">
+          <h2>21. Contact details</h2>
+          <p>Questions, accessibility requests and cancellation notices should be sent in writing so that we have a clear record.</p>
+          <div class="contact-card">
+            <h2>Stafford Coach Trips</h2>
+            <p>Based in Stafford, England</p>
+            <p>Email: <a href="mailto:staffordcoachtrips@gmail.com">staffordcoachtrips@gmail.com</a></p>
+            <p>Opening hours: Monday to Friday, 10:00am–5:00pm</p>
+            <p>Closed weekends and bank holidays. Messages received while closed will be answered when we reopen.</p>
+          </div>
+        </section>
+      </article>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">🚌</span><span>Stafford Coach Trips</span></a>
+          <p>Affordable coach travel from Stafford to attractions, events and memorable days out.</p>
+        </div>
+        <div>
+          <h3>Explore</h3>
+          <ul>
+            <li><a href="current-trips.html">Current trips</a></li>
+            <li><a href="future-trips.html">Future trips</a></li>
+            <li><a href="pickup-points.html">Pick-up points</a></li>
+            <li><a href="FAQs.html">Frequently asked questions</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Booking and support</h3>
+          <ul>
+            <li><a href="https://www.ticketsource.co.uk/staffordcoachtrips" target="_blank" rel="noopener noreferrer">Book through TicketSource</a></li>
+            <li><a href="contact.html">Contact us</a></li>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="terms.html" aria-current="page">Terms &amp; Conditions</a></li>
+            <li><a href="https://www.facebook.com/profile.php?id=61590883177842" target="_blank" rel="noopener noreferrer">Follow on Facebook</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="year">2026</span> Stafford Coach Trips. All rights reserved.</span>
+        <span>Coach travel and attraction admission are sold separately unless clearly stated.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const menuButton = document.querySelector(".menu-button");
+    const menu = document.querySelector(".nav-links");
+
+    menuButton.addEventListener("click", () => {
+      const open = menu.classList.toggle("open");
+      menuButton.setAttribute("aria-expanded", String(open));
+    });
+
+    menu.querySelectorAll("a").forEach(link => link.addEventListener("click", () => {
+      menu.classList.remove("open");
+      menuButton.setAttribute("aria-expanded", "false");
+    }));
+
+    document.addEventListener("click", event => {
+      if (!menu.contains(event.target) && !menuButton.contains(event.target)) {
+        menu.classList.remove("open");
+        menuButton.setAttribute("aria-expanded", "false");
+      }
+    });
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
