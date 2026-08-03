@@ -1343,3 +1343,61 @@ body{
     color:#555;
     line-height:1.7;
 }
+
+/* ==========================================
+   Future Trip Categories
+========================================== */
+
+.destination-dropdown{
+    margin:25px 0;
+    border-radius:12px;
+    overflow:hidden;
+    background:#fff;
+    border:1px solid #e6e6e6;
+    box-shadow:0 4px 12px rgba(0,0,0,.08);
+}
+
+.destination-dropdown summary{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:18px 24px;
+    background:#0b4f8c;
+    color:#fff;
+    font-size:1.2rem;
+    font-weight:700;
+    cursor:pointer;
+    user-select:none;
+    list-style:none;
+    transition:.3s ease;
+}
+
+.destination-dropdown summary:hover{
+    background:#0d5ea8;
+}
+
+.destination-dropdown summary::-webkit-details-marker{
+    display:none;
+}
+
+/* Custom arrow */
+
+.destination-dropdown summary::after{
+    content:"▼";
+    font-size:0.9rem;
+    transition:transform .3s ease;
+}
+
+.destination-dropdown:not([open]) summary::after{
+    transform:rotate(-90deg);
+}
+
+.destination-dropdown[open] summary::after{
+    transform:rotate(0deg);
+}
+
+/* Space around cards */
+
+.destination-dropdown .trip-grid{
+    padding:30px;
+}
