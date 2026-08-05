@@ -1,1 +1,443 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Explore the Stafford Coach Trips archive, featuring photographs, videos, highlights, travel dates and memories from our completed journeys.">
+  <meta name="theme-color" content="#24102f">
+  <title>Past Trips | Stafford Coach Trips</title>
+  <style>
+    :root {
+      --ink: #19151c;
+      --muted: #665f6a;
+      --plum-950: #24102f;
+      --plum-900: #321142;
+      --plum-700: #652a7d;
+      --plum-100: #f1e8f5;
+      --gold: #f4b942;
+      --paper: #fff;
+      --wash: #f7f5f8;
+      --line: #e6dfe9;
+      --shadow: 0 18px 50px rgba(36, 16, 47, .13);
+      --radius: 20px;
+      --max: 1180px;
+    }
 
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--wash);
+      font: 16px/1.65 Arial, Helvetica, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    :focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+    .container { width: min(var(--max), calc(100% - 40px)); margin-inline: auto; }
+    .skip-link {
+      position: fixed; left: 16px; top: -80px; z-index: 9999;
+      padding: 11px 16px; background: #fff; color: var(--plum-950);
+      border-radius: 8px; font-weight: 800;
+    }
+    .skip-link:focus { top: 16px; }
+
+    .topbar {
+      padding: 7px 20px;
+      color: #fff;
+      background: var(--plum-950);
+      text-align: center;
+      font-size: 14px;
+    }
+    .site-header {
+      position: sticky; top: 0; z-index: 1000;
+      background: rgba(255,255,255,.96);
+      border-bottom: 1px solid rgba(50,17,66,.1);
+      backdrop-filter: blur(14px);
+    }
+    .nav-wrap {
+      min-height: 78px;
+      display: flex; align-items: center; justify-content: space-between; gap: 24px;
+    }
+    .brand {
+      display: flex; align-items: center; gap: 12px;
+      text-decoration: none; color: var(--plum-950);
+      font-weight: 900; font-size: 21px; letter-spacing: -.3px;
+    }
+    .brand-mark {
+      display: grid; place-items: center; width: 44px; height: 44px;
+      border-radius: 12px; color: #fff;
+      background: linear-gradient(135deg, var(--plum-700), var(--plum-950));
+      box-shadow: 0 7px 18px rgba(50,17,66,.24);
+    }
+    .nav-links { display: flex; align-items: center; gap: 4px; }
+    .nav-links a {
+      padding: 10px 11px; border-radius: 8px;
+      color: #403745; text-decoration: none; font-weight: 700;
+    }
+    .nav-links a:hover,
+    .nav-links a[aria-current="page"] { color: var(--plum-700); background: var(--plum-100); }
+    .nav-links .nav-cta { margin-left: 7px; color: #fff; background: var(--plum-700); }
+    .nav-links .nav-cta:hover { color: #fff; background: var(--plum-900); }
+    .menu-button {
+      display: none; padding: 10px 12px; border: 1px solid var(--line);
+      border-radius: 9px; background: #fff; color: var(--plum-950);
+      font: inherit; font-weight: 800; cursor: pointer;
+    }
+
+    .page-hero {
+      position: relative; isolation: isolate; overflow: hidden;
+      padding: 88px 0 82px; color: #fff;
+      background: linear-gradient(135deg, var(--plum-950), var(--plum-700));
+    }
+    .page-hero::before {
+      content: ""; position: absolute; z-index: -1; left: -130px; top: -180px;
+      width: 420px; height: 420px; border-radius: 50%;
+      border: 80px solid rgba(255,255,255,.035);
+    }
+    .page-hero::after {
+      content: ""; position: absolute; z-index: -1; right: -90px; bottom: -190px;
+      width: 480px; height: 360px; border-radius: 50%;
+      background: rgba(244,185,66,.18); filter: blur(20px);
+    }
+    .eyebrow {
+      margin: 0 0 12px; color: #ffe3a7;
+      font-size: 13px; font-weight: 900; letter-spacing: 1.6px;
+      text-transform: uppercase;
+    }
+    .page-hero h1 {
+      max-width: 820px; margin: 0;
+      font-size: clamp(42px, 7vw, 68px); line-height: 1.05; letter-spacing: -2px;
+    }
+    .page-hero p:last-child {
+      max-width: 760px; margin: 18px 0 0;
+      color: rgba(255,255,255,.88); font-size: clamp(17px, 2vw, 20px);
+    }
+
+    main section { scroll-margin-top: 100px; }
+    .section { padding: 88px 0; }
+    .section-white { background: #fff; }
+    .section-heading { max-width: 780px; margin: 0 auto 44px; text-align: center; }
+    .section-heading .eyebrow { color: var(--plum-700); }
+    .section-heading h2 {
+      margin: 0 0 13px; color: var(--plum-950);
+      font-size: clamp(32px, 5vw, 48px); line-height: 1.12; letter-spacing: -1.5px;
+    }
+    .section-heading p:last-child { margin: 0; color: var(--muted); font-size: 18px; }
+
+    .welcome-card {
+      position: relative; overflow: hidden;
+      padding: clamp(30px, 6vw, 62px);
+      border: 1px solid var(--line); border-radius: var(--radius);
+      background: #fff; box-shadow: var(--shadow);
+    }
+    .welcome-card::after {
+      content: "🚌"; position: absolute; right: -13px; bottom: -55px;
+      color: var(--plum-100); font-size: 190px; line-height: 1;
+      transform: rotate(-8deg); opacity: .75; pointer-events: none;
+    }
+    .welcome-copy { position: relative; z-index: 1; max-width: 850px; }
+    .welcome-copy h2 {
+      margin: 0 0 20px; color: var(--plum-950);
+      font-size: clamp(31px, 5vw, 46px); line-height: 1.12; letter-spacing: -1.2px;
+    }
+    .welcome-copy p { margin: 14px 0; color: var(--muted); font-size: 17px; }
+
+    .archive-grid {
+      display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px;
+    }
+    .archive-card {
+      position: relative; overflow: hidden;
+      min-height: 280px; padding: 33px;
+      border: 1px solid var(--line); border-radius: 16px;
+      background: #fff;
+      box-shadow: 0 11px 34px rgba(36,16,47,.08);
+      transition: transform .24s ease, box-shadow .24s ease, border-color .24s ease;
+    }
+    .archive-card:hover {
+      transform: translateY(-5px); border-color: #d7c6df;
+      box-shadow: var(--shadow);
+    }
+    .archive-card::after {
+      content: ""; position: absolute; right: -38px; bottom: -55px;
+      width: 135px; height: 135px; border-radius: 50%;
+      background: var(--plum-100); opacity: .75;
+    }
+    .archive-card:last-child { grid-column: 1 / -1; min-height: 245px; }
+    .card-icon {
+      position: relative; z-index: 1;
+      display: grid; place-items: center; width: 58px; height: 58px; margin-bottom: 22px;
+      border-radius: 15px; color: #fff; font-size: 27px;
+      background: linear-gradient(135deg, var(--plum-700), var(--plum-950));
+      box-shadow: 0 9px 22px rgba(50,17,66,.2);
+    }
+    .archive-card h3 {
+      position: relative; z-index: 1;
+      margin: 0 0 9px; color: var(--plum-950); font-size: 25px; line-height: 1.2;
+    }
+    .archive-card p { position: relative; z-index: 1; margin: 0; color: var(--muted); }
+    .planned-label {
+      position: relative; z-index: 1; display: inline-flex;
+      margin-top: 19px; padding: 6px 11px; border-radius: 999px;
+      color: var(--plum-700); background: var(--plum-100);
+      font-size: 12px; font-weight: 900; letter-spacing: .5px; text-transform: uppercase;
+    }
+
+    .looking-ahead {
+      position: relative; isolation: isolate; overflow: hidden;
+      padding: clamp(38px, 7vw, 72px); border-radius: var(--radius);
+      color: #fff; text-align: center;
+      background: linear-gradient(135deg, var(--plum-950), var(--plum-700));
+      box-shadow: var(--shadow);
+    }
+    .looking-ahead::after {
+      content: ""; position: absolute; z-index: -1; right: -120px; bottom: -190px;
+      width: 430px; height: 350px; border-radius: 50%;
+      background: rgba(244,185,66,.2); filter: blur(16px);
+    }
+    .looking-ahead .journey-icon {
+      display: grid; place-items: center; width: 68px; height: 68px; margin: 0 auto 22px;
+      border-radius: 18px; color: var(--plum-950); background: var(--gold);
+      font-size: 31px; box-shadow: 0 10px 30px rgba(0,0,0,.18);
+    }
+    .looking-ahead h2 {
+      margin: 0 0 14px; font-size: clamp(34px, 5vw, 50px); line-height: 1.1;
+      letter-spacing: -1.4px;
+    }
+    .looking-ahead .lead {
+      margin: 0 0 17px; color: #ffe3a7; font-size: clamp(20px, 3vw, 25px); font-weight: 900;
+    }
+    .looking-ahead p { max-width: 790px; margin: 11px auto; color: rgba(255,255,255,.86); font-size: 17px; }
+    .looking-ahead .button {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      min-height: 50px; margin-top: 21px; padding: 13px 22px;
+      border: 2px solid transparent; border-radius: 10px;
+      color: var(--plum-950); background: var(--gold);
+      text-decoration: none; font-weight: 900; line-height: 1.2;
+      transition: transform .2s ease, background .2s ease;
+    }
+    .looking-ahead .button:hover { transform: translateY(-2px); background: #ffd16e; }
+
+    footer { padding: 52px 0 25px; color: rgba(255,255,255,.76); background: #1a141d; }
+    .footer-grid {
+      display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 50px;
+      padding-bottom: 35px;
+    }
+    footer .brand { color: #fff; margin-bottom: 15px; }
+    footer h3 { margin: 0 0 12px; color: #fff; font-size: 16px; }
+    footer p { margin: 7px 0; }
+    footer ul { margin: 0; padding: 0; list-style: none; }
+    footer li { margin: 7px 0; }
+    footer a { color: inherit; }
+    .footer-bottom {
+      display: flex; justify-content: space-between; gap: 20px;
+      padding-top: 23px; border-top: 1px solid rgba(255,255,255,.12);
+      font-size: 13px;
+    }
+
+    @media (max-width: 1000px) {
+      .menu-button { display: inline-block; }
+      .nav-links {
+        display: none; position: absolute; left: 20px; right: 20px; top: 70px;
+        padding: 13px; flex-direction: column; align-items: stretch;
+        border: 1px solid var(--line); border-radius: 13px; background: #fff;
+        box-shadow: var(--shadow);
+      }
+      .nav-links.open { display: flex; }
+      .nav-links .nav-cta { margin-left: 0; text-align: center; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 700px) {
+      .archive-grid { grid-template-columns: 1fr; }
+      .archive-card:last-child { grid-column: auto; }
+    }
+
+    @media (max-width: 640px) {
+      .container { width: min(100% - 28px, var(--max)); }
+      .topbar { font-size: 12px; }
+      .brand { font-size: 18px; }
+      .page-hero { padding: 66px 0 62px; }
+      .page-hero h1 { letter-spacing: -1.3px; }
+      .section { padding: 62px 0; }
+      .welcome-card { padding: 30px 23px; }
+      .welcome-card::after { font-size: 130px; right: -25px; bottom: -36px; }
+      .archive-card { min-height: 0; padding: 27px 24px; }
+      .looking-ahead { padding: 42px 23px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+      .footer-bottom { flex-direction: column; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <div class="topbar">Affordable, reliable and friendly coach travel from Stafford</div>
+
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html" aria-label="Stafford Coach Trips home">
+        <span class="brand-mark" aria-hidden="true">🚌</span>
+        <span>Stafford Coach Trips</span>
+      </a>
+      <button class="menu-button" type="button" aria-expanded="false" aria-controls="main-menu">Menu</button>
+      <nav class="nav-links" id="main-menu" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="current-trips.html">Current trips</a>
+        <a href="future-trips.html">Future trips</a>
+        <a href="past-trips.html" aria-current="page">Past trips</a>
+        <a href="pickup-points.html">Pick-up points</a>
+        <a href="FAQs.html">FAQs</a>
+        <a href="contact.html">Contact</a>
+        <a class="nav-cta" href="https://www.ticketsource.co.uk/staffordcoachtrips" target="_blank" rel="noopener noreferrer">Book online</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-hero" aria-labelledby="page-title">
+    <div class="container">
+      <p class="eyebrow">Our journey so far</p>
+      <h1 id="page-title">🚌 Past Trips</h1>
+      <p>A permanent archive celebrating the destinations we visit, the journeys we share and the memories we create together.</p>
+    </div>
+  </section>
+
+  <main id="main">
+    <section class="section" aria-labelledby="welcome-title">
+      <div class="container">
+        <div class="welcome-card">
+          <div class="welcome-copy">
+            <p class="eyebrow" style="color: var(--plum-700);">Memories worth keeping</p>
+            <h2 id="welcome-title">Welcome to the Stafford Coach Trips Past Trips archive</h2>
+            <p>As Stafford Coach Trips grows, this page will become a lasting collection of the destinations we’ve visited and the memories we’ve created together.</p>
+            <p>Every completed journey will eventually include photographs, videos, highlights, travel dates and customer feedback, allowing visitors to look back at previous adventures and see how Stafford Coach Trips has grown over time.</p>
+            <p>This page has been created in preparation for our future journeys and will continue to grow as we explore more destinations across the UK and Europe.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-white" aria-labelledby="archive-title">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">The story of every journey</p>
+          <h2 id="archive-title">What you’ll find in our archive</h2>
+          <p>Each trip will have its own place in our history, bringing together the moments and details that made the journey special.</p>
+        </div>
+
+        <div class="archive-grid">
+          <article class="archive-card">
+            <span class="card-icon" aria-hidden="true">📸</span>
+            <h3>Trip Photos</h3>
+            <p>Photographs from completed trips will be added here, capturing destinations, attractions and the shared moments that make every day out memorable.</p>
+          </article>
+
+          <article class="archive-card">
+            <span class="card-icon" aria-hidden="true">🎥</span>
+            <h3>Trip Videos</h3>
+            <p>Destination videos and memorable moments from completed trips will be showcased here, bringing each journey back to life.</p>
+          </article>
+
+          <article class="archive-card">
+            <span class="card-icon" aria-hidden="true">🗺️</span>
+            <h3>Trip Highlights</h3>
+            <p>Each journey will include a summary of memorable moments, attractions visited and highlights from the day, creating a story of the experience from start to finish.</p>
+          </article>
+
+          <article class="archive-card">
+            <span class="card-icon" aria-hidden="true">📅</span>
+            <h3>Travel Dates</h3>
+            <p>Every completed journey will be archived with its travel date, allowing visitors to look back through previous adventures in the order they happened.</p>
+          </article>
+
+          <article class="archive-card">
+            <span class="card-icon" aria-hidden="true">⭐</span>
+            <h3>Customer Reviews</h3>
+            <p>Customer reviews and passenger feedback are planned for a future version of the website and will be introduced once Stafford Coach Trips has completed its first journeys.</p>
+            <span class="planned-label">Planned for a future version</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="looking-ahead-title">
+      <div class="container">
+        <div class="looking-ahead">
+          <span class="journey-icon" aria-hidden="true">🚍</span>
+          <p class="eyebrow">Looking ahead</p>
+          <h2 id="looking-ahead-title">Every great journey begins with a single trip</h2>
+          <p class="lead">The best memories are still ahead of us.</p>
+          <p>We look forward to filling this page with photographs, videos and memories as Stafford Coach Trips continues to grow.</p>
+          <p>Thank you for being part of our journey, and we hope you’ll join us on many adventures in the years to come.</p>
+          <a class="button" href="current-trips.html">Explore current trips</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">🚌</span><span>Stafford Coach Trips</span></a>
+          <p>Affordable coach travel from Stafford to attractions, events and memorable days out.</p>
+        </div>
+        <div>
+          <h3>Explore</h3>
+          <ul>
+            <li><a href="current-trips.html">Current trips</a></li>
+            <li><a href="future-trips.html">Future trips</a></li>
+            <li><a href="past-trips.html" aria-current="page">Past trips</a></li>
+            <li><a href="pickup-points.html">Pick-up points</a></li>
+            <li><a href="FAQs.html">Frequently asked questions</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Booking and support</h3>
+          <ul>
+            <li><a href="https://www.ticketsource.co.uk/staffordcoachtrips" target="_blank" rel="noopener noreferrer">Book through TicketSource</a></li>
+            <li><a href="contact.html">Contact us</a></li>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms &amp; Conditions</a></li>
+            <li><a href="https://www.facebook.com/profile.php?id=61590883177842" target="_blank" rel="noopener noreferrer">Follow on Facebook</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="year">2026</span> Stafford Coach Trips. All rights reserved.</span>
+        <span>Coach travel and attraction admission are sold separately unless clearly stated.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const menuButton = document.querySelector(".menu-button");
+    const menu = document.querySelector(".nav-links");
+
+    menuButton.addEventListener("click", () => {
+      const open = menu.classList.toggle("open");
+      menuButton.setAttribute("aria-expanded", String(open));
+    });
+
+    menu.querySelectorAll("a").forEach(link => link.addEventListener("click", () => {
+      menu.classList.remove("open");
+      menuButton.setAttribute("aria-expanded", "false");
+    }));
+
+    document.addEventListener("click", event => {
+      if (!menu.contains(event.target) && !menuButton.contains(event.target)) {
+        menu.classList.remove("open");
+        menuButton.setAttribute("aria-expanded", "false");
+      }
+    });
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
