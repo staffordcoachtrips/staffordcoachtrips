@@ -1,36 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>JSON Test</title>
-</head>
-<body>
-
-<h1>Trip Test</h1>
-
-<div id="trip-list"></div>
-
 <script>
-fetch('data/trip.json')
-    .then(response => response.json())
+fetch('data/trips.json')
+    .then(response => {
+        console.log("Response:", response);
+        return response.json();
+    })
     .then(trips => {
+        console.log("Trips:", trips);
 
-        const container = document.getElementById('trip-list');
+        const container = document.getElementById("trip-list");
 
         trips.forEach(trip => {
-
             container.innerHTML += `
                 <h2>${trip.title}</h2>
-                <p>${trip.description}</p>
+                <p>${trip.category}</p>
                 <img src="${trip.image}" width="300">
-                <hr>
             `;
-
         });
-
     })
-    .catch(error => console.error(error));
+    .catch(error => {
+        console.error("Error:", error);
+    });
 </script>
-
-</body>
-</html>
