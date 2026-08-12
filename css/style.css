@@ -1405,3 +1405,44 @@ body{
 .destination-dropdown .trip-grid{
     padding:30px;
 }
+.cancellation-status {
+  border-color: #e6b4af;
+  border-left-color: #b42318;
+  background: #fff4f3;
+}
+
+.cancellation-icon {
+  background: #b42318;
+}
+
+.update-status {
+  display: inline-flex;
+  margin-bottom: 12px;
+  padding: 6px 13px;
+  border-radius: 999px;
+  color: #fff;
+  background: #b42318;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+.cancellation-status h3 {
+  margin-bottom: 5px;
+}
+
+.update-date {
+  margin: 0 0 15px !important;
+  color: var(--muted) !important;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.cancellation-status p {
+  margin: 0 0 12px;
+}
+
+.cancellation-status p:last-child {
+  margin-bottom: 0;
+}
