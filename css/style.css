@@ -1405,10 +1405,16 @@ body{
 .destination-dropdown .trip-grid{
     padding:30px;
 }
+
+/* ==========================================
+   Cancelled Trip Update
+========================================== */
+
 .cancellation-status {
-  border-color: #e6b4af;
-  border-left-color: #b42318;
-  background: #fff4f3;
+  border: 2px solid #e6b4af;
+  border-left: 6px solid #b42318;
+  background-color: #fff4f3;
+  color: #5f1712;
 }
 
 .cancellation-icon {
@@ -1430,17 +1436,19 @@ body{
 
 .cancellation-status h3 {
   margin-bottom: 5px;
+  color: #7a1c15;
 }
 
 .update-date {
   margin: 0 0 15px !important;
-  color: var(--muted) !important;
+  color: #7a5b58 !important;
   font-size: 14px;
   font-weight: 700;
 }
 
 .cancellation-status p {
   margin: 0 0 12px;
+  color: #5f1712;
 }
 
 .cancellation-status p:last-child {
