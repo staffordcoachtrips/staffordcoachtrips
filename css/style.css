@@ -1413,7 +1413,7 @@ body{
 .cancellation-status {
   border: 2px solid #e6b4af;
   border-left: 6px solid #b42318;
-  background-color: #fff4f3;
+  background-color: #fff4f3 !important;
   color: #5f1712;
 }
 
