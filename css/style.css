@@ -1446,3 +1446,9 @@ body{
 .cancellation-status p:last-child {
   margin-bottom: 0;
 }
+
+/* Ensure hidden trip notices remain hidden */
+
+[hidden] {
+  display: none !important;
+}
