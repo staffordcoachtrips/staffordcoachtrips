@@ -1,1 +1,349 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Important Stafford Coach Trips updates, including cancellations, postponements and significant changes to advertised journeys.">
+  <meta name="theme-color" content="#24102f">
+  <title>Trip Updates | Stafford Coach Trips</title>
+  <style>
+    :root {
+      --ink: #19151c;
+      --muted: #665f6a;
+      --plum-950: #24102f;
+      --plum-900: #321142;
+      --plum-700: #652a7d;
+      --plum-100: #f1e8f5;
+      --gold: #f4b942;
+      --paper: #fff;
+      --wash: #f7f5f8;
+      --line: #e6dfe9;
+      --shadow: 0 18px 50px rgba(36, 16, 47, .13);
+      --radius: 20px;
+      --max: 1180px;
+    }
 
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--wash);
+      font: 16px/1.65 Arial, Helvetica, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    :focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+    .container { width: min(var(--max), calc(100% - 40px)); margin-inline: auto; }
+    .skip-link {
+      position: fixed; left: 16px; top: -80px; z-index: 9999;
+      padding: 11px 16px; background: #fff; color: var(--plum-950);
+      border-radius: 8px; font-weight: 800;
+    }
+    .skip-link:focus { top: 16px; }
+
+    .topbar {
+      padding: 7px 20px;
+      color: #fff;
+      background: var(--plum-950);
+      text-align: center;
+      font-size: 14px;
+    }
+    .site-header {
+      position: sticky; top: 0; z-index: 1000;
+      background: rgba(255,255,255,.96);
+      border-bottom: 1px solid rgba(50,17,66,.1);
+      backdrop-filter: blur(14px);
+    }
+    .nav-wrap {
+      min-height: 78px;
+      display: flex; align-items: center; justify-content: space-between; gap: 24px;
+    }
+    .brand {
+      display: flex; align-items: center; gap: 12px;
+      text-decoration: none; color: var(--plum-950);
+      font-weight: 900; font-size: 21px; letter-spacing: -.3px;
+    }
+    .brand-mark {
+      display: grid; place-items: center; width: 44px; height: 44px;
+      border-radius: 12px; color: #fff;
+      background: linear-gradient(135deg, var(--plum-700), var(--plum-950));
+      box-shadow: 0 7px 18px rgba(50,17,66,.24);
+    }
+    .nav-links { display: flex; align-items: center; gap: 4px; }
+    .nav-links a {
+      padding: 10px 11px; border-radius: 8px;
+      color: #403745; text-decoration: none; font-weight: 700;
+    }
+    .nav-links a:hover,
+    .nav-links a[aria-current="page"] { color: var(--plum-700); background: var(--plum-100); }
+    .nav-links .nav-cta { margin-left: 7px; color: #fff; background: var(--plum-700); }
+    .nav-links .nav-cta:hover { color: #fff; background: var(--plum-900); }
+    .menu-button {
+      display: none; padding: 10px 12px; border: 1px solid var(--line);
+      border-radius: 9px; background: #fff; color: var(--plum-950);
+      font: inherit; font-weight: 800; cursor: pointer;
+    }
+
+    .page-hero {
+      position: relative; isolation: isolate; overflow: hidden;
+      min-height: 440px; display: grid; align-items: center;
+      text-align: center; color: #fff;
+      background:
+        linear-gradient(rgba(31,6,46,.64), rgba(43,10,62,.86)),
+        url("pexels-lich-24738022.jpg") center/cover no-repeat;
+    }
+    .page-hero::after {
+      content: ""; position: absolute; z-index: -1; inset: auto -8% -210px 45%;
+      width: 600px; height: 420px; border-radius: 50%;
+      background: rgba(244,185,66,.15); filter: blur(25px);
+    }
+    .hero-content { max-width: 850px; margin-inline: auto; padding: 90px 0 105px; }
+    .eyebrow {
+      margin: 0 0 12px; color: #ffe3a7;
+      font-size: 13px; font-weight: 900; letter-spacing: 1.6px;
+      text-transform: uppercase;
+    }
+    .page-hero h1 {
+      margin: 0;
+      font-size: clamp(44px, 7vw, 72px); line-height: 1.05;
+      letter-spacing: -2.4px;
+    }
+    .hero-lead {
+      max-width: 720px; margin: 18px auto 0;
+      color: rgba(255,255,255,.9); font-size: clamp(18px, 2.1vw, 21px);
+    }
+
+    main { min-height: 500px; }
+    .section { padding: 92px 0; }
+    .updates-panel {
+      max-width: 900px; margin-inline: auto; padding: clamp(30px, 6vw, 60px);
+      border: 1px solid var(--line); border-radius: var(--radius);
+      background: var(--paper); box-shadow: var(--shadow);
+    }
+    .updates-panel h2 {
+      margin: 0 0 18px; color: var(--plum-950);
+      font-size: clamp(30px, 5vw, 43px); line-height: 1.12;
+      letter-spacing: -1.2px;
+    }
+    .updates-panel > p { margin: 0 0 16px; color: var(--muted); font-size: 18px; }
+    .current-status {
+      display: grid; grid-template-columns: auto 1fr; gap: 17px;
+      margin: 32px 0; padding: 23px;
+      border: 1px solid #d9cce0; border-left: 5px solid var(--plum-700);
+      border-radius: 12px; background: var(--plum-100);
+    }
+    .status-icon {
+      display: grid; place-items: center; width: 46px; height: 46px;
+      border-radius: 50%; color: #fff; background: var(--plum-700);
+      font-size: 22px; font-weight: 900;
+    }
+    .current-status h3 { margin: 0 0 5px; color: var(--plum-950); font-size: 21px; }
+    .current-status p { margin: 0; color: #514857; }
+    .button {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      min-height: 50px; padding: 13px 22px; border: 2px solid transparent;
+      border-radius: 10px; color: #fff; background: var(--plum-700);
+      text-decoration: none; text-align: center; font-weight: 900;
+      line-height: 1.2; transition: .2s ease;
+    }
+    .button:hover { background: var(--plum-900); transform: translateY(-2px); }
+
+    footer {
+      padding: 65px 0 25px; color: rgba(255,255,255,.76);
+      background: var(--plum-950);
+    }
+    .footer-grid {
+      display: grid; grid-template-columns: 1.3fr .8fr .9fr;
+      gap: 45px; padding-bottom: 42px;
+    }
+    footer .brand { color: #fff; margin-bottom: 15px; }
+    footer h3 { margin: 0 0 12px; color: #fff; font-size: 16px; }
+    footer p { margin: 7px 0; }
+    footer ul { margin: 0; padding: 0; list-style: none; }
+    footer li { margin: 7px 0; }
+    footer a { color: inherit; }
+    .footer-bottom {
+      display: flex; justify-content: space-between; gap: 20px;
+      padding-top: 23px; border-top: 1px solid rgba(255,255,255,.12);
+      font-size: 13px;
+    }
+
+    @media (max-width: 920px) {
+      .menu-button { display: inline-block; }
+      .nav-links {
+        display: none; position: absolute; left: 20px; right: 20px; top: 70px;
+        padding: 13px; flex-direction: column; align-items: stretch;
+        border: 1px solid var(--line); border-radius: 13px; background: #fff;
+        box-shadow: var(--shadow);
+      }
+      .nav-links.open { display: flex; }
+      .nav-links .nav-cta { margin-left: 0; text-align: center; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .container { width: min(100% - 28px, var(--max)); }
+      .brand { font-size: 18px; }
+      .page-hero { min-height: 400px; background-position: 62% center; }
+      .hero-content { padding: 75px 0 90px; }
+      .page-hero h1 { letter-spacing: -1.5px; }
+      .section { padding: 65px 0; }
+      .updates-panel { padding: 28px 22px; }
+      .current-status { grid-template-columns: 1fr; }
+      .button { width: 100%; }
+      .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+      .footer-bottom { flex-direction: column; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html" aria-label="Stafford Coach Trips home">
+        <span class="brand-mark" aria-hidden="true">🚌</span>
+        <span>Stafford Coach Trips</span>
+      </a>
+      <button class="menu-button" type="button" aria-expanded="false" aria-controls="main-menu">Menu</button>
+      <nav class="nav-links" id="main-menu" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="current-trips.html">Current Trip</a>
+        <a href="future-trips.html">Future Trips</a>
+        <a href="past-trips.html">Past Trips</a>
+        <a href="pickup-points.html">Pick-up Points</a>
+        <a href="faqs.html">FAQs</a>
+        <a href="contact.html">Contact</a>
+        <a class="nav-cta" href="https://www.ticketsource.co.uk/staffordcoachtrips" target="_blank" rel="noopener noreferrer">Book online</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <div class="container">
+      <div class="hero-content">
+        <p class="eyebrow">Important journey information</p>
+        <h1>Trip Updates</h1>
+        <p class="hero-lead">The latest information about changes affecting Stafford Coach Trips journeys.</p>
+      </div>
+    </div>
+  </section>
+
+  <main id="main">
+    <section class="section">
+      <div class="container">
+        <article class="updates-panel">
+          <h2>Trip Updates</h2>
+          <p>This page provides important updates about Stafford Coach Trips journeys, including any cancellations, postponements or significant changes to advertised travel arrangements.</p>
+          <p>When an important change affects a planned journey, details will be published here. Customers directly affected will also be contacted using the email address provided when booking.</p>
+
+          <div class="current-status">
+  <span class="status-icon cancellation-icon" aria-hidden="true">!</span>
+
+  <div>
+    <span class="update-status">Cancelled</span>
+
+    <h3>Alton Towers – Saturday 29 August 2026</h3>
+
+    <p class="update-date">
+      Update issued: 19 August 2026
+    </p>
+
+    <p>
+      Unfortunately, this planned coach journey has been cancelled because
+      the minimum number of passenger bookings required for the coach to
+      operate was not reached.
+    </p>
+
+    <p>
+      Everyone who booked and paid for the journey is being contacted directly
+      and will receive a full refund to their original payment method.
+    </p>
+
+    <p>
+      Please allow time for TicketSource and your bank or card provider to
+      process the refund and return the money to your account.
+    </p>
+
+    <p>
+      We sincerely apologise for the disappointment and thank everyone who
+      booked, shared or supported this planned journey.
+    </p>
+  </div>
+</div>
+
+<div class="current-status cancellation-status" style="display: none;">
+  <span class="status-icon" aria-hidden="true">✓</span>
+  <div>
+    <h3>No current trip updates</h3>
+    <p>There are currently no cancellations, postponements or significant changes to report.</p>
+  </div>
+</div>
+          
+          <a class="button" href="current-trips.html">View Current Trips <span aria-hidden="true">→</span></a>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">🚌</span><span>Stafford Coach Trips</span></a>
+          <p>Affordable coach travel from Stafford to attractions, events and memorable days out.</p>
+        </div>
+        <div>
+          <h3>Explore</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="current-trips.html">Current trip</a></li>
+            <li><a href="future-trips.html">Future trips</a></li>
+            <li><a href="past-trips.html">Past trips</a></li>
+            <li><a href="cancelled-trips.html" aria-current="page">Trip updates</a></li>
+            <li><a href="pickup-points.html">Pick-up points</a></li>
+            <li><a href="faqs.html">FAQs</a></li>
+            <li><a href="support.html">❤️ Support Stafford Coach Trips</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Booking and support</h3>
+          <ul>
+            <li><a href="https://www.ticketsource.co.uk/staffordcoachtrips" target="_blank" rel="noopener noreferrer">Book through TicketSource</a></li>
+            <li><a href="mailto:staffordcoachtrips@gmail.com">Email Stafford Coach Trips</a></li>
+            <li><a href="https://www.facebook.com/profile.php?id=61590883177842" target="_blank" rel="noopener noreferrer">Follow on Facebook</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="year">2026</span> Stafford Coach Trips. All rights reserved.</span>
+        <span>Coach travel and attraction admission are sold separately unless clearly stated.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const menuButton = document.querySelector(".menu-button");
+    const menu = document.querySelector(".nav-links");
+
+    menuButton.addEventListener("click", () => {
+      const open = menu.classList.toggle("open");
+      menuButton.setAttribute("aria-expanded", String(open));
+    });
+
+    menu.querySelectorAll("a").forEach(link => link.addEventListener("click", () => {
+      menu.classList.remove("open");
+      menuButton.setAttribute("aria-expanded", "false");
+    }));
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
