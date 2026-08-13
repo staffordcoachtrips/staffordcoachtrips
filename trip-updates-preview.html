@@ -141,6 +141,30 @@
     }
     .current-status h3 { margin: 0 0 5px; color: var(--plum-950); font-size: 21px; }
     .current-status p { margin: 0; color: #514857; }
+    .current-status.cancellation-status {
+      display: block;
+      border: 2px solid #8f1711;
+      border-left: 6px solid #6f100c;
+      background: #b42318;
+      color: #fff;
+      box-shadow: 0 12px 30px rgba(180, 35, 24, .22);
+    }
+    .cancellation-status .cancellation-banner {
+      display: inline-flex; align-items: center; gap: 10px;
+      margin: 0 0 18px; padding: 9px 15px;
+      border-radius: 8px; background: #fff; color: #b42318;
+      font-size: 16px; font-weight: 900; letter-spacing: 1px;
+    }
+    .cancellation-status .cancellation-icon {
+      display: inline-grid; place-items: center;
+      width: 26px; height: 26px; border-radius: 50%;
+      background: #b42318; color: #fff;
+      font-size: 18px; line-height: 1;
+    }
+    .cancellation-status h3,
+    .cancellation-status p { color: #fff; }
+    .cancellation-status h3 { margin-bottom: 5px; }
+    .cancellation-status p + p { margin-top: 16px; }
     .button {
       display: inline-flex; align-items: center; justify-content: center; gap: 8px;
       min-height: 50px; padding: 13px 22px; border: 2px solid transparent;
@@ -245,10 +269,11 @@
           <p>When an important change affects a planned journey, details will be published here. Customers directly affected will also be contacted using the email address provided when booking.</p>
 
           <div class="current-status cancellation-status">
-  <span class="status-icon cancellation-icon" aria-hidden="true">!</span>
-
   <div>
-    <span class="update-status">CANCELLED</span>
+    <div class="cancellation-banner">
+      <span class="cancellation-icon" aria-hidden="true">×</span>
+      <span class="update-status">CANCELLED</span>
+    </div>
 
     <h3>Alton Towers – Saturday 29 August 2026</h3>
 
