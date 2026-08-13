@@ -1,96 +1,469 @@
-We are continuing to build Stafford Coach Trips V2.
+<!DOCTYPE html>
+<html lang="en">
 
-I want to create a brand new page called next-trip.html.
+<head>
 
-This page will become the official Next Trip page and will feature only one upcoming destination that is expected to be the next trip to open for bookings.
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-Do not redesign my website.
+    <title>Next Trip | Stafford Coach Trips</title>
 
-Do not alter my branding.
+    <meta name="description"
+        content="Discover the next planned Stafford Coach Trips adventure to Drayton Manor Theme Park and register your interest before bookings open.">
 
-The new page must match my existing website exactly, including:
+    <meta name="keywords"
+        content="Stafford Coach Trips, Next Trip, Drayton Manor, Theme Park, Coach Trips from Stafford">
 
-Header
-Navigation
-Hero section
-Colours
-Typography
-Buttons
-Card styles
-Spacing
-Footer
-Responsive layout
+    <meta name="author" content="Stafford Coach Trips">
 
-The page should look as though it has always been part of Stafford Coach Trips.
+    <link rel="stylesheet" href="css/style.css">
 
-Page Title
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
-⭐ Next Trip
+    <link rel="icon" href="images/favicon.png">
 
-Hero Text
-Our Next Adventure
+    <style>
+        .next-trip-card {
+            max-width: 900px;
+            margin: 0 auto;
+        }
 
-Be among the first to discover the next planned Stafford Coach Trips adventure.
+        .planned-prices {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin: 28px 0;
+        }
 
-This page showcases the destination we are currently planning to launch next. Here you'll find early information about the trip, planned pricing, what's included and how to register your interest before bookings officially open.
+        .planned-price {
+            padding: 18px 14px;
+            border-radius: 12px;
+            background: #f7f3fb;
+            text-align: center;
+        }
 
-Featured Destination
-🎢 Drayton Manor Theme Park
-Planned for Summer 2027
+        .planned-price span {
+            display: block;
+            margin-bottom: 4px;
+            color: #555;
+            font-size: 0.95rem;
+        }
 
-Use the existing Drayton Manor image already used elsewhere on my website.
+        .planned-price strong {
+            color: #4b2d83;
+            font-size: 1.45rem;
+        }
 
-The page should explain that this is the next planned Stafford Coach Trips excursion.
+        .included-heading {
+            margin: 28px 0 14px;
+            color: #4b2d83;
+        }
 
-Include wording similar to:
+        .next-trip-included {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: 26px;
+        }
 
-Join us for a fantastic family day out at Drayton Manor Theme Park.
+        .next-trip-included span {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 13px;
+            border-radius: 10px;
+            background: #f7f3fb;
+            font-weight: 600;
+        }
 
-Enjoy thrilling rollercoasters, family attractions, Thomas Land and beautiful park surroundings with comfortable executive coach travel from Stafford.
+        .next-trip-included i {
+            width: 22px;
+            color: #4b2d83;
+            text-align: center;
+        }
 
-Planned Prices
+        .planning-notice {
+            margin: 26px 0;
+            padding: 18px 20px;
+            border: 1px solid #dfc96b;
+            border-left: 5px solid #d2ad1f;
+            border-radius: 10px;
+            background: #fff9df;
+            color: #4b421f;
+        }
 
-Display these as planned prices.
+        .planning-notice i {
+            margin-right: 8px;
+            color: #a78100;
+        }
 
-Adult (12+) — £45
+        .next-trip-card .interest-btn {
+            display: inline-block;
+            text-align: center;
+        }
 
-Child (2–11) — £30
+        .future-updates {
+            background: #f7f3fb;
+        }
 
-Under 2 — FREE
+        .update-journey {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+            margin-top: 35px;
+        }
 
-What's Included
+        .update-step {
+            padding: 25px 20px;
+            border-radius: 14px;
+            background: #fff;
+            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
+            text-align: center;
+        }
 
-Include attractive icons for:
+        .update-step i {
+            margin-bottom: 12px;
+            color: #4b2d83;
+            font-size: 2rem;
+        }
 
-🚌 Executive Coach Travel
+        .update-step h3 {
+            margin: 0 0 8px;
+            color: #4b2d83;
+        }
 
-🎟 Theme Park Admission
+        .update-step p {
+            margin: 0;
+        }
 
-📍 Stafford Pick-up Points
+        @media (max-width: 768px) {
+            .planned-prices,
+            .update-journey {
+                grid-template-columns: 1fr;
+            }
 
-👨‍👩‍👧‍👦 Family Friendly
+            .next-trip-included {
+                grid-template-columns: 1fr;
+            }
 
-Important Notice
+            .next-trip-card .interest-btn {
+                display: block;
+                width: 100%;
+            }
+        }
+    </style>
 
-Include a professionally styled information box saying:
+</head>
 
-Please note: This trip is currently in the planning stage. Prices, travel dates and availability are provisional and subject to confirmation before bookings officially open.
+<body>
 
-Register Interest Button
+<header>
 
-Instead of Book Now, use:
+    <div class="container navbar">
 
-Register Your Interest
+        <a href="index.html" class="logo">
+            Stafford <span>Coach Trips</span>
+        </a>
 
-Link it to:
+        <div class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
 
-interest.html?trip=Drayton%20Manor
-Future Updates
+        <nav>
 
-Add a section explaining that this page will always display the next Stafford Coach Trips adventure.
+            <ul>
 
-Once bookings open, the trip will move to Current Trips, another planned destination will become the Next Trip, and completed journeys will eventually move to Past Trips.
+                <li><a href="index.html">Home</a></li>
 
-Return the complete next-trip.html file ready to upload to GitHub.
+                <li><a href="current-trips.html">Current Trips</a></li>
 
-Do not modify any other pages.
+                <li><a href="future-trips.html">Future Trips</a></li>
+
+                <li><a href="past-trips.html">Past Trips</a></li>
+
+                <li><a href="faqs.html">FAQ</a></li>
+
+                <li><a href="pickup-points.html">Pickup Points</a></li>
+
+                <li><a href="contact.html">Contact</a></li>
+
+            </ul>
+
+        </nav>
+
+    </div>
+
+</header>
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="container">
+
+        <div class="hero-content animate-up">
+
+            <h1>⭐ Next Trip</h1>
+
+            <h2>Our Next Adventure</h2>
+
+            <p>
+                Be among the first to discover the next planned Stafford Coach Trips adventure.
+            </p>
+
+            <a href="#next-trip" class="btn">
+                Discover Our Next Trip
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- INTRODUCTION -->
+
+<section>
+
+    <div class="container">
+
+        <h2 class="section-title">Our Next Adventure</h2>
+
+        <p class="section-text">
+            This page showcases the destination we are currently planning to launch next.
+            Here you'll find early information about the trip, planned pricing, what's
+            included and how to register your interest before bookings officially open.
+        </p>
+
+    </div>
+
+</section>
+
+<!-- FEATURED DESTINATION -->
+
+<section id="next-trip">
+
+    <div class="container">
+
+        <div class="trip-card fade-up next-trip-card">
+
+            <div class="trip-image">
+
+                <div class="ribbon">Planned for Summer 2027</div>
+
+                <img src="images/Drayton Manor.webp"
+                     alt="Drayton Manor Theme Park">
+
+                <div class="trip-title-overlay">
+                    <h3>Drayton Manor Theme Park</h3>
+                    <p>Planned for Summer 2027</p>
+                </div>
+
+            </div>
+
+            <div class="trip-content">
+
+                <span class="destination-type">Next Planned Trip</span>
+
+                <p>
+                    Join us for a fantastic family day out at Drayton Manor Theme Park.
+                </p>
+
+                <p>
+                    Enjoy thrilling rollercoasters, family attractions, Thomas Land and
+                    beautiful park surroundings with comfortable executive coach travel
+                    from Stafford.
+                </p>
+
+                <h3 class="included-heading">Planned Prices</h3>
+
+                <div class="planned-prices">
+                    <div class="planned-price">
+                        <span>Adult (12+)</span>
+                        <strong>£45</strong>
+                    </div>
+
+                    <div class="planned-price">
+                        <span>Child (2–11)</span>
+                        <strong>£30</strong>
+                    </div>
+
+                    <div class="planned-price">
+                        <span>Under 2</span>
+                        <strong>FREE</strong>
+                    </div>
+                </div>
+
+                <h3 class="included-heading">What's Included</h3>
+
+                <div class="next-trip-included">
+                    <span><i class="fas fa-bus"></i> Executive Coach Travel</span>
+                    <span><i class="fas fa-ticket-alt"></i> Theme Park Admission</span>
+                    <span><i class="fas fa-map-marker-alt"></i> Stafford Pick-up Points</span>
+                    <span><i class="fas fa-people-group"></i> Family Friendly</span>
+                </div>
+
+                <div class="planning-notice">
+                    <i class="fas fa-circle-info"></i>
+                    <strong>Please note:</strong> This trip is currently in the planning stage.
+                    Prices, travel dates and availability are provisional and subject to
+                    confirmation before bookings officially open.
+                </div>
+
+                <a href="interest.html?trip=Drayton%20Manor"
+                   class="interest-btn">
+                    Register Your Interest
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- FUTURE UPDATES -->
+
+<section class="future-updates">
+
+    <div class="container">
+
+        <h2 class="section-title">Future Updates</h2>
+
+        <p class="section-text">
+            This page will always display the next Stafford Coach Trips adventure.
+            As each journey progresses, its place on the website will be updated.
+        </p>
+
+        <div class="update-journey">
+
+            <div class="update-step fade-up">
+                <i class="fas fa-star"></i>
+                <h3>Next Trip</h3>
+                <p>The destination currently being prepared to open for bookings.</p>
+            </div>
+
+            <div class="update-step fade-up">
+                <i class="fas fa-calendar-check"></i>
+                <h3>Current Trips</h3>
+                <p>Once bookings open, the trip will move to Current Trips and another planned destination will become the Next Trip.</p>
+            </div>
+
+            <div class="update-step fade-up">
+                <i class="fas fa-clock-rotate-left"></i>
+                <h3>Past Trips</h3>
+                <p>After the journey is completed, it will eventually move to Past Trips.</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div class="container">
+
+        <div class="footer-grid">
+
+            <div class="footer-column">
+
+                <h3>Stafford Coach Trips</h3>
+
+                <p>
+                    Affordable and friendly executive coach travel from Stafford,
+                    providing memorable day trips across the UK.
+                </p>
+
+            </div>
+
+            <div class="footer-column">
+
+                <h3>Quick Links</h3>
+
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="current-trips.html">Current Trips</a></li>
+                    <li><a href="future-trips.html">Future Trips</a></li>
+                    <li><a href="pickup-points.html">Pickup Points</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="support.html">❤️ Support Stafford Coach Trips</a></li>
+                </ul>
+
+            </div>
+
+            <div class="footer-column">
+
+                <h3>Legal</h3>
+
+                <ul>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms &amp; Conditions</a></li>
+                </ul>
+
+            </div>
+
+            <div class="footer-column">
+
+                <h3>Follow Us</h3>
+
+                <div class="footer-social">
+
+                    <a href="https://facebook.com/StaffordCoachTrips" target="_blank" aria-label="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+
+                    <a href="mailto:info@staffordcoachtrips.co.uk" aria-label="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+
+                    <a href="https://www.staffordcoachtrips.co.uk" target="_blank" aria-label="Website">
+                        <i class="fas fa-globe"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="copyright">
+            &copy; 2026 Stafford Coach Trips. All Rights Reserved.
+        </div>
+
+    </div>
+
+</footer>
+
+<script>
+
+const menuToggle = document.querySelector('.menu-toggle');
+const nav = document.querySelector('nav');
+
+menuToggle.addEventListener('click', () => {
+    nav.classList.toggle('active');
+});
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting){
+            entry.target.classList.add('show');
+        }
+    });
+},{
+    threshold:0.2
+});
+
+document.querySelectorAll('.fade-up').forEach(el=>{
+    observer.observe(el);
+});
+
+</script>
+
+</body>
+</html>
