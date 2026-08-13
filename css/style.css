@@ -1460,3 +1460,22 @@ body{
 [hidden] {
   display: none !important;
 }
+
+/* Final cancellation colour override */
+.current-status.cancellation-status {
+  background: #ffe4e1 !important;
+  border: 2px solid #e6b4af !important;
+  border-left: 6px solid #b42318 !important;
+  color: #5f1712 !important;
+}
+
+.current-status.cancellation-status .status-icon,
+.current-status.cancellation-status .update-status {
+  background: #b42318 !important;
+  color: #ffffff !important;
+}
+
+.current-status.cancellation-status h3,
+.current-status.cancellation-status p {
+  color: #5f1712 !important;
+}
