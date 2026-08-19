@@ -228,6 +228,32 @@
     }
     .microcopy { margin: 12px 0 0; color: var(--muted); font-size: 13px; }
 
+    .cancellation-panel {
+      margin: 0 0 32px; padding: 25px 27px;
+      border: 1px solid #e6b4af; border-left: 6px solid #b42318;
+      border-radius: 12px; background: #ffe4e1; color: #5f1712;
+      box-shadow: 0 10px 30px rgba(95,23,18,.08);
+    }
+    .cancellation-panel h3 {
+      margin: 0 0 9px; color: #5f1712;
+      font-size: clamp(22px, 3vw, 28px); line-height: 1.2;
+    }
+    .cancellation-panel p { margin: 7px 0 0; }
+    .cancellation-banner {
+      position: absolute; z-index: 2; top: 50%; left: 50%;
+      width: 145%; padding: 15px 20px;
+      transform: translate(-50%, -50%) rotate(-14deg);
+      border-block: 3px solid rgba(255,255,255,.9);
+      color: #fff; background: #b42318;
+      box-shadow: 0 8px 22px rgba(45,0,0,.4);
+      text-align: center; font-size: clamp(27px, 4vw, 42px);
+      font-weight: 900; letter-spacing: 2px; line-height: 1;
+      text-shadow: 0 2px 3px rgba(0,0,0,.25);
+    }
+    .status-cancelled { color: #7a1b14; background: #ffe4e1; }
+    .status-cancelled::before { background: #b42318; }
+    .cancelled-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+
     .destination-videos { background: var(--plum-100); }
     .video-grid { display: grid; gap: 28px; }
     .video-card {
@@ -347,6 +373,8 @@
       .steps, .benefits, .pickup-grid { grid-template-columns: 1fr; }
       .trip-photo { min-height: 320px; }
       .trip-copy { padding: 28px 22px; }
+      .cancellation-panel { padding: 22px 20px; }
+      .cancelled-actions { flex-direction: column; }
       .video-copy { padding: 28px 22px; }
       .video-copy .button { align-self: stretch; }
       .pickup-card { grid-template-columns: 1fr; }
@@ -404,31 +432,39 @@
     </div>
   </section>
 
-  <div class="container quick-facts" aria-label="Next trip at a glance">
-    <div class="fact"><small>Next destination</small><strong>Alton Towers</strong></div>
-    <div class="fact"><small>Travel date</small><strong>29 August 2026</strong></div>
-    <div class="fact"><small>Return fare</small><strong>£15 per person<br><small>Under 3s travel FREE</small></strong></div>
-        <div class="fact"><small>Departure area</small><strong>Stafford</strong></div>
-  </div>
+  <div class="container quick-facts" aria-label="Cancelled trip at a glance">
+  <div class="fact"><small>Cancelled trip</small><strong>Alton Towers</strong></div>
+  <div class="fact"><small>Scheduled date</small><strong>29 August 2026</strong></div>
+  <div class="fact"><small>Trip status</small><strong>Cancelled</strong></div>
+  <div class="fact"><small>Customer refunds</small><strong>Full refund</strong></div>
+</div>
 
   <main id="main">
-    <section class="section" id="trips">
-      <div class="container">
-        <div class="section-heading">
-          <p class="eyebrow">Now booking</p>
-          <h2>Our next coach trip</h2>
-          <p>Enjoy the day without worrying about driving, parking or organising a taxi home.</p>
-        </div>
+  <section class="section" id="trips">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">Important trip update</p>
+        <h2>Alton Towers trip cancelled</h2>
+        <p>Unfortunately, the planned coach trip to Alton Towers on Saturday 29 August 2026 will no longer be going ahead.</p>
+      </div>
+
+        <aside class="cancellation-panel" role="status" aria-labelledby="cancellation-title">
+          <h3 id="cancellation-title">🚫 Trip Status: Cancelled</h3>
+          <p>Unfortunately, this trip has been cancelled because the minimum number of bookings required to operate was not reached.</p>
+          <p>All customers who booked will receive a <strong>full refund</strong> using their original payment method.</p>
+          <p>We sincerely thank everyone who supported this trip and look forward to welcoming you on one of our future adventures.</p>
+        </aside>
 
         <article class="trip-card">
           <div class="trip-photo" role="img" aria-label="Roller coaster representing the trip to Alton Towers">
+            <div class="cancellation-banner" aria-label="Cancelled">❌ CANCELLED</div>
             <div class="photo-label">
               <strong>Alton Towers Resort</strong>
               <span>Return coach travel from Stafford</span>
             </div>
           </div>
           <div class="trip-copy">
-            <span class="status">Booking open</span>
+            <span class="status status-cancelled">Cancelled</span>
             <h2>Alton Towers</h2>
             <p class="trip-date">Saturday 29 August 2026</p>
             <div class="fare"><strong>£15</strong><span>return, per passenger<br>
@@ -441,18 +477,10 @@
               <li>A seat must be booked for every passenger</li>
             </ul>
             <div class="notice"><strong>Coach travel only.</strong> Admission to Alton Towers is not included. Please arrange attraction tickets separately.</div>
-            <div class="countdown" id="ticket-countdown" role="timer" aria-live="off" aria-label="Time remaining until ticket sales close">
-              <p class="countdown-title">Bookings close on</p>
-              <p class="countdown-deadline">8:00pm on Wednesday 19 August 2026</p>
-              <div class="countdown-grid">
-                <div class="countdown-unit"><span class="countdown-number" data-countdown="days">00</span><span class="countdown-label">Days</span></div>
-                <div class="countdown-unit"><span class="countdown-number" data-countdown="hours">00</span><span class="countdown-label">Hours</span></div>
-                <div class="countdown-unit"><span class="countdown-number" data-countdown="minutes">00</span><span class="countdown-label">Minutes</span></div>
-                <div class="countdown-unit"><span class="countdown-number" data-countdown="seconds">00</span><span class="countdown-label">Seconds</span></div>
-              </div>
+            <div class="cancelled-actions">
+              <a class="button button-plum" href="next-trip.html">🚌 View Next Proposed Trip</a>
+              <a class="button button-plum" href="future-trips.html">🌍 Browse Future Trips</a>
             </div>
-            <a class="button button-plum" href="https://www.ticketsource.co.uk/staffordcoachtrips" target="_blank" rel="noopener noreferrer">Book this trip securely</a>
-            <p class="microcopy">You will be taken to our TicketSource booking page to complete your order.</p>
           </div>
         </article>
       </div>
@@ -617,33 +645,6 @@
     }));
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    const ticketCountdown = document.getElementById("ticket-countdown");
-    const ticketSalesClose = new Date("2026-08-19T20:00:00+01:00").getTime();
-
-    function updateTicketCountdown() {
-      const timeRemaining = ticketSalesClose - Date.now();
-
-      if (timeRemaining <= 0) {
-        ticketCountdown.innerHTML = '<p class="countdown-closed">Ticket sales are now closed.</p>';
-        ticketCountdown.setAttribute("aria-label", "Ticket sales are now closed");
-        clearInterval(countdownInterval);
-        return;
-      }
-
-      const days = Math.floor(timeRemaining / 86400000);
-      const hours = Math.floor((timeRemaining % 86400000) / 3600000);
-      const minutes = Math.floor((timeRemaining % 3600000) / 60000);
-      const seconds = Math.floor((timeRemaining % 60000) / 1000);
-
-      ticketCountdown.querySelector('[data-countdown="days"]').textContent = String(days).padStart(2, "0");
-      ticketCountdown.querySelector('[data-countdown="hours"]').textContent = String(hours).padStart(2, "0");
-      ticketCountdown.querySelector('[data-countdown="minutes"]').textContent = String(minutes).padStart(2, "0");
-      ticketCountdown.querySelector('[data-countdown="seconds"]').textContent = String(seconds).padStart(2, "0");
-    }
-
-    let countdownInterval;
-    updateTicketCountdown();
-    countdownInterval = setInterval(updateTicketCountdown, 1000);
   </script>
 </body>
 </html>
