@@ -29,6 +29,24 @@
             margin: 0 auto;
         }
 
+        .next-trip-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 30px;
+            align-items: start;
+        }
+
+        .next-trip-grid .next-trip-card {
+            max-width: none;
+            margin: 0;
+        }
+
+        .next-trip-grid .next-trip-card:nth-child(3) {
+            grid-column: 1 / -1;
+            width: calc(50% - 15px);
+            justify-self: center;
+        }
+
         .planned-prices {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -138,6 +156,15 @@
         }
 
         @media (max-width: 768px) {
+            .next-trip-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .next-trip-grid .next-trip-card:nth-child(3) {
+                grid-column: auto;
+                width: auto;
+            }
+
             .planned-prices,
             .update-journey {
                 grid-template-columns: 1fr;
@@ -204,12 +231,12 @@
 
         <div class="hero-content animate-up">
 
-            <h1>⭐ Next Trip</h1>
+            <h1>⭐ Next Proposed Trip</h1>
 
-            <h2>Our Next Adventure</h2>
+            <h2>Help Shape Our Next Adventure</h2>
 
             <p>
-                Be among the first to discover the next planned Stafford Coach Trips adventure.
+                These are the destinations we're currently considering for future Stafford Coach Trips.
             </p>
 
             <a href="#next-trip" class="btn">
@@ -228,12 +255,16 @@
 
     <div class="container">
 
-        <h2 class="section-title">Our Next Adventure</h2>
+        <h2 class="section-title">Help Shape Our Next Adventure</h2>
 
         <p class="section-text">
-            This page showcases the destination we are currently planning to launch next.
-            Here you'll find early information about the trip, planned pricing, what's
-            included and how to register your interest before bookings officially open.
+            Register your interest in any trips you'd like to see. The destinations receiving
+            the greatest level of interest will be prioritised for future planning and bookings.
+        </p>
+
+        <p class="section-text">
+            Registering your interest does not commit you to booking, but it helps us understand
+            which destinations our community would most like us to organise.
         </p>
 
     </div>
@@ -244,7 +275,7 @@
 
 <section id="next-trip">
 
-    <div class="container">
+    <div class="container next-trip-grid">
 
         <div class="trip-card fade-up next-trip-card">
 
@@ -324,6 +355,150 @@
 
         </div>
 
+        <div class="trip-card fade-up next-trip-card">
+
+            <div class="trip-image">
+
+                <div class="ribbon">Proposed for Summer 2027</div>
+
+                <img src="images/Alton Towers.jpg"
+                     alt="Alton Towers Resort">
+
+                <div class="trip-title-overlay">
+                    <h3>Alton Towers</h3>
+                    <p>Planned for Summer 2027</p>
+                </div>
+
+            </div>
+
+            <div class="trip-content">
+
+                <span class="destination-type">Proposed for Summer 2027</span>
+
+                <p>
+                    Join us for an unforgettable summer day out at Alton Towers Resort.
+                </p>
+
+                <p>
+                    Experience world-famous rollercoasters, exciting family attractions
+                    and CBeebies Land, with comfortable executive coach travel from Stafford.
+                </p>
+
+                <h3 class="included-heading">Planned Prices</h3>
+
+                <div class="planned-prices">
+                    <div class="planned-price">
+                        <span>Adult (12+)</span>
+                        <strong>TBC</strong>
+                    </div>
+
+                    <div class="planned-price">
+                        <span>Child (2–11)</span>
+                        <strong>TBC</strong>
+                    </div>
+
+                    <div class="planned-price">
+                        <span>Under 2</span>
+                        <strong>TBC</strong>
+                    </div>
+                </div>
+
+                <h3 class="included-heading">What's Included</h3>
+
+                <div class="next-trip-included">
+                    <span><i class="fas fa-bus"></i> Executive Coach Travel</span>
+                    <span><i class="fas fa-ticket-alt"></i> Theme Park Admission</span>
+                    <span><i class="fas fa-map-marker-alt"></i> Wildwood Coop, Stafford Railway Station and Uttoxeter Rail Station Pick-up Points</span>
+                    <span><i class="fas fa-people-group"></i> Family Friendly</span>
+                </div>
+
+                <div class="planning-notice">
+                    <i class="fas fa-circle-info"></i>
+                    <strong>Please note:</strong> This trip is currently in the planning stage.
+                    Prices, travel dates and availability are provisional and subject to
+                    confirmation before bookings officially open.
+                </div>
+
+                <a href="interest.html?trip=Alton%20Towers" class="interest-btn">
+                    Register Your Interest
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="trip-card fade-up next-trip-card">
+
+            <div class="trip-image">
+
+                <div class="ribbon">Proposed for Autumn 2027</div>
+
+                <img src="images/Scarefest Picture.webp"
+                     alt="Alton Towers Scarefest">
+
+                <div class="trip-title-overlay">
+                    <h3>Alton Towers Scarefest</h3>
+                    <p>Planned for Autumn 2027</p>
+                </div>
+
+            </div>
+
+            <div class="trip-content">
+
+                <span class="destination-type">Proposed for Autumn 2027</span>
+
+                <p>
+                    Experience Alton Towers Resort after dark during its spectacular Scarefest season.
+                </p>
+
+                <p>
+                    Enjoy thrilling rides, spooky entertainment and family Halloween fun,
+                    with comfortable executive coach travel from Stafford.
+                </p>
+
+                <h3 class="included-heading">Planned Prices</h3>
+
+                <div class="planned-prices">
+                    <div class="planned-price">
+                        <span>Adult (12+)</span>
+                        <strong>TBC</strong>
+                    </div>
+
+                    <div class="planned-price">
+                        <span>Child (2–11)</span>
+                        <strong>TBC</strong>
+                    </div>
+
+                    <div class="planned-price">
+                        <span>Under 2</span>
+                        <strong>TBC</strong>
+                    </div>
+                </div>
+
+                <h3 class="included-heading">What's Included</h3>
+
+                <div class="next-trip-included">
+                    <span><i class="fas fa-bus"></i> Executive Coach Travel</span>
+                    <span><i class="fas fa-ticket-alt"></i> Theme Park Admission</span>
+                    <span><i class="fas fa-map-marker-alt"></i> Wildwood Coop, Stafford Railway Station and Uttoxeter Rail Station Pick-up Points</span>
+                    <span><i class="fas fa-people-group"></i> Family Friendly</span>
+                </div>
+
+                <div class="planning-notice">
+                    <i class="fas fa-circle-info"></i>
+                    <strong>Please note:</strong> This trip is currently in the planning stage.
+                    Prices, travel dates and availability are provisional and subject to
+                    confirmation before bookings officially open.
+                </div>
+
+                <a href="interest.html?trip=Alton%20Towers%20Scarefest" class="interest-btn">
+                    Register Your Interest
+                </a>
+
+            </div>
+
+        </div>
+        
     </div>
 
 </section>
