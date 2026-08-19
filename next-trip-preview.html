@@ -29,6 +29,24 @@
             margin: 0 auto;
         }
 
+        .next-trip-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 30px;
+            align-items: start;
+        }
+
+        .next-trip-grid .next-trip-card {
+            max-width: none;
+            margin: 0;
+        }
+
+        .next-trip-grid .next-trip-card:nth-child(3) {
+            grid-column: 1 / -1;
+            width: calc(50% - 15px);
+            justify-self: center;
+        }
+
         .planned-prices {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -138,6 +156,15 @@
         }
 
         @media (max-width: 768px) {
+            .next-trip-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .next-trip-grid .next-trip-card:nth-child(3) {
+                grid-column: auto;
+                width: auto;
+            }
+
             .planned-prices,
             .update-journey {
                 grid-template-columns: 1fr;
@@ -248,7 +275,7 @@
 
 <section id="next-trip">
 
-    <div class="container">
+    <div class="container next-trip-grid">
 
         <div class="trip-card fade-up next-trip-card">
 
@@ -619,3 +646,4 @@ document.querySelectorAll('.fade-up').forEach(el=>{
 
 </body>
 </html>
+
