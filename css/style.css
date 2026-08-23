@@ -1518,4 +1518,30 @@ document.querySelectorAll('.trip-slider').forEach(slider => {
 
     }, 3500);
 
+      .payment-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.button-disabled {
+  color: #726b75;
+  background: #e8e3ea;
+  border-color: #d6ceda;
+  cursor: not-allowed;
+  opacity: .85;
+}
+
+.button-disabled:hover {
+  transform: none;
+}
+
+.payment-note {
+  width: 100%;
+  margin: 2px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+      
 });
