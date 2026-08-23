@@ -1545,3 +1545,84 @@ document.querySelectorAll('.trip-slider').forEach(slider => {
 }
       
 });
+
+  /* Drayton Manor payment options */
+
+.payment-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.payment-actions .btn,
+.payment-actions button {
+  flex: 1 1 240px;
+  min-height: 48px;
+  margin: 0;
+  font: inherit;
+  text-align: center;
+}
+
+.payment-actions .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.payment-actions .button-disabled {
+  color: #726b75;
+  background: #e8e3ea;
+  border-color: #d6ceda;
+  cursor: not-allowed;
+  opacity: 0.85;
+  pointer-events: none;
+  touch-action: none;
+  box-shadow: none;
+  transform: none;
+}
+
+.payment-actions .button-disabled:hover,
+.payment-actions .button-disabled:focus,
+.payment-actions .button-disabled:active {
+  color: #726b75;
+  background: #e8e3ea;
+  border-color: #d6ceda;
+  box-shadow: none;
+  transform: none;
+}
+
+.payment-actions .btn:focus-visible {
+  outline: 3px solid #d2ad1f;
+  outline-offset: 3px;
+}
+
+.payment-note {
+  flex-basis: 100%;
+  width: 100%;
+  margin: 2px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.deposit-customer-note {
+  flex-basis: 100%;
+  width: 100%;
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+@media (max-width: 600px) {
+  .payment-actions {
+    flex-direction: column;
+  }
+
+  .payment-actions .btn,
+  .payment-actions button {
+    flex: none;
+    width: 100%;
+  }
+}
