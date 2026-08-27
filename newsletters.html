@@ -1,145 +1,172 @@
-Skip to content
-staffordcoachtrips
-staffordcoachtrips
-Repository navigation
-Code
-Issues
-Pull requests
-Agents
-Actions
-Projects
-Wiki
-Security and quality
-Insights
-Settings
-Files
-Go to file
-t
-T
-css content loaded
-css
-style.css
-data
-images
-CNAME
-Coach.webp
-Drayton Manor.webp
-Harry Potter.jpg
-Home.html
-README.md
-contact.html
-current-trips-preview.html
-current-trips.html
-download.webp
-faqs.html
-future-trips.html
-index.html
-interest.html
-newsletters.html
-next-trip-preview.html
-next-trip.html
-past-trips.html
-pexels-lich-24738022.jpg
-pexels-sarahbonddesign-13436602.jpg
-pickup-points.html
-privacy.html
-special-events.html
-support.html
-terms.html
-thankyou.html
-trip-updates-preview.html
-trip-updates.html
-why-us.html
-staffordcoachtrips
-/
-newsletters.html
-in
-main
-
-Edit
-
-Preview
-Indent mode
-
-Spaces
-Indent size
-
-2
-Line wrap mode
-
-No wrap
-Editing newsletters.html file contents
-  1
-  2
-  3
-  4
-  5
-  6
-  7
-  8
-  9
- 10
- 11
- 12
- 13
- 14
- 15
- 16
- 17
- 18
- 19
- 20
- 21
- 22
- 23
- 24
- 25
- 26
- 27
- 28
- 29
- 30
- 31
- 32
- 33
- 34
- 35
- 36
 <!doctype html>
 <html lang="en-GB">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Read Stafford Coach Trips newsletters for the latest trip announcements, booking updates and community travel news.">
-  <meta name="theme-color" content="#24102f">
+  <meta name="theme-color" content="#4b2d83">
   <title>Newsletters | Stafford Coach Trips</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
-
 <body>
-  <a class="skip-link" href="#main">Skip to main content</a>
-
-  <header class="site-header">
-    <div class="container nav-wrap">
-      <a class="brand" href="index.html" aria-label="Stafford Coach Trips home">
-        <span class="brand-mark" aria-hidden="true">🚌</span>
-        <span>Stafford Coach Trips</span>
-      </a>
-
-      <button class="menu-button" type="button" aria-expanded="false" aria-controls="main-menu">Menu</button>
-
-      <nav class="nav-links" id="main-menu" aria-label="Main navigation">
-        <a href="index.html">Home</a>
-        <a href="current-trips.html">Current Trips</a>
-        <a href="future-trips.html">Future Trips</a>
-        <a href="newsletters.html" aria-current="page">Newsletters</a>
-        <a href="trip-updates.html">Trip Updates</a>
-        <a href="pickup-points.html">Pick-up Points</a>
-        <a href="faqs.html">FAQs</a>
-        <a href="contact.html">Contact</a>
-        <a class="nav-cta" href="current-trips.html">Book Online</a>
+  <header>
+    <div class="container navbar">
+      <a href="index.html" class="logo" aria-label="Stafford Coach Trips home">Stafford <span>Coach Trips</span></a>
+      <div class="menu-toggle" aria-hidden="true"><i class="fas fa-bars"></i></div>
+      <nav aria-label="Main navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="current-trips.html">Current Trips</a></li>
+          <li><a href="future-trips.html">Future Trips</a></li>
+          <li><a href="newsletters.html" aria-current="page">Newsletters</a></li>
+          <li><a href="trip-updates.html">Trip Updates</a></li>
+          <li><a href="pickup-points.html">Pickup Points</a></li>
+          <li><a href="faqs.html">FAQs</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
       </nav>
     </div>
   </header>
-Use Control + Shift + m to toggle the tab key moving focus. Alternatively, use esc then tab to move to the next interactive element on the page.
-css content loaded
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <h1>Community Travel Updates</h1>
+          <p>Stay up to date with the latest news, trip announcements, booking updates and exciting developments from Stafford Coach Trips.</p>
+          <a href="#latest-newsletter" class="btn">Read the Latest Newsletter</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="latest-newsletter" aria-labelledby="latest-title">
+      <div class="container">
+        <h2 class="section-title" id="latest-title">Latest Newsletter</h2>
+        <p class="section-text">Read our newest community travel update from Stafford Coach Trips.</p>
+        <div class="trip-grid">
+          <article class="trip-card">
+            <div class="trip-image"><img src="images/newsletters/issue-1-august-2026-cover.jpg" alt="Cover of Stafford Coach Trips Newsletter Issue 1, August 2026" width="800" height="1131"></div>
+            <div class="trip-content">
+              <span class="destination-type">Latest Edition</span>
+              <h3>Stafford Coach Trips Community Newsletter</h3>
+              <div class="trip-info" aria-label="Newsletter details">
+                <span><i class="fas fa-newspaper" aria-hidden="true"></i> Issue 1</span>
+                <span><i class="fas fa-calendar-alt" aria-hidden="true"></i> August 2026</span>
+              </div>
+              <p>Our first newsletter looks back at the progress made so far, introduces recent website improvements and shares an early look at the trips and booking developments planned for the future.</p>
+              <a href="newsletter-issue-1.html" class="interest-btn">Read Online</a>
+              <a href="pdf/newsletters/stafford-coach-trips-issue-1-august-2026.pdf" class="interest-btn" download>Download PDF</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="search-title">
+      <div class="container">
+        <h2 class="section-title" id="search-title">Search Newsletters</h2>
+        <p class="section-text">Search by issue number, month, year or keyword.</p>
+        <div class="faq-grid">
+          <div class="faq-card">
+            <form action="newsletters.html" method="get" role="search">
+              <label for="newsletter-search"><strong>Search the newsletter archive</strong></label>
+              <p>Enter an issue number, month, year or topic below.</p>
+              <input type="search" id="newsletter-search" name="q" placeholder="For example: Issue 1, August 2026 or Drayton Manor">
+              <button type="submit" class="interest-btn">Search Newsletters</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="archive-title">
+      <div class="container">
+        <h2 class="section-title" id="archive-title">Newsletter Archive</h2>
+        <p class="section-text">Select a month to view every newsletter published during that month.</p>
+
+        <details class="destination-dropdown"><summary>January</summary><div class="trip-grid"><article class="faq-card"><p>No newsletters have been published this month.</p></article></div></details>
+        <details class="destination-dropdown"><summary>February</summary><div class="trip-grid"><article class="faq-card"><p>No newsletters have been published this month.</p></article></div></details>
+        <details class="destination-dropdown"><summary>March</summary><div class="trip-grid"><article class="faq-card"><p>No newsletters have been published this month.</p></article></div></details>
+        <details class="destination-dropdown"><summary>April</summary><div class="trip-grid"><article class="faq-card"><p>No newsletters have been published this month.</p></article></div></details>
+        <details class="destination-dropdown"><summary>May</summary><div class="trip-grid"><article class="faq-card"><p>No newsletters have been published this month.</p></article></div></details>
+        <details class="destination-dropdown"><summary>June</summary><div class="trip-grid"><article class="faq-card"><p>No newsletters have been published this month.</p></article></div></details>
+        <details class="destination-dropdown"><summary>July</summary><div class="trip-grid"><article class="faq-card"><p>No newsletters have been published this month.</p></article></div></details>
+
+        <details class="destination-dropdown" open>
+          <summary>August</summary>
+          <div class="trip-grid">
+            <article class="trip-card">
+              <div class="trip-image"><img src="images/newsletters/issue-1-august-2026-cover.jpg" alt="Cover of Stafford Coach Trips Newsletter Issue 1, August 2026" width="800" height="1131" loading="lazy"></div>
+              <div class="trip-content">
+                <span class="destination-type">August 2026</span>
+                <h3>Issue 1 – August 2026</h3>
+                <div class="trip-info" aria-label="Newsletter publication details">
+                  <span><i class="fas fa-newspaper" aria-hidden="true"></i> Issue 1</span>
+                  <span><i class="fas fa-calendar-check" aria-hidden="true"></i> Published 24 August 2026</span>
+                </div>
+                <p>Discover how Stafford Coach Trips has developed, the improvements made to the website and some of the exciting future trips being planned.</p>
+                <a href="newsletter-issue-1.html" class="interest-btn">Read Online</a>
+                <a href="pdf/newsletters/stafford-coach-trips-issue-1-august-2026.pdf" class="interest-btn" download>Download PDF</a>
+              </div>
+            </article>
+          </div>
+        </details>
+
+        <details class="destination-dropdown"><summary>September</summary><div class="trip-grid"><article class="faq-card"><p>No newsletters have been published this month.</p></article></div></details>
+        <details class="destination-dropdown"><summary>October</summary><div class="trip-grid"><article class="faq-card"><p>No newsletters have been published this month.</p></article></div></details>
+        <details class="destination-dropdown"><summary>November</summary><div class="trip-grid"><article class="faq-card"><p>No newsletters have been published this month.</p></article></div></details>
+        <details class="destination-dropdown"><summary>December</summary><div class="trip-grid"><article class="faq-card"><p>No newsletters have been published this month.</p></article></div></details>
+      </div>
+    </section>
+
+    <section class="cta" aria-labelledby="subscribe-title">
+      <div class="container">
+        <h2 id="subscribe-title">Join Our Mailing List</h2>
+        <p>Receive future newsletters, trip announcements, booking dates and Stafford Coach Trips developments directly by email.</p>
+        <a href="subscribe.html" class="btn">Subscribe for Updates</a>
+      </div>
+    </section>
+
+    <section class="cta" aria-label="Newsletter reminder">
+      <div class="container"><h2>Never miss an update from Stafford Coach Trips.</h2></div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-column">
+          <h3>Stafford Coach Trips</h3>
+          <p>Affordable and friendly coach travel from Stafford, providing memorable days out across the UK.</p>
+        </div>
+        <div class="footer-column">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="current-trips.html">Current Trips</a></li>
+            <li><a href="future-trips.html">Future Trips</a></li>
+            <li><a href="newsletters.html" aria-current="page">Newsletters</a></li>
+            <li><a href="trip-updates.html">Trip Updates</a></li>
+            <li><a href="pickup-points.html">Pickup Points</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Legal</h3>
+          <ul><li><a href="privacy.html">Privacy Policy</a></li><li><a href="terms.html">Terms &amp; Conditions</a></li></ul>
+        </div>
+        <div class="footer-column">
+          <h3>Follow Us</h3>
+          <div class="footer-social">
+            <a href="https://www.facebook.com/profile.php?id=61590883177842" target="_blank" rel="noopener noreferrer" aria-label="Follow Stafford Coach Trips on Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+            <a href="mailto:staffordcoachtrips@gmail.com" aria-label="Email Stafford Coach Trips"><i class="fas fa-envelope" aria-hidden="true"></i></a>
+            <a href="https://staffordcoachtrips.co.uk" aria-label="Stafford Coach Trips website"><i class="fas fa-globe" aria-hidden="true"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="copyright">&copy; 2026 Stafford Coach Trips. All Rights Reserved.</div>
+    </div>
+  </footer>
+</body>
+</html>
