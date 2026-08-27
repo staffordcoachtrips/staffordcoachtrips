@@ -1640,3 +1640,10 @@ document.querySelectorAll('.trip-slider').forEach(slider => {
     grid-template-columns: 1fr;
   }
 }
+.navbar nav a.active,
+.navbar nav a[aria-current="page"] {
+    color: #ffffff;
+    background-color: #4b2d83;
+    cursor: default;
+    pointer-events: none;
+}
