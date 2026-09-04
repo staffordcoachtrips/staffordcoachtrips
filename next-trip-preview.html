@@ -135,7 +135,6 @@
         .radio-options input { width: auto; min-height: auto; }
         .interest-disclaimer { margin: 20px 0; padding: 14px 16px; border-left: 5px solid #4b2d83; background: #eee8f7; }
         .form-actions { display: flex; flex-wrap: wrap; gap: 12px; }
-        .form-preview-message { display: none; margin: 18px 0 0; padding: 14px 16px; border-radius: 8px; background: #e8f5e9; color: #1f5b27; font-weight: 700; }
 
         .future-updates {
             background: #f7f3fb;
@@ -442,8 +441,10 @@
                     <h3>Register Your Interest</h3>
                     <p>Tell us how many people may be interested. This is not a booking, no seats are reserved and no payment is taken.</p>
 
-                    <form id="alton-interest-form">
+                    <form id="alton-interest-form" action="https://formsubmit.co/staffordcoachtrips@gmail.com" method="POST">
                         <input type="hidden" name="trip" value="Alton Towers Resort – August 2027">
+                        <input type="hidden" name="_subject" value="New Alton Towers August 2027 interest registration">
+                        <input type="hidden" name="_template" value="table">
                         <div class="interest-form-grid">
                             <div class="interest-field">
                                 <label for="interest-name">Name</label>
@@ -488,7 +489,6 @@
                             <button type="submit" class="interest-btn">Submit Interest – No Payment</button>
                             <button type="button" class="btn" id="close-alton-interest">Close Form</button>
                         </div>
-                        <p class="form-preview-message" id="form-preview-message" role="status">Preview successful. No information has been sent from this preview page.</p>
                     </form>
                 </div>
 
@@ -666,7 +666,7 @@
                         <i class="fab fa-facebook-f"></i>
                     </a>
 
-                    <a href="mailto:info@staffordcoachtrips.co.uk" aria-label="Email">
+                    <a href="mailto:staffordcoachtrips@gmail.com" aria-label="Email">
                         <i class="fas fa-envelope"></i>
                     </a>
 
@@ -714,8 +714,6 @@ document.querySelectorAll('.fade-up').forEach(el=>{
 const interestToggle = document.getElementById('toggle-alton-interest');
 const interestPanel = document.getElementById('alton-interest-panel');
 const interestClose = document.getElementById('close-alton-interest');
-const interestForm = document.getElementById('alton-interest-form');
-const previewMessage = document.getElementById('form-preview-message');
 
 function setInterestPanel(open) {
     interestPanel.classList.toggle('is-open', open);
@@ -728,10 +726,6 @@ function setInterestPanel(open) {
 
 interestToggle.addEventListener('click', () => setInterestPanel(!interestPanel.classList.contains('is-open')));
 interestClose.addEventListener('click', () => setInterestPanel(false));
-interestForm.addEventListener('submit', (event) => {
-    event.preventDefault();
-    previewMessage.style.display = 'block';
-});
 
 </script>
 
