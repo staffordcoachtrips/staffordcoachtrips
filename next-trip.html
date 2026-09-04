@@ -121,6 +121,21 @@
             text-align: center;
         }
 
+        .interest-panel { display: none; margin-top: 24px; padding: 24px; border: 2px solid #4b2d83; border-radius: 14px; background: #faf8fd; }
+        .interest-panel.is-open { display: block; }
+        .interest-panel h3 { margin-top: 0; color: #4b2d83; }
+        .interest-form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+        .interest-field { display: flex; flex-direction: column; gap: 7px; }
+        .interest-field.full-width { grid-column: 1 / -1; }
+        .interest-field label, .interest-field legend { color: #2f2147; font-weight: 700; }
+        .interest-field input, .interest-field select { width: 100%; min-height: 46px; padding: 10px 12px; border: 1px solid #aaa; border-radius: 8px; background: #fff; font: inherit; }
+        .interest-field fieldset { margin: 0; padding: 0; border: 0; }
+        .radio-options { display: flex; flex-wrap: wrap; gap: 14px 24px; margin-top: 10px; }
+        .radio-options label { display: flex; align-items: center; gap: 8px; font-weight: 600; }
+        .radio-options input { width: auto; min-height: auto; }
+        .interest-disclaimer { margin: 20px 0; padding: 14px 16px; border-left: 5px solid #4b2d83; background: #eee8f7; }
+        .form-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+
         .future-updates {
             background: #f7f3fb;
         }
@@ -173,6 +188,9 @@
             .next-trip-included {
                 grid-template-columns: 1fr;
             }
+
+            .interest-form-grid { grid-template-columns: 1fr; }
+            .interest-field.full-width { grid-column: auto; }
 
             .next-trip-card .interest-btn {
                 display: block;
@@ -363,69 +381,116 @@
 
             <div class="trip-image">
 
-                <div class="ribbon">Proposed for Summer 2027</div>
+                <div class="ribbon">Coming Soon</div>
 
                 <img src="images/Alton Towers.jpg"
                      alt="Alton Towers Resort">
 
                 <div class="trip-title-overlay">
-                    <h3>Alton Towers</h3>
-                    <p>Planned for Summer 2027</p>
+                    <h3>Alton Towers Resort</h3>
+                    <p>August 2027 · Coming Soon</p>
                 </div>
 
             </div>
 
             <div class="trip-content">
 
-                <span class="destination-type">Proposed for Summer 2027</span>
+                <span class="destination-type">Coming Soon · August 2027</span>
 
                 <p>
-                    Join us for an unforgettable summer day out at Alton Towers Resort.
+                    Return coach travel from Stafford and standard theme park admission
+                    are included in the estimated fare.
                 </p>
 
                 <p>
-                    Experience world-famous rollercoasters, exciting family attractions
-                    and CBeebies Land, with comfortable executive coach travel from Stafford.
+                    The final date and fare will be confirmed once 2027 attraction prices
+                    and coach arrangements are available.
                 </p>
 
-                <h3 class="included-heading">Planned Prices</h3>
+                <h3 class="included-heading">Estimated Fare</h3>
 
                 <div class="planned-prices">
-                    <div class="planned-price">
-                        <span>Adult (12+)</span>
-                        <strong>TBC</strong>
-                    </div>
-
-                    <div class="planned-price">
-                        <span>Child (2–11)</span>
-                        <strong>TBC</strong>
-                    </div>
-
-                    <div class="planned-price">
-                        <span>Under 2</span>
-                        <strong>TBC</strong>
+                    <div class="planned-price" style="grid-column: 1 / -1;">
+                        <span>Estimated price per person</span>
+                        <strong>£55–£59</strong>
                     </div>
                 </div>
 
                 <h3 class="included-heading">What's Included</h3>
 
                 <div class="next-trip-included">
-                    <span><i class="fas fa-bus"></i> Executive Coach Travel</span>
+                    <span><i class="fas fa-bus"></i> Return Coach Travel from Stafford</span>
                     <span><i class="fas fa-ticket-alt"></i> Theme Park Admission</span>
-                    <span><i class="fas fa-map-marker-alt"></i> Wildwood Coop, Stafford Railway Station and Uttoxeter Rail Station Pick-up Points</span>
+                    <span><i class="fas fa-map-marker-alt"></i> Choice of Stafford Pick-up Point</span>
                     <span><i class="fas fa-people-group"></i> Family Friendly</span>
                 </div>
 
                 <div class="planning-notice">
                     <i class="fas fa-circle-info"></i>
-                    <strong>Please note:</strong> This trip is currently in the planning stage.
-                    Prices, travel dates and availability are provisional and subject to
-                    confirmation before bookings officially open.
+                    <strong>Bookings are not yet open.</strong> Registering your interest is
+                    not a booking and does not reserve a seat. No payment will be requested
+                    or taken. The estimated £55–£59 fare may change when the final date,
+                    attraction price and coach arrangements are confirmed.
                 </div>
 
-                <a href="interest.html?trip=Alton%20Towers" class="interest-btn">
-                    Register Your Interest
-                </a>
+                <button type="button" class="interest-btn" id="toggle-alton-interest" aria-expanded="false" aria-controls="alton-interest-panel">
+                    Register Your Interest – No Payment Required
+                </button>
+
+                <div class="interest-panel" id="alton-interest-panel">
+                    <h3>Register Your Interest</h3>
+                    <p>Tell us how many people may be interested. This is not a booking, no seats are reserved and no payment is taken.</p>
+
+                    <form id="alton-interest-form" action="https://formsubmit.co/staffordcoachtrips@gmail.com" method="POST">
+                        <input type="hidden" name="trip" value="Alton Towers Resort – August 2027">
+                        <input type="hidden" name="_subject" value="New Alton Towers August 2027 interest registration">
+                        <input type="hidden" name="_template" value="table">
+                        <div class="interest-form-grid">
+                            <div class="interest-field">
+                                <label for="interest-name">Name</label>
+                                <input type="text" id="interest-name" name="name" autocomplete="name" required>
+                            </div>
+                            <div class="interest-field">
+                                <label for="interest-email">Email address</label>
+                                <input type="email" id="interest-email" name="email" autocomplete="email" required>
+                            </div>
+                            <div class="interest-field">
+                                <label for="interest-adults">Number of adults</label>
+                                <input type="number" id="interest-adults" name="adults" min="0" max="53" value="1" required>
+                            </div>
+                            <div class="interest-field">
+                                <label for="interest-children">Number of children</label>
+                                <input type="number" id="interest-children" name="children" min="0" max="53" value="0" required>
+                            </div>
+                            <div class="interest-field full-width">
+                                <label for="interest-pickup">Preferred pick-up point</label>
+                                <select id="interest-pickup" name="pickup_point" required>
+                                    <option value="">Please select</option>
+                                    <option>Rising Brook</option>
+                                    <option>Stafford Railway Station</option>
+                                    <option>Opposite the Morris Man Public House</option>
+                                </select>
+                            </div>
+                            <div class="interest-field full-width">
+                                <fieldset>
+                                    <legend>Would you be interested at an estimated £55–£59 per person?</legend>
+                                    <div class="radio-options">
+                                        <label><input type="radio" name="interested_at_estimated_fare" value="Yes" required> Yes</label>
+                                        <label><input type="radio" name="interested_at_estimated_fare" value="Maybe"> Maybe</label>
+                                        <label><input type="radio" name="interested_at_estimated_fare" value="No"> No</label>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+
+                        <div class="interest-disclaimer"><strong>Important:</strong> Registering interest is not a booking, does not guarantee a place and no payment is taken.</div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="interest-btn">Submit Interest – No Payment</button>
+                            <button type="button" class="btn" id="close-alton-interest">Close Form</button>
+                        </div>
+                    </form>
+                </div>
 
             </div>
 
@@ -601,7 +666,7 @@
                         <i class="fab fa-facebook-f"></i>
                     </a>
 
-                    <a href="mailto:info@staffordcoachtrips.co.uk" aria-label="Email">
+                    <a href="mailto:staffordcoachtrips@gmail.com" aria-label="Email">
                         <i class="fas fa-envelope"></i>
                     </a>
 
@@ -646,7 +711,24 @@ document.querySelectorAll('.fade-up').forEach(el=>{
     observer.observe(el);
 });
 
+const interestToggle = document.getElementById('toggle-alton-interest');
+const interestPanel = document.getElementById('alton-interest-panel');
+const interestClose = document.getElementById('close-alton-interest');
+
+function setInterestPanel(open) {
+    interestPanel.classList.toggle('is-open', open);
+    interestToggle.setAttribute('aria-expanded', String(open));
+    if (open) {
+        interestPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        document.getElementById('interest-name').focus({ preventScroll: true });
+    }
+}
+
+interestToggle.addEventListener('click', () => setInterestPanel(!interestPanel.classList.contains('is-open')));
+interestClose.addEventListener('click', () => setInterestPanel(false));
+
 </script>
 
 </body>
 </html>
+
