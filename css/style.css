@@ -1647,3 +1647,6 @@ document.querySelectorAll('.trip-slider').forEach(slider => {
     cursor: default;
     pointer-events: none;
 }
+.cta .container {
+    text-align: center;
+}
