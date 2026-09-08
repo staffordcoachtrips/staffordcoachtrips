@@ -1728,7 +1728,6 @@ body.home-page {
     letter-spacing: -2.6px;
     font-weight: 900;
 }
-}
     body.home-page .hero-lead { max-width: 650px; margin: 24px 0 0; color: rgba(255,255,255,.9); font-size: clamp(18px,2.2vw,22px); }
     body.home-page .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
     body.home-page .button { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 50px; padding: 13px 21px; border: 0; border-radius: 10px; text-decoration: none; font-weight: 900; line-height: 1.2; transition: transform .18s ease,box-shadow .18s ease,background .18s ease; }
@@ -1797,7 +1796,7 @@ body.home-page {
     body.home-page .destination:hover img { transform: scale(1.035); }
     body.home-page .destination::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top,rgba(24,7,31,.92),transparent 64%); }
     body.home-page .destination-copy { position: absolute; z-index: 1; left: 24px; right: 24px; bottom: 23px; color: #fff; }
-    body.home-page .destination-copy h3 { margin: 0; font-size: 25px; }
+    body.home-page .destination-copy h3 { margin: 0; color: #fff; font-size: 25px; }
     body.home-page .destination-copy p { margin: 4px 0 0; color: rgba(255,255,255,.78); }
 
     body.home-page .steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; }
@@ -1807,7 +1806,7 @@ body.home-page {
     body.home-page .step p { margin: 0; color: var(--muted); }
 
     body.home-page .cta-panel { display: flex; align-items: center; justify-content: space-between; gap: 30px; padding: 48px 54px; border-radius: var(--radius); color: #fff; background: linear-gradient(135deg,var(--plum-700),var(--plum-950)); box-shadow: var(--shadow); }
-    body.home-page .cta-panel h2 { margin: 0; font-size: clamp(29px,4vw,42px); line-height: 1.1; }
+    body.home-page .cta-panel h2 { margin: 0; color: #fff; font-size: clamp(29px,4vw,42px); line-height: 1.1; }
     body.home-page .cta-panel p { max-width: 660px; margin: 12px 0 0; color: rgba(255,255,255,.82); }
 
     body.home-page footer { padding: 70px 0 25px; color: #dfd5e3; background: var(--plum-950); }
