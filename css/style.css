@@ -1719,13 +1719,15 @@ body.home-page {
     text-align: center;
 }
     body.home-page .home-hero h1 {
-    margin:0;
-    max-width:700px;
-    margin-inline:auto;
-    font-size:clamp(48px,7vw,78px);
-    line-height:1.02;
-    letter-spacing:-2.6px;
-    font-weight:900;
+    margin: 0;
+    max-width: 700px;
+    margin-inline: auto;
+    color: #fff;
+    font-size: clamp(48px, 7vw, 78px);
+    line-height: 1.02;
+    letter-spacing: -2.6px;
+    font-weight: 900;
+}
 }
     body.home-page .hero-lead { max-width: 650px; margin: 24px 0 0; color: rgba(255,255,255,.9); font-size: clamp(18px,2.2vw,22px); }
     body.home-page .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
