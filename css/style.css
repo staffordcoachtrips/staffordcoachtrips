@@ -1701,7 +1701,7 @@ body.home-page {
     body.home-page .nav-links .nav-cta:hover { color: #fff; background: var(--plum-900); }
     body.home-page .menu-button { display: none; padding: 10px 12px; border: 1px solid var(--line); border-radius: 9px; color: var(--plum-950); background: #fff; font: inherit; font-weight: 800; cursor: pointer; }
 
-    body.home-page .home-hero { position: relative; isolation: isolate; min-height: 650px; display: grid; align-items: center; overflow: hidden; color: #fff; background: linear-gradient(90deg,rgba(26,7,35,.94) 0%,rgba(43,10,62,.83) 48%,rgba(43,10,62,.36) 100%), url("../images/homepage-coach.png") center/cover no-repeat; }
+    body.home-page .home-hero { position: relative; isolation: isolate; min-height: 650px; display: grid; align-items: center; overflow: hidden; color: #fff; background: linear-gradient(90deg,rgba(26,7,35,.94) 0%,rgba(43,10,62,.83) 48%,rgba(43,10,62,.36) 100%), url("../images/coach.png") center/cover no-repeat; }
     body.home-page .home-hero::after { content: ""; position: absolute; z-index: -1; right: -7%; bottom: -230px; width: 610px; height: 430px; border-radius: 50%; background: rgba(244,185,66,.2); filter: blur(28px); }
     body.home-page .eyebrow {
     display:inline-block;
