@@ -1563,5 +1563,166 @@ document.querySelectorAll('.fade-up').forEach(el=>{
 
 </script>
 
+<!-- Invictus Games 2027: additional Special Events card (existing page retained) -->
+<style>
+#sct-invictus{width:100%;min-width:0;box-sizing:border-box}
+#sct-invictus *,#sct-invictus *::before,#sct-invictus *::after{box-sizing:border-box}
+#sct-invictus .sct-hero{background:linear-gradient(125deg,#182b44,#284b6a);color:white;border-radius:12px;padding:22px}
+#sct-invictus .sct-hero h3{margin:6px 0;color:white;font-size:1.4rem}
+#sct-invictus .sct-hero p{color:white;line-height:1.55}
+#sct-invictus .sct-badge{display:inline-block;background:#ffdc66;color:#182b44;padding:5px 10px;border-radius:20px;font-weight:700;font-size:.77rem}
+#sct-invictus .sct-content{padding:18px;background:var(--card-bg,#fff);color:inherit;border:1px solid #ddd;border-radius:0 0 12px 12px}
+#sct-invictus .sct-content p{line-height:1.55;margin:9px 0}
+#sct-invictus details{margin-top:14px;border-top:1px solid #ddd;padding-top:12px}
+#sct-invictus summary{cursor:pointer;font-weight:700;color:#15588b;list-style-position:inside}
+#sct-invictus .sct-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:16px 0}
+#sct-invictus label{display:block;font-weight:600;font-size:.9rem;margin-bottom:4px}
+#sct-invictus select,#sct-invictus input{width:100%;border:1px solid #9aabb7;border-radius:6px;padding:9px;background:white;color:#182b44;max-width:100%}
+#sct-invictus .sct-total{background:#eff5fa;border-radius:8px;padding:12px;color:#172b44}
+#sct-invictus .sct-action{display:inline-block;padding:10px 15px;background:#15588b;color:white!important;text-decoration:none;border-radius:7px;font-weight:700;margin-top:12px}
+#sct-invictus .sct-note{font-size:.82rem}
+@media(max-width:650px){#sct-invictus .sct-fields{grid-template-columns:1fr}#sct-invictus .sct-hero{padding:16px}}
+</style>
+<script>
+(function(){
+  // Add only one card; existing trips, navigation, footer and listeners remain untouched.
+  if(document.getElementById('sct-invictus'))return;
+  const card=document.createElement('article');
+  card.id='sct-invictus';card.className='trip-card';
+  card.innerHTML=`
+    <div class="sct-hero">
+      <span class="sct-badge">COMING SOON · REGISTER YOUR INTEREST</span>
+      <h3>Invictus Games Birmingham 2027</h3>
+      <p><strong>10–17 July 2027 · NEC Birmingham</strong></p>
+      <p>Celebrate the determination and achievements of wounded, injured and sick service personnel and veterans through international adaptive sport. Choose Festival admission, a Sports Pass, an opening or closing ceremony, or return coach travel only.</p>
+    </div>
+    <div class="sct-content">
+      <p>🚌 <strong>Return coach travel from Stafford: £20 per person.</strong> Planned subject to suitable vehicle availability and confirmed travel arrangements. Pick-up and departure times will be confirmed.</p>
+      <p class="sct-note">A Sports Pass includes Festival access on the same day. The NEC charges a £2 transaction fee on applicable event-ticket orders (once per order, not per passenger). No NEC ticketing fee applies to coach-only interest.</p>
+      <details><summary>Explore tickets, sports sessions and estimated prices</summary>
+        <div class="sct-fields">
+          <div><label for="sct-package">Package</label><select id="sct-package"><option value="sports">Sports Pass (Festival included)</option><option value="festival">Festival Pass</option><option value="opening">Opening Ceremony · 10 July</option><option value="closing">Closing Ceremony · 17 July</option><option value="coach">Coach Only</option></select></div>
+          <div><label for="sct-date">Date</label><select id="sct-date"></select></div>
+          <div id="sct-session-wrap"><label for="sct-session">Sport and session</label><select id="sct-session"></select></div>
+          <div id="sct-class-wrap"><label for="sct-class">Sports ticket category</label><select id="sct-class"><option value="standard">Standard</option><option value="A">Category A</option><option value="B">Category B</option><option value="C">Category C</option></select></div>
+          <div><label for="sct-type">Ticket type</label><select id="sct-type"><option value="adult">Adult</option><option value="concession">Concession</option><option value="companion">Eligible essential companion (event ticket £0)</option></select></div>
+          <div><label for="sct-people">Passengers</label><input id="sct-people" type="number" min="1" max="99" value="1"></div>
+          <div><label for="sct-access">Accessibility</label><select id="sct-access"><option>Standard seating</option><option>Wheelchair bay seating</option><option>Easy access seating</option><option>Visual impairment seating</option><option>Concession accessible seating</option><option>Eligible essential companion</option></select></div>
+        </div>
+        <p class="sct-note">Concessions: ages 2–16, 65+, students, Armed Forces, veterans, Blue Light Card holders and eligible low-income visitors. Accessible event tickets require the relevant IG27 Digital Access Pass or Access Card. Eligible essential companion event admission does not include free coach travel.</p>
+        <div class="sct-total" id="sct-total" aria-live="polite"></div>
+        <a class="sct-action" id="sct-interest" href="interest.html?trip=Invictus%20Games%20Birmingham%202027">Register your interest</a>
+        <p class="sct-note">Expression of interest only — no coach seat or Games admission is reserved. Confirm ticket details directly with the official Games seller before purchasing.</p>
+      </details>
+    </div>`;
+  const specialDropdown=[...document.querySelectorAll('details.destination-dropdown')]
+    .find(d=>/special events/i.test(d.querySelector('summary')?.textContent||''));
+  const specialGrid=specialDropdown?.querySelector('.trip-grid');
+  if(specialGrid) specialGrid.prepend(card);
+  if(!card.isConnected)return;
+  const byId=id=>document.getElementById(id);
+      const schedule = {
+        '2027-07-10': [
+          ['Invictus Festival','Time TBC','FVL01','NEC Site, NEC · includes Outdoor Athletics','festival']
+        ],
+        '2027-07-11': [
+          ['Wheelchair Basketball','09:00','WBK01','Hall 6, NEC'],
+          ['Wheelchair Basketball','09:00','WBK02','Hall 20, NEC'],
+          ['Wheelchair Basketball','13:30','WBK03','Hall 6, NEC'],
+          ['Wheelchair Basketball','13:30','WBK04','Hall 20, NEC'],
+          ['Hybrid Athletics','17:00','ATH02','Halls 17 & 18, NEC · medal event 🏅'],
+          ['Wheelchair Basketball','18:00','WBK05','Hall 6, NEC'],
+          ['Wheelchair Basketball','18:00','WBK06','Hall 20, NEC']
+        ],
+        '2027-07-12': [
+          ['Invictus Festival','Time TBC','FVL02','NEC Site, NEC · includes Outdoor Athletics · medal event 🏅','festival'],
+          ['Pickleball','08:30','PKB01','Hall 7, NEC'],
+          ['Wheelchair Basketball','09:00','WBK07','Hall 6, NEC'],
+          ['Wheelchair Basketball','09:00','WBK08','Hall 20, NEC'],
+          ['Wheelchair Basketball Semi-Finals','14:00','WBK09','bp pulse LIVE, NEC'],
+          ['Pickleball','14:00','PKB02','Hall 7, NEC'],
+          ['Hybrid Athletics','17:00','ATH04','Halls 17 & 18, NEC · medal event 🏅'],
+          ['Wheelchair Basketball','18:00','WBK10','bp pulse LIVE, NEC · medal event 🏅']
+        ],
+        '2027-07-13': [
+          ['Invictus Festival','Time TBC','FVL03','NEC Site, NEC · includes Esports','festival'],
+          ['Pickleball','08:30','PKB03','Hall 7, NEC'],
+          ['Wheelchair Rugby','09:00','WRU01','Hall 6, NEC'],
+          ['Wheelchair Rugby','09:00','WRU02','Hall 20, NEC'],
+          ['Wheelchair Rugby','13:30','WRU03','Hall 6, NEC'],
+          ['Pickleball','14:00','PKB04','Hall 7, NEC'],
+          ['Pickleball','18:00','PKB05','Hall 20, NEC · medal event 🏅'],
+          ['Wheelchair Rugby','18:00','WRU04','bp pulse LIVE, NEC']
+        ],
+        '2027-07-14': [
+          ['Invictus Festival','Time TBC','FVL04','NEC Site, NEC','festival'],
+          ['Swimming','08:30','SWM01','Sandwell Aquatics Centre, Sandwell · medal event 🏅'],
+          ['Powerlifting','09:00','PWL01','Hall 18, NEC · medal event 🏅'],
+          ['Wheelchair Rugby','09:30','WRU05','Hall 6, NEC'],
+          ['Wheelchair Rugby','09:30','WRU06','Hall 20, NEC'],
+          ['Powerlifting','13:30','PWL02','Hall 18, NEC · medal event 🏅'],
+          ['Swimming','13:30','SWM02','Sandwell Aquatics Centre, Sandwell · medal event 🏅'],
+          ['Wheelchair Rugby Semi-Finals','14:00','WRU07','bp pulse LIVE, NEC'],
+          ['Powerlifting','18:00','PWL03','Hall 18, NEC · medal event 🏅'],
+          ['Wheelchair Rugby','18:00','WRU08','bp pulse LIVE, NEC · medal event 🏅']
+        ],
+        '2027-07-15': [
+          ['Invictus Festival','Time TBC','FVL05','NEC Site, NEC · includes Esports · medal event 🏅','festival'],
+          ['Sitting Volleyball','08:30','SVB01','Hall 7, NEC'],
+          ['Laser Run','13:30','LSR01','bp pulse LIVE, NEC · medal event 🏅'],
+          ['Sitting Volleyball','13:30','SVB02','Hall 7, NEC'],
+          ['Sitting Volleyball','14:00','SVB03','Hall 20, NEC'],
+          ['Laser Run','18:00','LSR02','bp pulse LIVE, NEC · medal event 🏅'],
+          ['Sitting Volleyball','18:30','SVB04','Hall 20, NEC']
+        ],
+        '2027-07-16': [
+          ['Invictus Festival','Time TBC','FVL06','NEC Site, NEC · includes Archery Prelims & Cycling · medal event 🏅','festival'],
+          ['Sitting Volleyball','08:30','SVB05','Hall 7, NEC'],
+          ['3x3 Basketball','09:00','BK301','Tickets not on sale yet — join organiser waiting list','waitlist'],
+          ['3x3 Basketball','13:30','BK302','Tickets not on sale yet — join organiser waiting list','waitlist'],
+          ['Sitting Volleyball Semi-Finals','14:00','SVB06','Hall 20, NEC'],
+          ['3x3 Basketball','18:00','BK303','Tickets not on sale yet — join organiser waiting list','waitlist'],
+          ['Archery','18:30','ARC02','Hall 18, NEC · medal event 🏅'],
+          ['Sitting Volleyball','18:30','SVB07','Hall 20, NEC']
+        ],
+        '2027-07-17': [
+          ['Archery','10:00','ARC03','Venue: check organiser'],
+          ['Indoor Rowing','10:00','ROW01','Venue: check organiser'],
+          ['3x3 Basketball','13:30','BK304','Venue and ticket sale: check organiser'],
+          ['Indoor Rowing','14:00','ROW02','Venue: check organiser']
+        ]
+      };
+  const prices={standard:[20,16],A:[40,32],B:[30,24],C:[20,16]};
+  const dates=Array.from({length:8},(_,i)=>{const d=new Date(Date.UTC(2027,6,10+i));return [d.toISOString().slice(0,10),new Intl.DateTimeFormat('en-GB',{day:'numeric',month:'long',weekday:'short',timeZone:'UTC'}).format(d)]});
+  byId('sct-date').innerHTML=dates.map(([v,t])=>`<option value="${v}">${t}</option>`).join('');
+  const update=()=>{
+    const pkg=byId('sct-package').value; const date=byId('sct-date');
+    date.disabled=pkg==='opening'||pkg==='closing';
+    if(pkg==='opening')date.value='2027-07-10';if(pkg==='closing')date.value='2027-07-17';
+    const sessions=(schedule[date.value]||[]).filter(s=>s[4]!=='festival');
+    const sel=byId('sct-session');const selected=sel.value;
+    sel.replaceChildren(...sessions.map(s=>{const o=document.createElement('option');o.value=s[2];o.textContent=s[0]+' · '+s[2]+' · '+s[1]+' · '+s[3];return o;}));
+    if(sessions.some(s=>s[2]===selected))sel.value=selected;
+    byId('sct-session-wrap').hidden=pkg!=='sports';byId('sct-class-wrap').hidden=pkg!=='sports';
+    const n=Math.max(1,Math.min(99,Number(byId('sct-people').value)||1));
+    const travel=n*20;const cls=byId('sct-class').value;const type=byId('sct-type').value;
+    const selectedSession=sessions.find(s=>s[2]===sel.value);
+    let event=null,descr='';
+    if(pkg==='coach'){event=0;descr='Coach only: Games tickets purchased separately.';}
+    else if(pkg==='festival'){event=10*n;descr='Festival admission starts at £10; actual ticket price to be checked.';}
+    else if(pkg==='sports'){
+      if(!selectedSession)descr='Select a published sports session.';
+      else if(selectedSession[4]==='waitlist')descr='Tickets not on sale yet — join the official organiser waiting list.';
+      else {event=(type==='companion'?0:prices[cls][type==='adult'?0:1])*n;descr='Sports admission includes Festival access on the same day.';}
+    }else descr=(pkg==='opening'?'Opening Ceremony · Saturday 10 July · bp pulse LIVE · doors 6pm':'Closing Ceremony · Saturday 17 July · bp pulse LIVE · 5pm')+' · Ticket price to be confirmed.';
+    const fee=pkg==='coach'?0:2;
+    byId('sct-total').textContent='Coach: £'+travel.toFixed(2)+' · '+(event===null?'Event admission: not yet priced':'Estimated event admission: £'+event.toFixed(2))+' · NEC ticket-order fee: '+(pkg==='coach'?'not applicable':'£2.00 per transaction')+(event===null?'':' · Estimated combined total (one NEC ticket order): £'+(travel+event+fee).toFixed(2))+'. '+descr;
+  };
+  ['sct-package','sct-date','sct-session','sct-class','sct-type','sct-people','sct-access'].forEach(id=>byId(id).addEventListener('change',update));
+  update();
+})();
+</script>
+<!-- END INVICTUS GAMES 2027 ADD-ONLY COMPONENT -->
+
 </body>
 </html>
