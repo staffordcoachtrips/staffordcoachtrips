@@ -451,6 +451,33 @@
     .scarefest-placeholder .trip-photo { background:linear-gradient(145deg,#24102f,#652a7d); min-height:290px; }
     @media(max-width:920px) { .ig-card { grid-template-columns:1fr; } .ig-photo { min-height:300px; } }
     @media(max-width:640px) { .ig-inline {grid-template-columns:1fr;} .ig-form {padding:15px;} .ig-graphic {padding:36px 18px;} }
+
+    /* Reusable group enquiry builder — preview only */
+    .group-builder { margin-top:22px; }
+    .group-builder .gb-intro { margin:0 0 16px; }
+    .gb-line { margin:16px 0; padding:16px; background:#fff; border:1px solid var(--line); border-radius:13px; }
+    .gb-line-head { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px; }
+    .gb-line-head h4 { color:var(--plum-950); margin:0; font-size:18px; }
+    .gb-add { display:flex; gap:8px; flex-wrap:wrap; margin:14px 0; }
+    .gb-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+    .gb-grid .gb-wide { grid-column:1/-1; }
+    .gb-qty { display:flex; align-items:center; gap:8px; }
+    .gb-qty button { min-height:44px; min-width:44px; background:var(--plum-100); border:1px solid #ad93ba; border-radius:9px; color:var(--plum-950); font-size:22px; cursor:pointer; }
+    .gb-qty input { text-align:center; max-width:86px; }
+    .gb-remove { border:1px solid #b42318; color:#8a2018; background:#fff; padding:8px 12px; border-radius:8px; cursor:pointer; }
+    .gb-totals { background:#fff; padding:16px; border:1px solid var(--line); border-radius:12px; margin-top:18px; }
+    .gb-totals h4 { margin:0 0 8px; color:var(--plum-950); }
+    .gb-totals table { width:100%; border-collapse:collapse; }
+    .gb-totals th,.gb-totals td { padding:8px 4px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
+    .gb-totals td:last-child,.gb-totals th:last-child { text-align:right; }
+    .gb-grand { color:var(--plum-700); font-size:23px; font-weight:900; }
+    .gb-alert { border-left:5px solid #a45a05; padding:12px 14px; background:#fff3d7; margin-top:12px; color:#503813; }
+    .gb-error { color:#991b1b; font-weight:700; }
+    .gb-note { font-size:13px; color:var(--muted); }
+    .gb-contact { margin-top:24px; }
+    .gb-contact textarea { width:100%; min-height:90px; font:inherit; padding:12px; border:1px solid #bdb0c4; border-radius:9px; }
+    .ig-form input[type=checkbox] { width:auto; }
+    @media(max-width:640px) { .gb-grid { grid-template-columns:1fr; } .gb-line {padding:12px;} .gb-qty input {max-width:75px;} .gb-add .button {width:100%;} .gb-totals {overflow-wrap:anywhere;} }
   </style>
 </head>
 <body>
@@ -606,26 +633,30 @@
             <p>Celebrate the determination of wounded, injured and sick serving personnel and veterans as they compete in adaptive sports. Choose a festival day, a specific sports session, an unforgettable ceremony or <strong>coach travel only</strong>.</p>
             <p>Stafford Coach Trips is <strong>planning return transport from Stafford</strong>, subject to vehicle availability, sufficient interest and confirmed arrangements. <strong>No Stafford Coach Trips tickets or coach seats can be booked or paid for yet.</strong></p>
             <div class="notice"><strong>Private website demonstration.</strong> The selector below helps visitors explore possibilities. It is not a checkout, official event ticket seller, live availability check or confirmed coach reservation. Indicative return coach fare: <strong>£20 per travelling passenger</strong>, subject to a suitable vehicle and final confirmation. Collection points and departure/return times are to be confirmed. Event admission is separate. A £2 NEC transaction fee applies to event-ticket orders where booked through the NEC; it is charged per transaction, not per passenger, and does not apply to coach-only enquiries.</div>
-            <form class="ig-form" id="ig-interest-form">
-              <h3>Explore your preferred experience</h3>
-              <p class="ig-note">Select a date, event and ticket type to see an indicative event-admission price. Sports Pass includes same-day Festival admission at no extra Festival admission charge. Return coach travel is estimated at £20 per travelling passenger; this demo does not collect personal details or send registrations automatically.</p>
-              <label for="ig-package">Your experience</label>
-              <select id="ig-package" required><option value="festival">Festival Pass</option><option value="sports">Sports Pass (includes Festival access)</option><option value="opening">Opening Ceremony</option><option value="closing">Closing Ceremony</option><option value="coach">Coach Only</option></select>
-              <div class="ig-inline">
-                <div><label for="ig-date">Preferred date</label><select id="ig-date"></select></div>
-                <div id="ig-sport-box"><label for="ig-sport">Sport</label><select id="ig-sport"></select></div>
+            <form class="ig-form group-builder" id="ig-interest-form" novalidate>
+              <h3>Group expression of interest</h3>
+              <p class="gb-intro ig-note">Choose as many ticket types, events and sessions as your group needs. Use + and − to set quantities. One organiser contact and one combined enquiry email for the whole group. No tickets or coach seats are reserved.</p>
+              <div id="gb-lines" aria-label="Ticket and event selections"></div>
+              <div class="gb-add"><button class="button button-plum" type="button" id="gb-add">+ Add another ticket type or event</button></div>
+              <p class="gb-note">Concessions: junior aged 2–16, senior aged 65+, student, Armed Forces, veteran, Blue Light Card holder, or low income (subject to organiser rules and evidence). Wheelchair bay, easy access, visual impairment and concession accessible seats require confirmation. Essential companions require eligible accessible attendees and an appropriate IG27 Digital Access Pass or Access Card.</p>
+              <div class="gb-totals" aria-live="polite">
+                <h4>Group estimate</h4><div id="gb-event-subtotals"></div><table><tbody id="gb-cost-breakdown"></tbody></table>
+                <p class="gb-grand" id="gb-grand">£0.00</p>
+                <p class="gb-note">Coach fare is estimated at £20 per <strong>distinct occupied seat</strong>, including companions, not per event ticket. If the same passenger attends multiple events, do not count them twice for coach seating. One illustrative £2 NEC transaction fee is applied where the group requests organiser event tickets; actual ticket orders may incur separate fees.</p>
+                <div id="gb-warnings" role="status"></div>
               </div>
-              <div id="ig-session-box"><label for="ig-session">Published session and venue (schedule subject to change)</label><select id="ig-session"></select></div>
-              <div class="ig-inline" id="ig-ticket-controls">
-                <div><label for="ig-tier">Ticket category</label><select id="ig-tier"><option value="standard">Standard Sports — £20 / £16</option><option value="A">Category A — £40 / £32</option><option value="B">Category B — £30 / £24</option><option value="C">Category C — £20 / £16</option></select></div>
-                <div><label for="ig-visitor">Passenger ticket type</label><select id="ig-visitor"><option value="adult">Adult</option><option value="concession">Concession</option></select></div>
+              <div class="gb-contact"><h3>Group organiser contact details</h3>
+                <div class="gb-grid"><div><label for="gb-name">Full name *</label><input id="gb-name" name="name" autocomplete="name" required maxlength="120"></div>
+                <div><label for="gb-email">Email address *</label><input id="gb-email" name="email" type="email" autocomplete="email" required maxlength="180"></div>
+                <div><label for="gb-phone">Telephone *</label><input id="gb-phone" name="phone" type="tel" autocomplete="tel" required maxlength="40"></div>
+                <div><label for="gb-seats">Distinct coach passengers / occupied seats *</label><input id="gb-seats" type="number" min="1" max="60" step="1" value="1" required><small class="gb-note">Include wheelchair users and companions; count each traveller once, even across multiple events.</small></div>
+                <div class="gb-wide"><label for="gb-access-details">Accessibility and assistance details / equipment (if applicable)</label><textarea id="gb-access-details" maxlength="1500" placeholder="e.g. wheelchair space, step-free boarding, ramp/lift, mobility aid storage, essential companion requirements. Please avoid sensitive medical details."></textarea></div>
+                <div class="gb-wide"><label for="gb-notes">Other requests / proposed pick-up point</label><textarea id="gb-notes" maxlength="1500" placeholder="Anything else we should know about the group or dates"></textarea></div></div>
+                <label class="ig-check"><input type="checkbox" id="gb-consent" required> I understand this is an expression of interest only; admission, eligibility, accessible seats, dates, venues, coach facilities and all prices require confirmation. *</label>
+                <div id="gb-errors" role="alert" class="gb-error"></div>
+                <div class="ig-actions"><button class="button button-primary" type="submit" id="gb-email">Prepare ONE group enquiry email</button><button class="button button-plum" type="button" id="gb-copy">Copy full group enquiry</button></div>
+                <p class="ig-note" id="gb-feedback" role="status">This static preview opens a single pre-filled email in your email application. The customer must press Send. There is no automatic email delivery or stored registration without a future email service/backend.</p>
               </div>
-              <div class="ig-inline" id="ig-quantity-box"><div><label for="ig-quantity">Passengers / main event tickets</label><input id="ig-quantity" type="number" min="1" max="20" value="1"></div><div><label for="ig-access">Accessible ticket requirement</label><select id="ig-access"><option value="none">None / regular seating</option><option value="wheelchair">Wheelchair bay seating</option><option value="easy">Easy access seating</option><option value="visual">Visual impairment seating</option><option value="concession">Concession accessible seating</option><option value="companion">Eligible essential companion + accessible main ticket</option></select></div></div>
-              <div id="ig-concession-note" class="ig-note">Concessions: junior aged 2–16, senior 65+, student, Armed Forces, veteran, Blue Light Card holder or low income, subject to official eligibility.</div>
-              <div id="ig-access-note" class="ig-note">Accessible event tickets require an appropriate <strong>IG27 Digital Access Pass or Access Card</strong>. Eligible essential companion event admission may be £0; <strong>this does not include free coach travel</strong>.</div>
-              <div class="ig-result" aria-live="polite"><span>Illustrative admission + £20 coach per passenger + £2 NEC ticket transaction fee (where applicable)</span><strong id="ig-total">From £32 for one adult</strong><span id="ig-breakdown">Festival admission from £10 + £20 coach travel + £2 NEC ticket booking fee. No booking made.</span></div>
-              <div class="ig-actions"><button class="button button-primary" type="button" id="ig-email">Prepare interest email</button><button class="button button-plum" type="button" id="ig-copy">Copy choices</button></div>
-              <p class="ig-note" id="ig-feedback" role="status">The email button opens your own email application with a draft; you must send it yourself. No payment or place reservation takes place.</p>
             </form>
             <details><summary>Festival and official ticket information</summary><div class="detail-body"><p><strong>Festival Pass:</strong> festival entry and outdoor sports included on your chosen day, as scheduled. Adult admission starts at £10; festival rates are consistent through the week, but concession and other applicable rates should be checked when booking. <strong>Sports Pass:</strong> entry to your selected competition session <strong>includes Festival access on the same day at no additional Festival admission cost</strong>. The published schedule may change.</p><p><strong>Opening Ceremony:</strong> Saturday 10 July 2027, bp pulse LIVE at the NEC. Published start is 6:00pm; opening door time should be checked on your actual ticket. <strong>Closing Ceremony:</strong> Saturday 17 July 2027, bp pulse LIVE, published start <strong>5:00pm</strong>. Ceremony prices depend on ticket category; do not use sports prices for ceremony admission.</p><p><strong>Coach Only:</strong> proposed return transport from Stafford at <strong>£20 per person</strong>, subject to vehicle and trip confirmation; passengers purchase their own event tickets separately.</p><p>Official information: <a class="ig-link" href="https://www.invictusgames2027.org/tickets" target="_blank" rel="noopener noreferrer">Tickets</a> · <a class="ig-link" href="https://www.invictusgames2027.org/schedule" target="_blank" rel="noopener noreferrer">Games schedule</a>.</p></div></details>
             <details><summary>Sports and accessible admission prices</summary><div class="detail-body"><div class="ig-tablewrap"><table class="ig-table"><thead><tr><th>Sports admission</th><th>Adult</th><th>Concession</th></tr></thead><tbody><tr><td>Standard Sports</td><td>£20</td><td>£16</td></tr><tr><td>Category A</td><td>£40</td><td>£32</td></tr><tr><td>Category B</td><td>£30</td><td>£24</td></tr><tr><td>Category C</td><td>£20</td><td>£16</td></tr><tr><td>Supplied standard accessible event ticket</td><td>£20</td><td>£16</td></tr><tr><td>Eligible essential companion event admission</td><td colspan="2">£0 (subject to verification)</td></tr></tbody></table></div><p>Sports prices above are supplied for this demonstration; category availability and final checkout price depend on the selected event and organiser. Other sports prices may exist. Tickets are issued by the event organiser, not Stafford Coach Trips. Accessible seating categories include wheelchair bay, easy access, visual impairment and concession accessible seating. The appropriate IG27 Digital Access Pass or Access Card is required.</p><p>Indicative return coach fare is £20 per travelling passenger, including any essential companion; £0 essential companion admission does not waive their coach fare. NEC booking transaction fee: £2 per event-ticket transaction (not £2 per ticket), when booking through the relevant NEC checkout. This fee is separate from the £20 per-passenger return coach fare. Coach Only does not include an NEC ticket transaction.</p></div></details>
@@ -691,7 +722,6 @@
 
     // Invictus private-demo interaction: no server, database or checkout.
     (() => {
-      const $ = id => document.getElementById(id);
       // Session codes supplied for the private demonstration. Festival passes have separate admission pricing.
       const schedule = {
         '2027-07-10': [
@@ -764,55 +794,140 @@
           ['Indoor Rowing','14:00','ROW02','Venue: check organiser']
         ]
       };
-      const sessionLabel = r => r[1]+' · '+r[2]+' — '+r[3];
-      const prices = {standard:[20,16],A:[40,32],B:[30,24],C:[20,16]};
-      const dates = Array.from({length:8},(_,i)=>{const d=new Date(Date.UTC(2027,6,10+i));return [d.toISOString().slice(0,10),new Intl.DateTimeFormat('en-GB',{weekday:'short',day:'numeric',month:'long',timeZone:'UTC'}).format(d)]});
-      function fill(select,items) {select.replaceChildren(...items.map(([value,name])=>{const o=document.createElement('option');o.value=value;o.textContent=name;return o;}));}
-      fill($('ig-date'), dates);
-      const visible=(id,yes)=>$(id).classList.toggle('ig-hidden',!yes);
-      function update() {
-        const pkg=$('ig-package').value;
-        $('ig-date').disabled=(pkg==='opening'||pkg==='closing');
-        if(pkg==='opening') $('ig-date').value='2027-07-10';
-        if(pkg==='closing') $('ig-date').value='2027-07-17';
-        const date=$('ig-date').value;
-        visible('ig-sport-box',pkg==='sports');visible('ig-session-box',pkg==='sports');
-        visible('ig-ticket-controls',pkg==='sports'||pkg==='festival');visible('ig-quantity-box',true);
-        visible('ig-concession-note',pkg==='sports'||pkg==='festival');visible('ig-access-note',pkg!=='coach');
-        $('ig-tier').parentElement.classList.toggle('ig-hidden',pkg!=='sports');
-        $('ig-visitor').parentElement.classList.toggle('ig-hidden',pkg==='coach');
-        if(pkg==='sports') {
-          const rows=schedule[date]||[];
-          const oldSport=$('ig-sport').value;
-          const sports=[...new Set(rows.map(r=>r[0]))];
-          fill($('ig-sport'),sports.length?sports.map(x=>[x,x]):[['','No sports scheduled for this date']]);
-          if(sports.includes(oldSport))$('ig-sport').value=oldSport;
-          const matches=rows.filter(r=>r[0]===$('ig-sport').value);
-          fill($('ig-session'),matches.length?matches.map(r=>[r[2],sessionLabel(r)]):[['','No session listed']]);
-        }
-        const count=Math.max(1,Math.min(20,parseInt($('ig-quantity').value,10)||1));
-        const isConcession=$('ig-visitor').value==='concession';
-        let display='To be confirmed', detail='£20 return coach travel per person, subject to arrangements. This is not a booking.'; const necFee=pkg==='coach'?0:2; const coachFare=20*count; const companion=($('ig-access').value==='companion' && pkg!=='coach'); const companionFare=companion?20*count:0; const coachLine='Coach '+count+' × £20 = £'+coachFare+(companion?' + '+count+' essential companion(s) × £20 = £'+companionFare:'')+'. '; 
-        if(pkg==='festival') {display=(isConcession?'Festival concession admission TBC; coach £'+(coachFare+companionFare)+' + £2 NEC fee':'From £'+(10*count+coachFare+companionFare+necFee)+' admission + coach + NEC fee');detail=coachLine+'Festival adult admission starts at £10 each (not an exact quote). '+(companion?'Companion event-admission eligibility and Festival pricing must be checked. ':'')+'Concession Festival price is not confirmed. NEC transaction fee £2 per ticket order (assuming one transaction).';}
-        if(pkg==='sports') {
-          if(!$('ig-session').value){display='No published session';detail='Choose a different date.';}
-          else if((schedule[date]||[]).find(r=>r[2]===$('ig-session').value)?.[4]==='waitlist') {display='Tickets not on sale yet';detail='Join the official organiser waiting list for this 3x3 Basketball session. '+coachLine+'Event admission is not yet priced.';}
-          else if((schedule[date]||[]).find(r=>r[2]===$('ig-session').value)?.[4]==='festival') {display='Festival admission + coach + NEC fee from £'+(10*count+coachFare+companionFare+necFee);detail=coachLine+'Festival session — select Festival Pass for its admission details. Sports ticket categories do not apply. NEC ticket transaction fee £2.';}
-          else {const access=$('ig-access').value;const unit=access==='none'?prices[$('ig-tier').value][isConcession?1:0]:(isConcession?16:20);display='£'+(unit*count+coachFare+companionFare+necFee)+' estimated total';detail='Sports '+count+' × £'+unit+' = £'+(unit*count)+'; same-day Festival entry INCLUDED at £0 extra. NEC transaction fee: £2 per ticket order (one transaction assumed). '+coachLine+(access==='companion'?'Eligible essential companion EVENT admission £0 (subject to verification); coach fare still applies. ':'')+'Subject to selected session/tier availability.';}
-        }
-        if(pkg==='opening'||pkg==='closing') {display='Coach £'+(coachFare+companionFare)+' + ceremony tickets TBC + £2 NEC fee';detail=(pkg==='opening'?'10 July 2027 · published start 18:00':'17 July 2027 · published start 17:00')+'. '+coachLine+'Ceremony ticket price depends on category and is NOT included in this coach subtotal. A £2 NEC fee applies to an event-ticket transaction.';}
-        if(pkg==='coach') {display='£'+coachFare+' return coach estimate';detail=count+' passenger(s) × £20 return coach travel. Purchase event admission separately; transport remains subject to confirmation and no seat is reserved.';}
-        $('ig-total').textContent=display;$('ig-breakdown').textContent=detail;
+      // Generic group-enquiry configuration; can be reused for future excursions.
+      const CONFIG = { excursion:'Invictus Games Birmingham 2027', recipient:'staffordcoachtrips@gmail.com', coachSeatFare:20, necFee:2, maxLines:40, maxQty:60 };
+      const $ = id => document.getElementById(id);
+      const prices={standard:[20,16],A:[40,32],B:[30,24],C:[20,16]};
+      const dates=Array.from({length:8},(_,i)=>{const d=new Date(Date.UTC(2027,6,10+i));return [d.toISOString().slice(0,10),new Intl.DateTimeFormat('en-GB',{weekday:'short',day:'numeric',month:'long',timeZone:'UTC'}).format(d)];});
+      const categories=[['adult','Adult'],['junior','Junior concession (2–16)'],['senior','Senior concession (65+)'],['student','Student concession'],['forces','Armed Forces concession'],['veteran','Veteran concession'],['blue-light','Blue Light Card concession'],['low-income','Low-income concession'],['wheelchair-adult','Wheelchair bay — adult'],['wheelchair-concession','Wheelchair bay — concession'],['easy-adult','Easy access — adult'],['easy-concession','Easy access — concession'],['visual-adult','Visual impairment seating — adult'],['visual-concession','Visual impairment seating — concession'],['accessible-concession','Other concession accessible seating'],['companion','Essential companion (eligible, event admission £0)']];
+      const experiences=[['festival','Festival Pass'],['sports','Sports Pass (includes same-day Festival)'],['opening','Opening Ceremony'],['closing','Closing Ceremony'],['coach','Coach only — no event ticket']];
+      const tiers=[['standard','Standard Sports'],['A','Category A'],['B','Category B'],['C','Category C']];
+      const $lines=$('gb-lines'); let rowCounter=0; let ref=null;
+      const money=n=>'£'+n.toFixed(2);
+      const optionHTML=(items,selected)=>items.map(([value,label])=>'<option value="'+value+'"'+(value===selected?' selected':'')+'>'+escapeHTML(label)+'</option>').join('');
+      function escapeHTML(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+      function makeRow(){
+        if($lines.children.length>=CONFIG.maxLines)return;
+        const id=++rowCounter, box=document.createElement('fieldset');box.className='gb-line';box.dataset.id=id;
+        box.innerHTML='<legend><strong>Selection '+id+'</strong></legend><div class="gb-grid">'+
+          '<div><label>Event or experience<select class="gb-package">'+optionHTML(experiences,'sports')+'</select></label></div>'+
+          '<div><label>Date<select class="gb-date">'+optionHTML(dates,'2027-07-12')+'</select></label></div>'+
+          '<div class="gb-sport-wrap"><label>Sport<select class="gb-sport"></select></label></div>'+
+          '<div class="gb-session-wrap"><label>Published session / venue<select class="gb-session"></select></label></div>'+
+          '<div class="gb-tier-wrap"><label>Sports seating tier<select class="gb-tier">'+optionHTML(tiers,'standard')+'</select></label></div>'+
+          '<div><label>Ticket type / accessibility category<select class="gb-category">'+optionHTML(categories,'adult')+'</select></label></div>'+
+          '<div><label>Quantity</label><div class="gb-qty"><button type="button" class="gb-minus" aria-label="Decrease quantity">−</button><input class="gb-quantity" type="number" min="0" max="60" step="1" value="1" aria-label="Ticket quantity"><button type="button" class="gb-plus" aria-label="Increase quantity">+</button></div></div>'+
+          '<div><label>Estimated admission per ticket</label><p class="gb-unit">—</p></div></div>'+
+          '<p class="gb-note gb-line-note"></p><button type="button" class="gb-remove">Remove this selection</button>';
+        $lines.appendChild(box);refreshRow(box,true);
       }
-      $('ig-package').addEventListener('change',()=>{if($('ig-package').value==='sports')$('ig-date').value='2027-07-12';update();});
-      $('ig-date').addEventListener('change',update);
-      $('ig-sport').addEventListener('change',()=>{const rows=(schedule[$('ig-date').value]||[]).filter(r=>r[0]===$('ig-sport').value);fill($('ig-session'),rows.map(r=>[r[2],sessionLabel(r)]));update();});
-      ['ig-session','ig-tier','ig-visitor','ig-quantity','ig-access'].forEach(id=>$(id).addEventListener('change',update));
-      function summary(){const pkg=$('ig-package');return 'Invictus Games Birmingham 2027 – INTEREST ONLY\nExperience: '+pkg.options[pkg.selectedIndex].text+'\nDate: '+$('ig-date').options[$('ig-date').selectedIndex].text+(pkg.value==='sports'?'\nSport: '+$('ig-sport').value+'\nSession: '+$('ig-session').options[$('ig-session').selectedIndex].text+'\nCategory: '+$('ig-tier').value:'')+'\nTicket type: '+$('ig-visitor').value+'\nTravelling passengers / main event tickets: '+$('ig-quantity').value+'\nAccessibility: '+$('ig-access').options[$('ig-access').selectedIndex].text+'\nEstimated total (includes £20 per travelling passenger, plus companion coach fare and £2 NEC ticket transaction fee where applicable): '+$('ig-total').textContent+'\nPlease advise if a suitable Stafford coach excursion becomes available. I understand this is only an expression of interest, not a booking.';}
-      $('ig-email').addEventListener('click',()=>{const url='mailto:staffordcoachtrips@gmail.com?subject='+encodeURIComponent('Invictus Games 2027 - expression of interest')+'&body='+encodeURIComponent(summary());window.location.href=url;$('ig-feedback').textContent='An email draft should open in your email app. Please review and send it yourself.';});
-      $('ig-copy').addEventListener('click',async()=>{try {await navigator.clipboard.writeText(summary());$('ig-feedback').textContent='Choices copied. No registration has been submitted.';} catch(e) {$('ig-feedback').textContent='Copy unavailable in this browser; use the email button instead.';}});
-      $('ig-interest-form').addEventListener('submit',e=>e.preventDefault());
-      update();
+      function field(box,key){return box.querySelector('.gb-'+key);}
+      function refreshRow(box,force=false){
+        const pkg=field(box,'package').value,dt=field(box,'date');
+        dt.disabled=pkg==='opening'||pkg==='closing';
+        if(pkg==='opening')dt.value='2027-07-10';if(pkg==='closing')dt.value='2027-07-17';
+        const showSport=pkg==='sports';
+        field(box,'sport-wrap').hidden=!showSport;field(box,'session-wrap').hidden=!showSport;field(box,'tier-wrap').hidden=!showSport;
+        if(showSport){
+          const rows=(schedule[dt.value]||[]).filter(r=>r[4]!=='festival');
+          const oldSport=field(box,'sport').value,oldSession=field(box,'session').value;
+          const sportNames=[...new Set(rows.map(r=>r[0]))];
+          field(box,'sport').innerHTML=optionHTML(sportNames.map(x=>[x,x]),oldSport);
+          if(!sportNames.includes(oldSport) && sportNames.length)field(box,'sport').value=sportNames[0];
+          const sessions=rows.filter(r=>r[0]===field(box,'sport').value);
+          field(box,'session').innerHTML=optionHTML(sessions.map(r=>[r[2],r[1]+' · '+r[2]+' — '+r[3]]),oldSession);
+        }
+        const cat=field(box,'category').value;
+        if(pkg==='coach'&&cat==='companion')field(box,'category').value='adult';
+        const row=readRow(box);
+        field(box,'unit').textContent=row.unit===null?'Price to be confirmed':money(row.unit);
+        field(box,'line-note').textContent=row.note;
+      }
+      function readRow(box){
+        const pkg=field(box,'package').value,date=field(box,'date').value,category=field(box,'category').value;
+        const q=Math.max(0,Math.min(CONFIG.maxQty,Number(field(box,'quantity').value)||0));
+        const concession=category!=='adult'&&!category.endsWith('-adult')&&category!=='companion';
+        const isCompanion=category==='companion';
+        const accessible=category.startsWith('wheelchair')||category.startsWith('easy')||category.startsWith('visual')||category==='accessible-concession';
+        let unit=null,note='',session='',sport='',venue='',flag='';
+        if(pkg==='sports'){
+          sport=field(box,'sport').value;const code=field(box,'session').value;
+          const rec=(schedule[date]||[]).find(r=>r[2]===code);
+          session=rec?rec[1]+' / '+rec[2]: 'Session not listed';venue=rec?rec[3]:'';
+          if(rec?.[4]==='waitlist') {note='Organiser waiting list — admission unpriced and availability unconfirmed.';flag='waitlist';}
+          else {unit=isCompanion?0:(accessible?(concession?16:20):prices[field(box,'tier').value][concession?1:0]);note='Includes same-day Festival admission. Accessible category/price and chosen tier subject to organiser confirmation.';}
+        }else if(pkg==='festival'){
+          unit=isCompanion?0:(!concession?10:null);
+          note=concession?'Festival concession price is not published in this preview; excluded from the numeric estimate.':'Adult Festival admission from £10 (indicative minimum).';
+        }else if(pkg==='coach'){unit=0;note='Coach travel only; event admission not included.';}
+        else {unit=isCompanion?0:null;note='Ceremony admission prices are not confirmed; not included in numeric estimate.';}
+        return {pkg,date,category,q,concession,isCompanion,accessible,unit,note,session,sport,venue,flag,tier:field(box,'tier').value,categoryLabel:categories.find(x=>x[0]===category)?.[1]||category,packageLabel:experiences.find(x=>x[0]===pkg)?.[1]||pkg};
+      }
+      function collect(){return [...$lines.children].map(readRow).filter(r=>r.q>0);}
+      function compute(){
+        const rows=collect(),seats=Math.max(0,Number($('gb-seats').value)||0);
+        const eventGroups=new Map();let admission=0,unpriced=0,companions=0,accessible=0;
+        for(const r of rows){
+          const key=r.pkg+'|'+r.date+'|'+r.sport+'|'+r.session;
+          if(!eventGroups.has(key))eventGroups.set(key,{label:r.packageLabel+' · '+r.date+(r.sport?' · '+r.sport+' '+r.session:''),subtotal:0,unpriced:0,items:[]});
+          const g=eventGroups.get(key);const subtotal=r.unit===null?null:r.q*r.unit;
+          if(subtotal===null){unpriced+=r.q;g.unpriced+=r.q;}else{admission+=subtotal;g.subtotal+=subtotal;}
+          g.items.push(r.q+' × '+r.categoryLabel+' @ '+(r.unit===null?'TBC':money(r.unit)));
+          if(r.isCompanion&&r.pkg!=='coach')companions+=r.q;if(r.accessible)accessible+=r.q;
+        }
+        const hasEvent=rows.some(r=>r.pkg!=='coach'),fee=hasEvent?CONFIG.necFee:0,coach=seats*CONFIG.coachSeatFare;
+        $('gb-event-subtotals').replaceChildren();
+        eventGroups.forEach(g=>{
+          const p=document.createElement('p');p.className='gb-note';p.textContent=g.label+' — admission subtotal '+money(g.subtotal)+(g.unpriced?' + '+g.unpriced+' unpriced ticket(s)':'')+' ['+g.items.join('; ')+']';$('gb-event-subtotals').appendChild(p);
+        });
+        $('gb-cost-breakdown').innerHTML='<tr><th scope="row">Known / minimum event admission</th><td>'+money(admission)+'</td></tr><tr><th scope="row">Coach '+seats+' occupied seats × £20</th><td>'+money(coach)+'</td></tr><tr><th scope="row">Illustrative NEC fee (one ticket transaction)</th><td>'+money(fee)+'</td></tr>';
+        $('gb-grand').textContent='Indicative known/minimum group total: '+money(admission+coach+fee)+(unpriced?' + '+unpriced+' admission price(s) TBC':'');
+        const warnings=[];
+        if(!rows.length)warnings.push('Select at least one ticket or coach-only passenger.');
+        if(companions){const eligible=rows.filter(r=>r.accessible&&r.pkg!=='coach').reduce((n,r)=>n+r.q,0);if(companions>eligible)warnings.push('Companion eligibility: '+companions+' companion ticket(s) but only '+eligible+' accessible main ticket(s). Add eligible accessible tickets for the same event/session.');
+          for(const r of rows.filter(x=>x.isCompanion)){const matches=rows.filter(x=>x.accessible&&x.pkg===r.pkg&&x.date===r.date&&x.session===r.session&&x.sport===r.sport).reduce((n,x)=>n+x.q,0);const companionsHere=rows.filter(x=>x.isCompanion&&x.pkg===r.pkg&&x.date===r.date&&x.session===r.session&&x.sport===r.sport).reduce((n,x)=>n+x.q,0);if(companionsHere>matches)warnings.push('Companion tickets exceed eligible accessible tickets for '+r.packageLabel+' on '+r.date+(r.sport?' · '+r.sport:'')+'.');}
+        }
+        if(accessible||companions)warnings.push('ACCESSIBILITY REVIEW REQUIRED: access pass eligibility, allocated event positions, companion entitlement and suitable coach/ramp/lift/securement to be confirmed.');
+        if(rows.some(r=>r.sport==='Swimming'))warnings.push('Swimming uses Sandwell Aquatics Centre, not NEC. A separate transport arrangement is not included.');
+        if(rows.some(r=>r.flag==='waitlist'))warnings.push('At least one session is on an organiser waiting list; ticket availability/pricing must be checked.');
+        if(rows.some(r=>r.pkg==='coach')&&hasEvent)warnings.push('Coach-only choices are counted within the same distinct coach seat figure; check that passengers are not duplicated.');
+        if(unpriced)warnings.push('Some admission prices are TBC; displayed total is NOT the full cost.');
+        $('gb-warnings').replaceChildren(...warnings.map(w=>{const d=document.createElement('div');d.className='gb-alert';d.textContent=w;return d;}));
+        return {rows,seats,eventGroups,admission,unpriced,companions,accessible,fee,coach,warnings,total:admission+coach+fee};
+      }
+      function errors(data){
+        let arr=[];if(!data.rows.length)arr.push('Add at least one ticket type with a quantity above zero.');
+        if(!Number.isInteger(Number($('gb-seats').value))||data.seats<1||data.seats>60)arr.push('Enter 1–60 distinct occupied coach seats.');
+        if(data.rows.some(r=>r.pkg==='coach') && data.rows.filter(r=>r.pkg==='coach').reduce((n,r)=>n+r.q,0)>data.seats)arr.push('Coach-only passenger quantities exceed occupied coach seats.');
+        if(data.rows.some(r=>r.pkg==='sports'&&!r.session))arr.push('Choose a valid sports session for each Sports Pass.');
+        for(const r of data.rows.filter(x=>x.isCompanion)){const main=data.rows.filter(x=>x.accessible&&x.pkg===r.pkg&&x.date===r.date&&x.session===r.session&&x.sport===r.sport).reduce((n,x)=>n+x.q,0);const comp=data.rows.filter(x=>x.isCompanion&&x.pkg===r.pkg&&x.date===r.date&&x.session===r.session&&x.sport===r.sport).reduce((n,x)=>n+x.q,0);if(comp>main)arr.push('Every essential companion must match an eligible accessible main ticket in the same event/session.');}
+        const name=$('gb-name'),email=$('gb-email'),phone=$('gb-phone');
+        if(!name.value.trim())arr.push('Enter your full name.');if(!email.value.trim()||!email.checkValidity())arr.push('Enter a valid email address.');if(!phone.value.trim())arr.push('Enter a telephone number.');
+        if((data.accessible||data.companions)&&!$('gb-access-details').value.trim())arr.push('Describe accessible seating or companion requirements for confirmation.');
+        if(!$('gb-consent').checked)arr.push('Accept the expression-of-interest acknowledgement.');
+        return [...new Set(arr)];
+      }
+      function makeRef(){if(ref)return ref;const stamp=new Date();const d=stamp.getFullYear().toString()+String(stamp.getMonth()+1).padStart(2,'0')+String(stamp.getDate()).padStart(2,'0');const random=new Uint32Array(1);if(globalThis.crypto?.getRandomValues)crypto.getRandomValues(random);else random[0]=Math.floor(Math.random()*1e9);ref='SCT-IG27-'+d+'-'+random[0].toString(36).toUpperCase().padStart(6,'0').slice(0,6);return ref;}
+      function message(data){
+        const out=['STAFFORD COACH TRIPS — SINGLE GROUP EXPRESSION OF INTEREST','Reference: '+makeRef(),'Excursion: '+CONFIG.excursion,'ENQUIRY ONLY — NOT A BOOKING OR PAYMENT','', 'GROUP ORGANISER','Name: '+$('gb-name').value.trim(),'Email: '+$('gb-email').value.trim(),'Telephone: '+$('gb-phone').value.trim(),'Distinct occupied coach seats: '+data.seats,'','TICKET / EVENT SELECTIONS'];
+        data.rows.forEach((r,i)=>out.push((i+1)+'. '+r.packageLabel+' | '+r.date+(r.sport?' | '+r.sport+' | '+r.session+' | '+r.venue:'')+' | '+r.categoryLabel+' | '+r.q+' ticket(s) | price each '+(r.unit===null?'TBC':money(r.unit))+' | line subtotal '+(r.unit===null?'TBC':money(r.q*r.unit))+(r.pkg==='sports'?' | tier '+r.tier:'')));
+        out.push('','EVENT ADMISSION SUBTOTALS');data.eventGroups.forEach(g=>out.push(g.label+': '+money(g.subtotal)+(g.unpriced?' + '+g.unpriced+' unpriced ticket(s)':'')));
+        out.push('','ESTIMATED GROUP COST','Known/minimum event admission: '+money(data.admission),'Coach occupied seats: '+data.seats+' × £20 = '+money(data.coach),'Illustrative NEC fee (one transaction): '+money(data.fee),'Indicative known/minimum total: '+money(data.total)+(data.unpriced?' + '+data.unpriced+' admission price(s) TBC':''),'','ACCESSIBILITY','Accessible-ticket quantity: '+data.accessible,'Essential-companion ticket quantity: '+data.companions,'Requirements: '+($('gb-access-details').value.trim()||'None supplied'),'Other notes: '+($('gb-notes').value.trim()||'None supplied'),'','CONFIRMATION FLAGS',...(data.warnings.length?data.warnings:['No specific flags entered.']),'','The organiser understands this is not a reservation and availability, eligibility, accessible provisions and prices require confirmation.');return out.join('\n');
+      }
+      function prepare(copy=false){const data=compute(),issues=errors(data),area=$('gb-errors');area.replaceChildren(...issues.map(x=>{const p=document.createElement('p');p.textContent='• '+x;return p;}));if(issues.length){$('gb-feedback').textContent='Please correct the highlighted issues before preparing the group enquiry.';area.scrollIntoView({behavior:'smooth',block:'center'});return;}
+        const msg=message(data);if(copy){if(navigator.clipboard?.writeText){navigator.clipboard.writeText(msg).then(()=>$('gb-feedback').textContent='Entire group enquiry copied. Reference '+ref+'. No email sent.').catch(()=>$('gb-feedback').textContent='Clipboard unavailable; use the email button.');}else $('gb-feedback').textContent='Clipboard unavailable; use the email button.';return;}
+        const subject='Group interest '+ref+' — Invictus Games Birmingham 2027';
+        window.location.href='mailto:'+CONFIG.recipient+'?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(msg);
+        $('gb-feedback').textContent='One consolidated email draft prepared (reference '+ref+'). Review and press Send in your mail app. No enquiry has been transmitted automatically.';
+      }
+      $('gb-add').addEventListener('click',()=>{makeRow();compute();});
+      $lines.addEventListener('click',e=>{const box=e.target.closest('.gb-line');if(!box)return;const inp=field(box,'quantity');if(e.target.closest('.gb-plus'))inp.value=Math.min(60,(Number(inp.value)||0)+1);if(e.target.closest('.gb-minus'))inp.value=Math.max(0,(Number(inp.value)||0)-1);if(e.target.closest('.gb-remove')){box.remove();compute();return;}refreshRow(box);compute();});
+      $lines.addEventListener('change',e=>{const box=e.target.closest('.gb-line');if(!box)return;if(e.target.classList.contains('gb-sport')){field(box,'session').value='';}refreshRow(box);compute();});
+      $lines.addEventListener('input',e=>{if(e.target.classList.contains('gb-quantity'))compute();});
+      $('gb-seats').addEventListener('input',compute);
+      $('ig-interest-form').addEventListener('submit',e=>{e.preventDefault();prepare(false);});
+      $('gb-copy').addEventListener('click',()=>prepare(true));
+      makeRow();compute();
     })();
   </script>
 </body>
