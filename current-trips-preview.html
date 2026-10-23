@@ -654,8 +654,8 @@
                 <div class="gb-wide"><label for="gb-notes">Other requests / proposed pick-up point</label><textarea id="gb-notes" maxlength="1500" placeholder="Anything else we should know about the group or dates"></textarea></div></div>
                 <label class="ig-check"><input type="checkbox" id="gb-consent" required> I understand this is an expression of interest only; admission, eligibility, accessible seats, dates, venues, coach facilities and all prices require confirmation. *</label>
                 <div id="gb-errors" role="alert" class="gb-error"></div>
-                <div class="ig-actions"><button class="button button-primary" type="submit" id="gb-email">Prepare ONE group enquiry email</button><button class="button button-plum" type="button" id="gb-copy">Copy full group enquiry</button></div>
-                <p class="ig-note" id="gb-feedback" role="status">This static preview opens a single pre-filled email in your email application. The customer must press Send. There is no automatic email delivery or stored registration without a future email service/backend.</p>
+                <div class="ig-actions"><button class="button button-primary" type="submit" id="gb-send">Send ONE group enquiry</button><button class="button button-plum" type="button" id="gb-draft">Open email draft instead</button><button class="button button-plum" type="button" id="gb-copy">Copy full group enquiry</button></div>
+                <p class="ig-note" id="gb-feedback" role="status">Send ONE group enquiry uses FormSubmit to forward all the selections in one email to Stafford Coach Trips. On first use, FormSubmit requires a one-time confirmation by the recipient email owner. The alternative email-draft button needs an email app installed/configured; copying works without one. No booking or payment is taken.</p>
               </div>
             </form>
             <details><summary>Festival and official ticket information</summary><div class="detail-body"><p><strong>Festival Pass:</strong> festival entry and outdoor sports included on your chosen day, as scheduled. Adult admission starts at £10; festival rates are consistent through the week, but concession and other applicable rates should be checked when booking. <strong>Sports Pass:</strong> entry to your selected competition session <strong>includes Festival access on the same day at no additional Festival admission cost</strong>. The published schedule may change.</p><p><strong>Opening Ceremony:</strong> Saturday 10 July 2027, bp pulse LIVE at the NEC. Published start is 6:00pm; opening door time should be checked on your actual ticket. <strong>Closing Ceremony:</strong> Saturday 17 July 2027, bp pulse LIVE, published start <strong>5:00pm</strong>. Ceremony prices depend on ticket category; do not use sports prices for ceremony admission.</p><p><strong>Coach Only:</strong> proposed return transport from Stafford at <strong>£20 per person</strong>, subject to vehicle and trip confirmation; passengers purchase their own event tickets separately.</p><p>Official information: <a class="ig-link" href="https://www.invictusgames2027.org/tickets" target="_blank" rel="noopener noreferrer">Tickets</a> · <a class="ig-link" href="https://www.invictusgames2027.org/schedule" target="_blank" rel="noopener noreferrer">Games schedule</a>.</p></div></details>
@@ -914,19 +914,65 @@
         out.push('','EVENT ADMISSION SUBTOTALS');data.eventGroups.forEach(g=>out.push(g.label+': '+money(g.subtotal)+(g.unpriced?' + '+g.unpriced+' unpriced ticket(s)':'')));
         out.push('','ESTIMATED GROUP COST','Known/minimum event admission: '+money(data.admission),'Coach occupied seats: '+data.seats+' × £20 = '+money(data.coach),'Illustrative NEC fee (one transaction): '+money(data.fee),'Indicative known/minimum total: '+money(data.total)+(data.unpriced?' + '+data.unpriced+' admission price(s) TBC':''),'','ACCESSIBILITY','Accessible-ticket quantity: '+data.accessible,'Essential-companion ticket quantity: '+data.companions,'Requirements: '+($('gb-access-details').value.trim()||'None supplied'),'Other notes: '+($('gb-notes').value.trim()||'None supplied'),'','CONFIRMATION FLAGS',...(data.warnings.length?data.warnings:['No specific flags entered.']),'','The organiser understands this is not a reservation and availability, eligibility, accessible provisions and prices require confirmation.');return out.join('\n');
       }
-      function prepare(copy=false){const data=compute(),issues=errors(data),area=$('gb-errors');area.replaceChildren(...issues.map(x=>{const p=document.createElement('p');p.textContent='• '+x;return p;}));if(issues.length){$('gb-feedback').textContent='Please correct the highlighted issues before preparing the group enquiry.';area.scrollIntoView({behavior:'smooth',block:'center'});return;}
-        const msg=message(data);if(copy){if(navigator.clipboard?.writeText){navigator.clipboard.writeText(msg).then(()=>$('gb-feedback').textContent='Entire group enquiry copied. Reference '+ref+'. No email sent.').catch(()=>$('gb-feedback').textContent='Clipboard unavailable; use the email button.');}else $('gb-feedback').textContent='Clipboard unavailable; use the email button.';return;}
-        const subject='Group interest '+ref+' — Invictus Games Birmingham 2027';
-        window.location.href='mailto:'+CONFIG.recipient+'?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(msg);
-        $('gb-feedback').textContent='One consolidated email draft prepared (reference '+ref+'). Review and press Send in your mail app. No enquiry has been transmitted automatically.';
+      function prepare(mode='send'){
+        const data=compute(),issues=errors(data),area=$('gb-errors');
+        area.replaceChildren(...issues.map(x=>{const p=document.createElement('p');p.textContent='• '+x;return p;}));
+        if(issues.length){
+          $('gb-feedback').textContent='Please correct these issues before sending. No enquiry has been sent.';
+          area.scrollIntoView({behavior:'smooth',block:'center'});return;
+        }
+        const msg=message(data),subject='Group interest '+ref+' — '+CONFIG.excursion;
+        if(mode==='copy'){
+          const feedback=$('gb-feedback');
+          const fallback=()=>{
+            const ta=document.createElement('textarea');ta.value=msg;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();
+            try {if(document.execCommand('copy'))feedback.textContent='Complete group enquiry copied. Reference '+ref+'. No email sent.';else feedback.textContent='Copy is unavailable in this browser; try the email draft button.';}catch(e){feedback.textContent='Copy is unavailable in this browser; try the email draft button.';}ta.remove();
+          };
+          if(navigator.clipboard?.writeText)navigator.clipboard.writeText(msg).then(()=>feedback.textContent='Complete group enquiry copied. Reference '+ref+'. No email sent.').catch(fallback);
+          else fallback();return;
+        }
+        if(mode==='draft'){
+          const link=document.createElement('a');link.href='mailto:'+CONFIG.recipient+'?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(msg);link.style.display='none';document.body.appendChild(link);link.click();link.remove();
+          $('gb-feedback').textContent='Attempted to open your email application for reference '+ref+'. This does NOT send the enquiry automatically. If nothing opens, configure a default mail app or use Send ONE group enquiry.';
+          return;
+        }
+        // FormSubmit receives ONE POST containing the entire group summary, rather
+        // than separate messages or a potentially unsupported mailto: URL.
+        // Submission is a real customer-initiated navigation. There is no payment.
+        const sendForm=document.createElement('form');
+        sendForm.method='POST';
+        sendForm.action='https://formsubmit.co/'+encodeURIComponent(CONFIG.recipient);
+        sendForm.acceptCharset='UTF-8';
+        sendForm.style.display='none';
+        const add=(name,value)=>{const input=document.createElement('input');input.type='hidden';input.name=name;input.value=String(value);sendForm.appendChild(input);};
+        add('_subject',subject);
+        add('_template','table');
+        add('_captcha','true');
+        add('_honey','');
+        add('_replyto',$('gb-email').value.trim());
+        add('Enquiry reference',ref);
+        add('Excursion',CONFIG.excursion);
+        add('Group organiser',$('gb-name').value.trim());
+        add('Contact email',$('gb-email').value.trim());
+        add('Contact telephone',$('gb-phone').value.trim());
+        add('Distinct coach passengers',data.seats);
+        add('Admission subtotal',money(data.admission)+(data.unpriced?' plus '+data.unpriced+' ticket(s) TBC':''));
+        add('Proposed return coach subtotal',money(data.coach));
+        add('Illustrative NEC fee',money(data.fee));
+        add('Known/minimum group estimate',money(data.total)+(data.unpriced?' plus unpriced admission':''));
+        add('Full group enquiry — all events tickets access requirements',msg);
+        document.body.appendChild(sendForm);
+        $('gb-feedback').textContent='Redirecting to FormSubmit to send ONE group enquiry ('+ref+'). Check its confirmation page. Sending depends on FormSubmit activation and a successful submission.';
+        sendForm.submit();
       }
       $('gb-add').addEventListener('click',()=>{makeRow();compute();});
       $lines.addEventListener('click',e=>{const box=e.target.closest('.gb-line');if(!box)return;const inp=field(box,'quantity');if(e.target.closest('.gb-plus'))inp.value=Math.min(60,(Number(inp.value)||0)+1);if(e.target.closest('.gb-minus'))inp.value=Math.max(0,(Number(inp.value)||0)-1);if(e.target.closest('.gb-remove')){box.remove();compute();return;}refreshRow(box);compute();});
       $lines.addEventListener('change',e=>{const box=e.target.closest('.gb-line');if(!box)return;if(e.target.classList.contains('gb-sport')){field(box,'session').value='';}refreshRow(box);compute();});
       $lines.addEventListener('input',e=>{if(e.target.classList.contains('gb-quantity'))compute();});
       $('gb-seats').addEventListener('input',compute);
-      $('ig-interest-form').addEventListener('submit',e=>{e.preventDefault();prepare(false);});
-      $('gb-copy').addEventListener('click',()=>prepare(true));
+      $('ig-interest-form').addEventListener('submit',e=>{e.preventDefault();prepare('send');});
+      $('gb-copy').addEventListener('click',()=>prepare('copy'));
+      $('gb-draft').addEventListener('click',()=>prepare('draft'));
       makeRow();compute();
     })();
   </script>
